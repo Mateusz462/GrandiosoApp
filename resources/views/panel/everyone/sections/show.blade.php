@@ -54,25 +54,25 @@
                             <h3 class="pt-2">Skład sekcji:</h3>
                             <p class="font-weight-bold">
                                 <p class="mb-1">
-                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Kacper Kaca
+                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Kacper 
                                 </p>
                                 <p class="mb-1">
-                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Patrycja Michalska
+                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Patrycja
                                 </p>
                                 <p class="mb-1">
-                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Alicja Zioło
+                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Alicja
                                 </p>
                                 <p class="mb-1">
                                     <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Mateusz Wydra
                                 </p>
                                 <p class="mb-1">
-                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Mateusz Wasilewski
+                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Mateusz
                                 </p>
                                 <p class="mb-1">
-                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Marceli Wlazło
+                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Marceli
                                 </p>
                                 <p class="mb-1">
-                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Oskar Jarmuż
+                                    <img class="rounded-circle" width="24px" src="{{ Auth::user()->getPicture() }}" alt=""> Oskar
                                 </p>
                             </p>
                         </div>
