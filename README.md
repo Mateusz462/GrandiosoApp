@@ -7,6 +7,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Screenshots
+<p>Login Page</p><a href="https://imgur.com/X4Wezah"><img src="https://i.imgur.com/X4Wezah.png" alt="Login Page"></a>
+<p>Dashboard Page</p><a href="https://i.imgur.com/nrl6VTX"><img src="https://i.imgur.com/nrl6VTX.png" alt="Dashboard Page"></a>
+<a href="https://i.imgur.com/WVYi5MY.png"><img src="https://i.imgur.com/WVYi5MY.png" alt="Dashboard Page"></a>
+<p>Drill Page</p><a href="https://i.imgur.com/N25JgSd"><img src="https://i.imgur.com/N25JgSd.png" alt="Drill Page"></a>
+<p align="center"><h3><a href="https://imgur.com/a/tA95fvD">And more</a></h3></p>
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -62,7 +69,3 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-## Screenshots
-<p>Login Page</p><a href="https://imgur.com/X4Wezah"><img src="https://i.imgur.com/X4Wezah.png" alt="Login Page"></a>
-<p><a href="https://imgur.com/X4Wezah"><img src="https://i.imgur.com/X4Wezah.png" alt="Login Page"></a></p>
