@@ -9,7 +9,9 @@
 
 ## About GrandiosoAPP
 
-GraniosoAPP is an internet application created for the needs of managing Polish music bands, such as brass bands. The demo application is adapted to the needs of the GRANDIOSO Band from Radom. The administrator and author of GrandiosoAPP is Mateusz Wydra.
+GraniosoAPP is an internet application created for the needs of managing Polish music bands, such as brass bands. 
+The demo application is adapted to the needs of the GRANDIOSO Band from Radom. 
+The administrator and author of GrandiosoAPP is Mateusz Wydra.
 
 ## Screenshots
 <p>Login Page</p><a href="https://imgur.com/X4Wezah"><img src="https://i.imgur.com/X4Wezah.png" alt="Login Page"></a>
