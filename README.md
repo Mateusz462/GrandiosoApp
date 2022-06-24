@@ -7,12 +7,16 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## About GrandiosoAPP
+
+GraniosoAPP is an internet application created for the needs of managing Polish music bands, such as brass bands. The demo application is adapted to the needs of the GRANDIOSO Band from Radom. The administrator and author of GrandiosoAPP is Mateusz Wydra.
+
 ## Screenshots
 <p>Login Page</p><a href="https://imgur.com/X4Wezah"><img src="https://i.imgur.com/X4Wezah.png" alt="Login Page"></a>
 <p>Dashboard Page</p><a href="https://i.imgur.com/nrl6VTX"><img src="https://i.imgur.com/nrl6VTX.png" alt="Dashboard Page"></a>
 <a href="https://i.imgur.com/WVYi5MY.png"><img src="https://i.imgur.com/WVYi5MY.png" alt="Dashboard Page"></a>
 <p>Drill Page</p><a href="https://i.imgur.com/N25JgSd"><img src="https://i.imgur.com/N25JgSd.png" alt="Drill Page"></a>
-<p align="center"><h3><a href="https://imgur.com/a/tA95fvD">And more</a></h3></p>
+<p align="center"><h3><a href="https://imgur.com/a/tA95fvD">And more screenshots</a></h3></p>
 
 ## About Laravel
 
