@@ -394,7 +394,7 @@
                                                 </div>
                                                 <!--col-->
                                                 <div class="col-sm-5 text-end">
-                                                    <a href="{{ route('calendar') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
+                                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
                                                 </div>
                                             </div>
                                             <!--row-->
@@ -407,7 +407,7 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <h3 class="font-weight-bold mb-2">
-                                                        <i class="fas fa-plane"></i> Musztra
+                                                        <i class="fas fa-layer-group"></i> Musztra
                                                     </h3>
                                                 </div>
                                                 <!--col-->
@@ -443,12 +443,12 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <h3 class="font-weight-bold mb-2">
-                                                        <i class="fas fa-file"></i> Dokumenty
+                                                        <i class="fas fa-music"></i> Nuty
                                                     </h3>
                                                 </div>
                                                 <!--col-->
                                                 <div class="col-sm-5 text-end">
-                                                    <a href="{{ route('roles.create') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
+                                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
                                                 </div>
                                             </div>
                                             <!--row-->
@@ -468,7 +468,7 @@
                                                 </div>
                                                 <!--col-->
                                                 <div class="col-sm-5 text-end">
-                                                    <a href="{{ route('roles.create') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
+                                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
                                                 </div>
                                             </div>
                                             <!--row-->
@@ -522,7 +522,7 @@
                                                 </div>
                                                 <!--col-->
                                                 <div class="col-sm-5 text-end">
-                                                    <a href="{{ route('roles.create') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
+                                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
                                                 </div>
                                             </div>
                                             <!--row-->
@@ -610,27 +610,21 @@
                                     </div>
                                     <!--row-->
     								<p>
-    									<span class="text-muted">
-    										<s>
-    											<b>MARZEC 2022</b><br>
-    											<b>25-27.03</b> Konferencja Orkiestr Dętych<br>
-    										</s>
-    									</span>
-    									<b>MAJ 2022</b><br>
-    									<em>
-    										<b>14.05 niedziela</b> Święto Niezapominajki - do potw.<br>
-    									</em>
     									<b>CZERWIEC 2022</b><br>
-    									<b>19.06 niedziela</b> Festiwal Orkiestr w Skale<br><br>
-    									<b>PLANY NA WAKACJE 2022:</b><br>
+                                        <span class="text-muted">
+    										<s>
+            									<b>19.06 niedziela</b> Festiwal Orkiestr w Skale<br>
+                                            </s>
+                                        </span>
+                                        <b>25.06-04.07</b> warsztaty i Mistrzostwa Europy w Rastede<br><br>
     									<b>LIPIEC 2022</b><br>
-    									<b>25.06-04.07</b> warsztaty i mistrzostwa europy w Rastede<br>
+    									<b>25.06-04.07</b> Mistrzostwa Europy w Rastede<br>
     									<b>07-10.07</b> Mistrzostwa Polski Orkiestr<br>
     									<b>26.07-02.08</b> World Music Contest - Holandia<br><br>
     									<b>WRZESIEŃ 2022</b><br>
     									<em>
     										<b>11.09</b> Dni Jerozolimy - Miechów - do potw.<br>
-    										<b>12-20</b> Bilbao Hiszpania - do potw.<br>
+    										<b>12-20</b> Bilbao Hiszpania - do potw.<br><br>
     									</em>
     									<b>LISTOPAD 2022</b><br>
     									<b>25-28.11</b> KONCERTY GALOWE<br>

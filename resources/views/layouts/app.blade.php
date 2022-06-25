@@ -29,6 +29,22 @@
                 width: 100%;
                 margin-top: auto;
             }
+            .bg-gray {
+              background-color: #545455;
+            }
+            .fs-0 {
+              font-size: 4rem;
+            }
+            .fs-7 {
+              font-size: 0.8rem;
+            }
+            /* scrollbar */
+            .scrollbar:hover {
+              overflow: auto !important;
+            }
+            .pointer {
+              cursor: pointer;
+            }
         </style>
         <style type="text/css">
             @yield('custom-style');

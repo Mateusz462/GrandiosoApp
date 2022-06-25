@@ -9,10 +9,12 @@ class ShiftType
 {
     const REHEARSAL = 'Próba';
     const CONCERT = 'Koncert';
+    const TRAVEL = 'Wyjazd';
 
     const TYPES = [
         self::REHEARSAL,
-        self::CONCERT
+        self::CONCERT,
+        self::TRAVEL
     ];
 }
 

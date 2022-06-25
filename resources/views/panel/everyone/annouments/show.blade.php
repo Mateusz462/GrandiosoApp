@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <div class="col text-end">
-                            <a href="{{ route('roles.edit', $annoument->id) }}" class="btn btn-outline-warning"><i class="fas fa-edit"></i> Edytuj post</a>
+                            <a href="#" class="btn btn-outline-warning"><i class="fas fa-edit"></i> Edytuj post</a>
                         </div>
                     </div>
                 </div>
@@ -121,11 +121,11 @@
                     <form class="mt-4">
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <textarea class="form-control" id="comment" name="comment" rows="8" cols="80"></textarea>
+                            <textarea class="form-control" id="comment" name="comment" rows="8" cols="80" disabled></textarea>
                             <label class="form-label" for="comment"><i class="far fa-comment-alt"></i> Napisz komentarz</label>
                         </div>
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-block">Zapisz</button>
+                        <button type="submit" class="btn btn-primary btn-block" disabled>Zapisz</button>
                     </form>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <h3 class="font-weight-bold mb-2">
-                                <i class="far fa-comments"></i> Komentarze
+                                <i class="far fa-comments"></i> Komentarze (przykład)
                             </h3>
                         </div>
                         <!--col-->
