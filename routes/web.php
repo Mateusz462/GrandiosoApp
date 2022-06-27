@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => false]);
+// Auth::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register.post');
 
 // Socialite Routes
 Route::get('login/{provider}', [App\Http\Controllers\User\SocialLoginController::class, 'login'])->name('social.login');
@@ -28,7 +29,7 @@ Route::get('login/{provider}/callback', [App\Http\Controllers\User\SocialLoginCo
 Route::get('/test', [App\Http\Controllers\Admin\SurveyAdminController::class, 'index'])->name('test');
 Route::post('/test', [App\Http\Controllers\Admin\SurveyAdminController::class, 'store'])->name('test.store');
 
-Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth']], function () {
     ////////////
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/avatars/user/{avatar}', [App\Http\Controllers\AvatarController::class, 'images'])->name('avatars.user');

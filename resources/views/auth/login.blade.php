@@ -43,7 +43,7 @@
 
                             <div class="col-md-6 d-flex justify-content-center">
                                 <!-- Simple link -->
-                                <a href="{{ route('password.request') }}">Zapomniałeś hasła?</a>
+                                <a href="{{ route('password.request') }}">Nie pamiętasz hasła?</a>
                             </div>
                         </div>
 

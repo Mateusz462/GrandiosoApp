@@ -27,7 +27,7 @@
                     <div class="card shadow mb-4">
     					<div class="card-body">
                             <p>
-                                <img src="http://grandioso.pl/wp-content/uploads/2020/03/cropped-cropped-LOGO-GRANDIOSO-serwisy-internetowe-2.png" class="img-fluid rounded" alt="Cliff Above a Stormy Sea"/>
+                                <img src="{{ asset('img/cropped-cropped-LOGO-GRANDIOSO-serwisy-internetowe-2.png') }}" class="img-fluid rounded" alt="Cliff Above a Stormy Sea"/>
                             </p>
     						<h3 class="font-weight-bold">{{ $survey->name }}</h3>
                             <p class="mb-0"><b>Autor:</b> <span class="badge badge-light">Administrator</span></p>

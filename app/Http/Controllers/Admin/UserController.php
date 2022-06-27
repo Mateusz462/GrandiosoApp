@@ -62,7 +62,7 @@ class UserController extends Controller
     public function schedule()
     {
         $users = User::with('roles')->paginate(10);
-        
+
         return view('panel.everyone.schedule.index', compact('users'));
     }
 
@@ -73,7 +73,6 @@ class UserController extends Controller
             'nazwisko' => 'required',
             'email' => 'required|email',
             'login' => 'required',
-            'roles' => 'required',
         ]);
         try{
             $roles = $request->roles;

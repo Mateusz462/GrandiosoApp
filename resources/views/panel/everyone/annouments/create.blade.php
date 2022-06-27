@@ -99,6 +99,9 @@
                                                                 Opublikuj
                                                             </label>
                                                         </div>
+                                                        <div class="alert alert-info mt-3 mb-1" role="alert">
+                                                            <b><i class="fas fa-info-circle fa-lg"></i></b> Aby opublikować post zaznacz opcję <b>Opublikuj</b>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,7 +116,7 @@
                                             </h4>
                                             <div class="mt-4">
                                                 <div class="form-outline">
-                                                    <textarea class="form-control ckeditor" id="text" name="text" rows="16">tradsa</textarea>
+                                                    <textarea class="form-control ckeditor" id="text" name="text" rows="16"></textarea>
                                                 </div>
                                             </div>
                                         </div>

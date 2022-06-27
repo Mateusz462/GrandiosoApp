@@ -21,17 +21,13 @@
 @section('content')
     <div class="container-fluid">
         <!-- row -->
-<<<<<<< HEAD
-        
-=======
->>>>>>> 7bcc1b671700427545d877016a97749416424fcb
 		<div class="row">
             @forelse($travels as $survey)
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-5 col-xxl-3">
                     <div class="card shadow mb-4">
     					<div class="card-body">
                             <p>
-                                <img src="http://grandioso.pl/wp-content/uploads/2020/03/cropped-cropped-LOGO-GRANDIOSO-serwisy-internetowe-2.png" class="img-fluid rounded" alt="Cliff Above a Stormy Sea"/>
+                                <img src="{{ asset('img/cropped-cropped-LOGO-GRANDIOSO-serwisy-internetowe-2.png') }}" class="img-fluid rounded" alt="Cliff Above a Stormy Sea"/>
                             </p>
                             <?php if ($survey->id == 1): ?>
                                 <h3 class="font-weight-bold">Mistrzostwa Europy Rastade 2022 NIEMCY</h3>

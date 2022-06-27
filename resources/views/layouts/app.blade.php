@@ -11,7 +11,7 @@
     	<!-- MDB -->
         <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet"/>
     	<link rel="icon" type="image/png" sizes="96x96" href="https://wirtualne-pomorze.pl/portal/img/WP-logo250.png">
-    	<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    	<link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
         <!-- Font Awesome-->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
         <!-- Google Fonts -->
@@ -79,7 +79,7 @@
                 </nav> -->
                 <!-- Navbar -->
                 <div class="p-4 text-center bg-warning">
-			        <h1 class="mb-3">Kominikat Administratora Systemu</h1>
+			        <h1 class="mb-3">Komunikat Administratora Systemu</h1>
 			        <p class="mb-0">Korzystasz z testowej wersji systemu, w związku z tym część funkcji jest nie dostępna.</p>
                     <p class="mb-0">Znalazłeś/aś błąd? Napisz do nas <a href="#" class="text-link">wiadomość</a>.</p>
                     <p class="mb-0">Zachęcamy do pomocy w rozwoju! Skontaktuj się z nami wypełniając <a href="#" class="text-link">formularz</a>.</p>
@@ -101,7 +101,7 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
-        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
         <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
         {!! Toastr::message() !!}
         <!-- Custom scripts -->

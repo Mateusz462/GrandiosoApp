@@ -23,6 +23,13 @@
         <!-- row -->
 		<div class="row">
             <div class="col">
+                @if(auth()->user()->status == '0')
+                    <div class="col-12 mb-3">
+                        <div class="alert alert-danger mt-3 mb-1" role="alert">
+                            <b><i class="fas fa-ban fa-lg"></i></b> Twoje konto zostało <b>ZABLOKOWANE</b>! Skontaktuj się z administracją aby odblokować twoje konto!
+                        </div>
+                    </div>
+                @endif
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <div class="card-body">
@@ -709,7 +716,7 @@
 						<div class="row">
 							<div class="col-lg-3">
                                 <p>
-                                    <img src="http://grandioso.pl/wp-content/uploads/2020/03/cropped-cropped-LOGO-GRANDIOSO-serwisy-internetowe-2.png" class="img-fluid rounded" alt="Cliff Above a Stormy Sea"/>
+                                    <img src="{{ asset('img/cropped-cropped-LOGO-GRANDIOSO-serwisy-internetowe-2.png')}}" class="img-fluid rounded" alt="logo grandioso"/>
                                 </p>
 							</div>
 							<div class="col">

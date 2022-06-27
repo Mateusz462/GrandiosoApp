@@ -54,6 +54,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
+            'code' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
         ]);
@@ -67,16 +68,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        try {
-            User::create([
-                'firstname' => $data['firstname'],
-                'lastname' => $data['lastname'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
-            return redirect('login')->with('success', 'Sukces!');
-        } catch (\Exception $e) {
-            return redirect('register')->with('error', 'Błąd!');
-        }
+        // dd( $data);
+            if($data['code'] == '$sWwyE.)gyd8oqq6eQEt{2,FR'){
+                User::create([
+                    'firstname' => $data['firstname'],
+                    'lastname' => $data['lastname'],
+                    'email' => $data['email'],
+                    'password' => Hash::make($data['password']),
+                ]);
+            } else {
+                return back()->with('error', 'Błąd!');
+            }
+
     }
 }

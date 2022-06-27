@@ -103,20 +103,22 @@
                                             <div class="mt-4">
                                                 <div class="form-group mt-4">
                                                     <label class="form-label" for="roletype">Rangi globalne:</label>
-                                                    <select class="form-control select2 {{ $errors->has('roletype') ? 'is-invalid' : '' }}" name="roletype" id="roletype" required>
-                                                        @foreach($roletype as $id => $roletype)
-                                                            <option value="{{ $id }}" {{ ( $user->roletype == $id) ? 'selected' : '' }}>{{ $roletype }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @if($errors->has('roletype'))
-                                                        <div class="invalid-feedback">
-                                                            {{ $errors->first('roletype') }}
-                                                        </div>
+                                                    @if(auth()->user()->roletype == 'SuperAdmin')
+                                                        <select class="form-control select2 {{ $errors->has('roletype') ? 'is-invalid' : '' }}" name="roletype" id="roletype">
+                                                            @foreach($roletype as $id => $roletype)
+                                                                <option value="{{ $id }}" {{ ( $user->roletype == $id) ? 'selected' : '' }}>{{ $roletype }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @if($errors->has('roletype'))
+                                                            <div class="invalid-feedback">
+                                                                {{ $errors->first('roletype') }}
+                                                            </div>
+                                                        @endif
                                                     @endif
                                                 </div>
                                                 <div class="form-group mt-4">
                                                     <label class="form-label" for="role">Sekcje:</label>
-                                                    <select class="form-control select2 {{ $errors->has('rolesections') ? 'is-invalid' : '' }}" name="rolesections[]" id="rolesections" multiple required>
+                                                    <select class="form-control select2 {{ $errors->has('rolesections') ? 'is-invalid' : '' }}" name="rolesections[]" id="rolesections" multiple>
                                                         @foreach($rolesections as $id => $rolesections)
                                                             <option value="{{ $id }}" {{ (in_array($id, old('rolesections', [])) || $user->rolesections->contains($id)) ? 'selected' : '' }}>{{ $rolesections }}</option>
                                                         @endforeach

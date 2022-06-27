@@ -18,7 +18,7 @@
                             <div class="col">
                                 <!-- First name input -->
                                 <div class="form-outline">
-                                    <input type="text" name="firstname" value="{{ old('firstname') }}" id="firstname" class="form-control @error('firstname')is-invalid active @enderror" placeholder="Imię" required >
+                                    <input type="text" name="firstname" value="{{ old('firstname') }}" id="firstname" class="form-control @error('firstname')is-invalid active @enderror" placeholder="Imię" >
                                     <label class="form-label" for="firstname">Imię</label>
                                     @error('firstname')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -28,10 +28,10 @@
                             <div class="col">
                                 <!-- Last name input -->
                                 <div class="form-outline">
-                                    <input type="text" name="lastname" value="{{ old('lastname') }}" id="lastname" class="form-control @error('lastname')is-invalid active @enderror" placeholder="Nazwisko" required >
+                                    <input type="text" name="lastname" value="{{ old('lastname') }}" id="lastname" class="form-control @error('lastname')is-invalid active @enderror" placeholder="Nazwisko" >
                                     <label class="form-label" for="lastname">Nazwisko</label>
                                     @error('lastname')
-                                        <div class="invalid-feedback">{! $message !}</div>
+                                        <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
 
                         <!-- E-mail input -->
                         <div class="form-outline mb-4">
-                            <input type="email" name="email" value="{{ old('email') }}" id="email" class="form-control  @error('email')is-invalid active @enderror" placeholder="E-mail" required>
+                            <input type="email" name="email" value="{{ old('email') }}" id="email" class="form-control  @error('email')is-invalid active @enderror" placeholder="E-mail">
                             <label class="form-label" for="email">E-mail</label>
                             @error('email')
                                 <div class="invalid-feedback">
@@ -50,7 +50,7 @@
 
                         <!-- Password input -->
                         <div class="form-outline mb-4">
-                            <input type="password" name="password" value="{{ old('password') }}" id="password" class="form-control @error('password') is-invalid active @enderror" placeholder="Hasło" required>
+                            <input type="password" name="password" value="{{ old('password') }}" id="password" class="form-control @error('password') is-invalid active @enderror" placeholder="Hasło">
                             <label class="form-label" for="password">Hasło</label>
 
                             @error('password')
@@ -62,8 +62,8 @@
 
                         <!-- Code input -->
                         <div class="form-outline mb-4">
-                            <input type="text" value="GRANDIOSO" id="code" class="form-control is-valid" placeholder="GRANDIOSO" disabled>
-                            <label class="form-label" for="password">Kod grupy</label>
+                            <input type="text" name="code" id="code" class="form-control is-valid" placeholder="GRANDIOSO">
+                            <label class="form-label" for="password">Kod dostępu</label>
                         </div>
 
                         <!-- Submit button -->

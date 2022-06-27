@@ -91,7 +91,9 @@
                                 <thead>
                                     <tr>
                                         <th>Imię i Nazwisko</th>
+
                                         <th>Email</th>
+
                                         <th>Rangi</th>
                                         <th>Data rejestracji</th>
                                         <th>Status konta</th>
@@ -130,12 +132,16 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="mb-0">
-                                                    <span class="gdpr">
-                                                        <span class="name">{{$row->email}}</span>
-                                                        <span style="padding: 0 2px; background-color: #000; color: #f93154;" class="censor d-none">UKRYTO</span>
-                                                    </span>
-                                                </p>
+                                                @if(auth()->user()->roletype == 'SuperAdmin')
+                                                    <p class="mb-0">
+                                                        <span class="gdpr">
+                                                            <span class="name">{{$row->email}}</span>
+                                                            <span style="padding: 0 2px; background-color: #000; color: #f93154;" class="censor d-none">UKRYTO</span>
+                                                        </span>
+                                                    </p>
+                                                @else
+                                                    <span style="padding: 0 2px; background-color: #000; color: #f93154;" class="censor">UKRYTO</span>
+                                                @endif
                                             </td>
                                             <td>
                                                 <p class="fw-bold mb-1">
@@ -182,7 +188,9 @@
                                                     <a href="#" class="btn btn-secondary"><i class="fas fa-chart-line"></i></a>
                                                     <a href="#" class="btn btn-success"><i class="far fa-address-card"></i></a>
                                                     <a href="{{ route('users.edit', $row->id) }}" class="btn btn-info"><i class="far fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                                    @if(auth()->user()->roletype == 'SuperAdmin')
+                                                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                                    @endif
                                                 </div>
                                                 <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                                 </div>
