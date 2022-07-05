@@ -187,7 +187,9 @@
                                                     <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a><!--  podgląd danych -->
                                                     <a href="#" class="btn btn-secondary"><i class="fas fa-chart-line"></i></a>
                                                     <a href="#" class="btn btn-success"><i class="far fa-address-card"></i></a>
-                                                    <a href="{{ route('users.edit', $row->id) }}" class="btn btn-info"><i class="far fa-edit"></i></a>
+                                                    @if(auth()->user()->id == $row->id || auth()->user()->roletype == 'SuperAdmin')
+                                                        <a href="{{ route('users.edit', $row->id) }}" class="btn btn-info"><i class="far fa-edit"></i></a>
+                                                    @endif
                                                     @if(auth()->user()->roletype == 'SuperAdmin')
                                                         <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                                     @endif

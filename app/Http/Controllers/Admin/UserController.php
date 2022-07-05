@@ -102,7 +102,10 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        if(auth()->user()->id != $user->id && auth()->user()->roletype != 'SuperAdmin'):
+            Toastr::error('Brak uprawnień!','Błąd!');
+            return redirect()->route('users.index')->with('danger', 'Brak uprawnień!');
+        endif;
         $roles = Role::all()->pluck('name', 'id');
         $rolesglobal = Role::where('prefix', '1')->pluck('name', 'id');
 
