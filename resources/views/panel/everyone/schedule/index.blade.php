@@ -209,7 +209,7 @@
                         <div class="row mt-4">
                             <div class="row">
                                 @foreach ($dni as $dayLabel)
-                                    <div class="col">
+                                    <div class="col-lg-6 col-md-cal">
                                         <div class="card border bg-dark mb-2">
                                             <div class="card-body text-center">
                                                 <h4 class="">
@@ -264,7 +264,7 @@
                                         // print "</pre>";
 
                                     ?>
-                                        <div class="col-md-cal">
+                                        <div class="col-md-cal col-sm-6">
                                             <div class="card border {{ $bgcolor }} mb-2">
                                                 <div class="card-body text-center">
                                                     <p class="{{ $headerclass }} font-weight-bold">
@@ -283,111 +283,8 @@
                                 @endwhile
                             </div>
                         </div>
-                        <hr>
-                        </div>
                     </div>
-                    <div class="row mt-4">
-                        <div class="elo">
-                            <div class="row">
-                                <?php
 
-                                $miesiace = '05';
-                                $rok = '2022';
-                                $iloscdni = date("t", mktime(0, 0, 0, $miesiace+1, 0, $rok));
-
-                                $fday = mktime(0, 0, 0, $miesiace, 1, $rok);
-                                $start = date('w', $fday);
-                                $lday = mktime(0, 0, 0, $miesiace, $iloscdni, $rok);
-                                $end = date('w', $lday);
-
-                                $day = today()->format('d')-1;
-                                $msc = date('m', $miesiace);
-                                $d = date('d.m.Y', $iloscdni);
-                                // print_r($d);
-                                if ($start<0) $start = 7+$start;
-
-                                if ($start>0)
-                                for($i = $start; $i > 1; $i--){
-                                    $data = mktime(0, 0, 0, $miesiace-1, $iloscdni-$i+2, $rok);
-                                    $date = date('d.m.Y', $data);
-                                    echo '<div class="col-md-cal"><div class="card shadow mb-4"><div class="card-body bg-secondary text-white text-center"><p class="text-right font-weight-bold"><sup>'.$date.'</sup></p><i class="fas fa-calendar-times fa-2x"></i></div></div></div>';
-                                }
-                                else $pierwszy=true;
-                                for($i = 1; $i <= $iloscdni; $i++){
-                                    $dzien = date("w", mktime(0, 0, 0, $miesiace, $i, $rok));
-                                    $dat = mktime(0, 0, 0, $miesiace, $i, $rok);
-                                    $dzzien = mktime(0, 0, 0, $miesiace, $i, $rok);
-                                    $dni = array('NIEDZIELA', 'PONIEDZIAŁEK', 'WTOREK', 'ŚRODA', 'CZWARTEK', 'PIĄTEK', 'SOBOTA');
-                                    $tyd = $dni[(date('w', $dzzien))];
-                                    //$reguly = row("SELECT * FROM grafik_reguly WHERE data = '".$dat."'");
-                                    //$grafik = row("SELECT * FROM grafik WHERE data = '".$dat."'");
-                                    $grafik = array();
-                                    $reguly = array();
-
-                                    if(in_array('typ', $grafik)){
-                                        switch($grafik['typ']){
-                                            case '1': $rodzaj = '<span class="badge badge-success">GRAFIKOWY</span>'; $klasa = "text-success"; break;
-                                            case '2': $rodzaj = '<span class="badge badge-warning">KURS Z WOLNEGO</span>'; $klasa = "text-warning"; break;
-                                            default: $rodzaj = '<span class="badge badge-danger">BRAK DANYCH</span>'; $klasa = "text-danger"; break;
-                                        }
-                                        echo '<div class="col-md-cal"><div class="card shadow mb-4"><div class="card-body text-center '.$klasa.'"><p class="text-right font-weight-bold"><sup>'.$i.'</sup><br></p><b>'.$grafik['brygada'].'</b><br><small>'.$rodzaj.'</small></div></div></div>';
-                                    } elseif($i == $day){
-                                        echo '<div class="col-md-cal"><div class="card border-left-success mb-4"><div class="card-body text-center"><p class="text-right font-weight-bold text-success"><sup>'.$i.'</sup></p><i class="fas fa-calendar-times text-success fa-2x"></i></div></div></div>';
-                                    } elseif($tyd == 'SOBOTA'){
-                                        echo '<div class="col-md-cal"><div class="card shadow mb-4"><div class="card-body text-warning text-center"><p class="text-right font-weight-bold"><sup>'.$i.'</sup></p><i class="fas fa-calendar-times fa-2x"></i></div></div></div>';
-                                    } elseif($tyd == 'NIEDZIELA'){
-                                        echo '<div class="col-md-cal"><div class="card shadow mb-4"><div class="card-body text-danger text-center"><p class="text-right font-weight-bold"><sup>'.$i.'</sup></p><i class="fas fa-calendar-times fa-2x"></i></div></div></div>';
-                                    } elseif(in_array('typ', $reguly)){
-                                        if($reguly['rodzaj'] == '2'){
-                                            echo '<div class="col-md-cal"><div class="card shadow mb-4"><div class="card-body text-center"><p class="text-right font-weight-bold text-sobota"><sup>'.$i.'</sup></p><i class="fas fa-calendar-times text-sobota fa-2x"></i></div></div></div>';
-                                        } elseif($reguly['rodzaj'] == '3'){
-                                            $abc = '<span><b>Święto:</b> '.$reguly['tytul'].'</span><br>
-                                            <span><b>W tym dniu obowiązuje rozkład niedzielny.</b></span><br>
-                                            <span>Dzień wolny!</span>';
-                                            echo '<div class="col-md-cal" id="'.$dat.'" data-toggle="tooltip" data-placement="right" data-original-title="'.$abc.'"><div class="card shadow mb-4"><div class="card-body text-center"><p class="text-right font-weight-bold text-niedziela"><sup>'.$i.' '.$abc.'</sup></p><i class="fas fa-calendar-times text-niedziela fa-2x"></i></div></div></div>';
-                                        }
-                                    } else {
-                                        echo '<div class="col-md-cal"><div class="card shadow mb-4"><div class="card-body text-center"><p class="text-right font-weight-bold"><sup>'.$i.'</sup></p><i class="fas fa-calendar-times fa-2x"></i></div></div></div>';
-                                    }
-                                }
-
-                                $koniec= 7-($start+$iloscdni)%7;
-
-                                if($koniec == '1' || $koniec == '2' || $koniec == '3' || $koniec == '5'){
-                                    $kuniec = $koniec+1;
-                                } elseif($koniec == '4'){
-                                    $kuniec = $koniec;
-                                } elseif($koniec == '7'){
-                                    $kuniec = $koniec-6;
-                                } else {
-                                    $kuniec = $koniec+2;
-                                }
-
-                                if ($koniec<=5 || $koniec >= 7){
-
-                                    for($i = 1; $i <= $kuniec; $i++){
-                                        $data = mktime(0, 0, 0, $miesiace, $iloscdni-$i+2,$rok);
-                                        $date = date('d.m.Y', $data);
-                                        // $data = mktime(0, 0, 0, date("m")+1, $i, date("Y"));
-                                        // $date = date('d.m.Y', $data);
-                                        //$grafik = row("SELECT * FROM grafik WHERE data = '".$data."'");
-                                        if(in_array('typ', $grafik)){
-                                            switch($grafik['typ']){
-                                                case '1': $rodzaj = '<span class="badge badge-success">GRAFIKOWY</span>'; $klasa = ""; break;
-                                                case '2': $rodzaj = '<span class="badge badge-warning">KURS Z WOLNEGO</span>'; $klasa = ""; break;
-                                                default: $rodzaj = '<span class="badge badge-danger">BRAK DANYCH</span>'; $klasa = "text-danger"; break;
-                                            }
-                                            echo '<div class="col-md-cal"><div class="card shadow mb-4"><div class="card-body bg-secondary text-white text-center '.$klasa.'"><p class="text-right font-weight-bold"><sup>'.$i.'</sup><br></p><b>'.$grafik['brygada'].'</b><br><small>'.$rodzaj.'</small></div></div></div>';
-                                        } else {
-                                            echo '<div class="col-md-cal"><div class="card shadow mb-4"><div class="card-body bg-secondary text-white text-center"><p class="text-right font-weight-bold"><sup>'.$date.'</sup></p><i class="fas fa-calendar-times fa-2x"></i></div></div></div>';
-                                        }
-                                    }
-
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

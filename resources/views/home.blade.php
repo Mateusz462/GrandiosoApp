@@ -401,7 +401,7 @@
                                                 </div>
                                                 <!--col-->
                                                 <div class="col-sm-5 text-end">
-                                                    <a href="#" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
+                                                    <a href="{{ route('calendar') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
                                                 </div>
                                             </div>
                                             <!--row-->
