@@ -20,18 +20,11 @@ class ScheduleController extends Controller
     public function index()
     {
         //abort_if(Gate::denies('user_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $month = today()->format('Y-m');
-        $startDate = Carbon::parse($month)->startOfMonth();
-        $endDate = Carbon::parse($month)->endOfMonth();
-        $period = CarbonPeriod::create($startDate, $endDate);
-        foreach($period as $date)
-        {
-          $dates[] = $date->format('d-m-Y');
-        }
+
         //dd($dates);
         $users = User::with('roles')->paginate(10);
 
-        return view('panel.everyone.schedule.index', compact('users', 'period'));
+        return view('panel.everyone.schedule.index', compact('users'));
     }
 
     public function calendar($date = null)
