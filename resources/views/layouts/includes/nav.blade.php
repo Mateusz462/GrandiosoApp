@@ -3,7 +3,7 @@
         <!-- Left elements -->
         <div class="d-flex">
             <!-- Brand -->
-            <a class="navbar-brand " href="{{ url('/') }}">
+            <a class="navbar-brand " href="{{ route('home') }}">
                 <div class="h3 me-2 mb-1 d-flex align-items-center">
                     <span class="me-2">Grandioso App</span> <i class="fas fa-music text-success"></i>
                 </div>
@@ -19,7 +19,7 @@
         @guest
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Strona główna</a>
+                    <a class="nav-link" href="{{ url('/') }}">Strona główna</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">Logowanie</a>
