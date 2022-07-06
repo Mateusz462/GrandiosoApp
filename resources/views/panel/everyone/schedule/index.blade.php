@@ -108,19 +108,22 @@
 @section('content-header')
     <div class="container-fluid mb-5">
         <div class="row">
-            <div class="col-sm-10">
+            <div class="col-sm-12">
                 <h1 class="m-0">Grafik prób i koncertów</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-2">
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-12">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb float-sm-end">
+                    <ol class="breadcrumb">
                         <li class="breadcrumb-item">Orkiestra Grandioso Radom</li>
-                        <li class="breadcrumb-item active" aria-current="page">Sekcje</li>
+                        <li class="breadcrumb-item active" aria-current="page">Grafik prób i koncertów</li>
                     </ol>
                 </nav>
             </div>
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
 @endsection
 
 @section('content')
@@ -288,4 +291,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
