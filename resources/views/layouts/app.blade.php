@@ -84,6 +84,8 @@
                     <p class="mb-0">Znalazłeś/aś błąd? Napisz do nas <a href="#" class="text-link">wiadomość</a>.</p>
                     <p class="mb-0">Zachęcamy do pomocy w rozwoju! Skontaktuj się z nami wypełniając <a href="#" class="text-link">formularz</a>.</p>
 			    </div>
+                <!-- Jumbotron -->
+                @yield('header')
 				<!-- Jumbotron -->
             </header>
             <main id="content" class="my-5 d-flex flex-column px-4">
