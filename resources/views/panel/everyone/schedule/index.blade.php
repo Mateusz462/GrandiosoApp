@@ -116,7 +116,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">Orkiestra Grandioso Radom</li>
-                        <li class="breadcrumb-item active" aria-current="page">Grafik prób i koncertów</li>
+                        <li class="breadcrumb-item active" aria-current="page">Grafik prób i koncertów </li>
                     </ol>
                 </nav>
             </div>
