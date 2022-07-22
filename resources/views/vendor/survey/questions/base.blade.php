@@ -1,4 +1,4 @@
-<h4 class="card-title mb-0">Pytanie nr {{ Str::after($question->key, 'q')}}. {{ $question->content }}</h4>
+<h4 class="card-title mb-0">Pytanie: {{ $question->content }}</h4>
 <div class="mt-4">
     <div class="form-outline mt-4">
         {{ $slot }}

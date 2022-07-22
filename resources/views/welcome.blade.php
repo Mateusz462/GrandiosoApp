@@ -156,9 +156,9 @@
             </h2>
             <div class="row gx-lg-5">
                 <div class="col-lg-4 mb-10 mb-lg-0">
-                    <!-- <div class="card shadow-2-strong h-100">
+                    <div class="card shadow-2-strong h-100">
                         <div class="d-flex justify-content-center" style="margin-top: -75px">
-                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" class="rounded-circle shadow-5-strong" alt="" style="width: 150px; height: 150px;" data-builder-edit="image" data-builder-name="image1" aria-controls="#picker-editor">
+                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" class="rounded-circle shadow-5-strong" alt="" style="width: 150px; height: 150px;">
                         </div>
                         <div class="card-body">
                             <h5 class="fw-bold">Mateusz Wydra</h5>
@@ -175,12 +175,12 @@
                                 </a>
                             </ul>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="col-lg-4 mb-10 mb-lg-0">
                     <div class="card shadow-2-strong h-100">
                         <div class="d-flex justify-content-center" style="margin-top: -75px">
-                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" class="rounded-circle shadow-5-strong" alt="" style="width: 150px; height: 150px;" data-builder-edit="image" data-builder-name="image1" aria-controls="#picker-editor">
+                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" class="rounded-circle shadow-5-strong" alt="" style="width: 150px; height: 150px;">
                         </div>
                         <div class="card-body">
                             <h5 class="fw-bold">Mateusz Wydra</h5>
@@ -200,9 +200,9 @@
                     </div>
                 </div>
                 <div class="col-lg-4 mb-10 mb-lg-0">
-                    <!-- <div class="card shadow-2-strong h-100">
+                    <div class="card shadow-2-strong h-100">
                         <div class="d-flex justify-content-center" style="margin-top: -75px">
-                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" class="rounded-circle shadow-5-strong" alt="" style="width: 150px; height: 150px;" data-builder-edit="image" data-builder-name="image1" aria-controls="#picker-editor">
+                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" class="rounded-circle shadow-5-strong" alt="" style="width: 150px; height: 150px;">
                         </div>
                         <div class="card-body">
                             <h5 class="fw-bold">Mateusz Wydra</h5>
@@ -219,7 +219,7 @@
                                 </a>
                             </ul>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </section>

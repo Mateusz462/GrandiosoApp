@@ -23,7 +23,7 @@
         <!-- row -->
 		<div class="row">
             @forelse($travels as $survey)
-                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-5 col-xxl-3">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-3">
                     <div class="card shadow mb-4">
     					<div class="card-body">
                             <p>
@@ -43,7 +43,13 @@
                                 <p class="mb-0"><b>Autor:</b> <span class="badge badge-light">Administrator</span></p>
                                 <p class="mb-0"><b>Status:</b> <span class="badge badge-success"><i class="fas fa-check"></i> Potwierdzony</span> <span class="badge badge-danger"><i class="fas fa-exclamation"></i> PILNE</span></p>
                                 <p class="mb-2"><b>Dodano:</b> {{ $survey->created_at->format('d.m.Y H:i') }}</p>
-                                <p class="mb-0"><b>Pozostało:</b> {{ $diff = Carbon\Carbon::parse('2022-06-29 00:00:00')->diffInDays(Carbon\Carbon::now()) }} dni do wyjazdu!</p>
+                                <p class="mb-0"><b>Pozostało:</b>
+                                    @if(Carbon\Carbon::parse('2022-06-29 00:00:00') >= Carbon\Carbon::today())
+                                        {{ $diff = Carbon\Carbon::parse('2022-06-29 00:00:00')->diffInDays(Carbon\Carbon::now()) }} dni do wyjazdu!
+                                    @else
+                                        Wyjazd odbył się {{ $diff = Carbon\Carbon::parse('2022-06-29 00:00:00')->diffInDays(Carbon\Carbon::now()) }} dni temu!
+                                    @endif
+                                </p>
 
                             <?php else: ?>
                                 <p class="mb-0"><b>Termin:</b> 27.07-02.08.2022</p>
@@ -54,7 +60,13 @@
                                 <p class="mb-0"><b>Autor:</b> <span class="badge badge-light">Administrator</span></p>
                                 <p class="mb-0"><b>Status:</b> <span class="badge badge-success"><i class="fas fa-check"></i> Potwierdzony</span></p>
                                 <p class="mb-2"><b>Dodano:</b> {{ $survey->created_at->format('d.m.Y H:i') }}</p>
-                                <p class="mb-0"><b>Pozostało:</b> {{ $diff = Carbon\Carbon::parse('2022-07-27 00:00:00')->diffInDays(Carbon\Carbon::now()) }} dni do wyjazdu!</p>
+                                <p class="mb-0"><b>Pozostało:</b>
+                                    @if(Carbon\Carbon::parse('2022-07-27 00:00:00') >= Carbon\Carbon::today())
+                                        {{ $diff = Carbon\Carbon::parse('2022-07-27 00:00:00')->diffInDays(Carbon\Carbon::now()) }} dni do wyjazdu!
+                                    @else
+                                        Wyjazd odbył się {{ $diff = Carbon\Carbon::parse('2022-07-27 00:00:00')->diffInDays(Carbon\Carbon::now()) }} dni temu!
+                                    @endif
+                                </p>
                             <?php endif; ?>
                             <br>
                             <a href="{{ route('user.surveys.show', $survey->id) }}" class="btn btn-primary"><i class="fas fa-eye"></i> Zobacz więcej</a>

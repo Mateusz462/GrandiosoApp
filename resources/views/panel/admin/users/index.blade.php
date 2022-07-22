@@ -86,23 +86,24 @@
                     <!--row-->
 
                     <div class="mt-4">
-                         @if(count($users) > 0)
-                            <table id="table_users" class="table table-responsive"  id="users-table">
-                                <thead>
-                                    <tr>
-                                        <th>Imię i Nazwisko</th>
+                        @if(count($users) > 0)
+                            <div class="table-responsive">
+                                <table class="table "  id="users-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Imię i Nazwisko</th>
 
-                                        <th>Email</th>
+                                            <th>Email</th>
 
-                                        <th>Rangi</th>
-                                        <th>Data rejestracji</th>
-                                        <th>Status konta</th>
-                                        <th>Obecności</th>
-                                        <th>Statystyki</th>
-                                        <th>Akcje</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                            <th>Rangi</th>
+                                            <th>Data rejestracji</th>
+                                            <th>Status konta</th>
+                                            <th>Obecności</th>
+                                            <th>Statystyki</th>
+                                            <th>Akcje</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                     @foreach ($users as $row)
                                         <tr>
                                             <td>
@@ -116,17 +117,20 @@
                                                             </span>
                                                         </p>
                                                         <p class="mb-0">
-                                                            @if($row->roletype == 'SuperAdmin')
-                                                                <span class="badge badge-light">Super Administrator</span>
-                                                            @elseif($row->roletype == 'Admin')
-                                                                <span class="badge badge-light">Administrator</span>
-                                                            @elseif($row->roletype == 'Employee')
-                                                                <span class="badge badge-light">Nauczyciel</span>
-                                                            @elseif($row->roletype == 'Parent')
-                                                                <span class="badge badge-light">Rodzic / Opiekun</span>
-                                                            @elseif($row->roletype == 'User')
-                                                                <span class="badge badge-light">Uczeń</span>
-                                                            @endif
+                                                            <span class="badge badge-light">
+                                                                <i class="fas fa-shield-alt"></i>
+                                                                @if($row->roletype == 'SuperAdmin')
+                                                                    Super Administrator
+                                                                @elseif($row->roletype == 'Admin')
+                                                                    Administrator
+                                                                @elseif($row->roletype == 'Employee')
+                                                                    Nauczyciel
+                                                                @elseif($row->roletype == 'Parent')
+                                                                    Rodzic / Opiekun
+                                                                @elseif($row->roletype == 'User')
+                                                                    Uczeń
+                                                                @endif
+                                                            </span>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -202,6 +206,7 @@
                                 </tbody>
                             </table>
                             <!--table-->
+                            </div>
                         @else
                             <div class="col-lg-12">
                                 <div class="card shadow mb-4 bg-warning">

@@ -27,82 +27,84 @@
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-3">
-            <div class="card mb-4">
-                <div class="card-body">
-                    @include('panel.admin.settings.sidebar')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        @include('panel.admin.settings.sidebar')
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-9">
-            <div class="row">
-                <div class="col-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    <h3 class="font-weight-bold mb-2">
-                                        <i class="far fa-comments"></i> Komentarze
-                                    </h3>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <h3 class="font-weight-bold mb-2">
+                                            <i class="far fa-comments"></i> Komentarze
+                                        </h3>
+                                    </div>
+                                    <!--col-->
+                                    <div class="col">
+                                        <!-- Checked switch -->
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked />
+                                        </div>
+                                    </div>
                                 </div>
-                                <!--col-->
-                                <div class="col">
-                                    <!-- Checked switch -->
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked />
+                                <!--row-->
+                                <div class="col-12">
+                                    <p>
+                                        Forms allows you to build your own set of questions for your server
+                                        members/users to fill out and receive submissions straight into your
+                                        Discord server!
+                                    </p>
+                                    <div>
+                                        <a href="/manage/789602173323313162/modules/forms" class="btn btn-primary">
+                                            <i class="fa fa-cog"></i> Settings
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            <!--row-->
-                            <div class="col-12">
-                                <p>
-                                    Forms allows you to build your own set of questions for your server
-                                    members/users to fill out and receive submissions straight into your
-                                    Discord server!
-                                </p>
-                                <div>
-                                    <a href="/manage/789602173323313162/modules/forms" class="btn btn-primary">
-                                        <i class="fa fa-cog"></i> Settings
-                                    </a>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h3 class="font-weight-bold mb-2">
+                                            <i class="far fa-comments"></i> Komentarze
+                                        </h3>
+                                    </div>
+                                    <!--col-->
+                                </div>
+                                <!--row-->
+                                <div class="col-12">
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <h3 class="font-weight-bold mb-2">
-                                        <i class="far fa-comments"></i> Komentarze
-                                    </h3>
+                    <div class="col-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h3 class="font-weight-bold mb-2">
+                                            <i class="far fa-comments"></i> Komentarze
+                                        </h3>
+                                    </div>
+                                    <!--col-->
                                 </div>
-                                <!--col-->
-                            </div>
-                            <!--row-->
-                            <div class="col-12">
+                                <!--row-->
+                                <div class="col-12">
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <h3 class="font-weight-bold mb-2">
-                                        <i class="far fa-comments"></i> Komentarze
-                                    </h3>
                                 </div>
-                                <!--col-->
-                            </div>
-                            <!--row-->
-                            <div class="col-12">
-
                             </div>
                         </div>
                     </div>

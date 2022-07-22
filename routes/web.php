@@ -28,12 +28,18 @@ Route::get('login/{provider}/callback', [App\Http\Controllers\User\SocialLoginCo
 
 Route::get('/test', [App\Http\Controllers\Admin\SurveyAdminController::class, 'index'])->name('test');
 Route::post('/test', [App\Http\Controllers\Admin\SurveyAdminController::class, 'store'])->name('test.store');
+Route::get('/terms', function () { return view('panel.tos.termsofservice'); })->name('terms');
 
 Route::group(['middleware' => ['auth']], function () {
     ////////////
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/avatars/user/{avatar}', [App\Http\Controllers\AvatarController::class, 'images'])->name('avatars.user');
     Route::get('/schedule', [App\Http\Controllers\Admin\ScheduleController::class, 'index'])->name('calendar');
+    Route::get('/schedule/json/{date}', [App\Http\Controllers\Admin\ScheduleController::class, 'getallevents'])->name('schedule.getallevents');
+
+
+    Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'list'])->name('everyone.users');
+
 
     ////////
     Route::resource('annouments', App\Http\Controllers\AnnoumentsController::class);

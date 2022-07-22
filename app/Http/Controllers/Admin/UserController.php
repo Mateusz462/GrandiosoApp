@@ -34,20 +34,14 @@ class UserController extends Controller
         return view('panel.admin.users.index', compact('users'));
     }
 
-    public function card(Request $request)
+    public function list()
     {
-        abort_if(Gate::denies('user_card_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('user_card_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $users = User::paginate(12);
-        if($request->filter_login){
-            $users = User::where('login', 'LIKE', '%'.$request->filter_login.'%')->paginate(12);
-        }
-        if($request->filter_email) {
-            $users = User::where('email', 'LIKE', '%'.$request->filter_email.'%')->paginate(12);
-        }
-        if($request->filter_code) {
-            $users = User::where('code', 'LIKE', '%'.$request->filter_code.'%')->paginate(12);
-        }
-        return view('panel.administracja.uzytkownicy.card', compact('users'));
+
+        // return view('panel.administracja.uzytkownicy.card', compact('users'));
+        return view('panel.everyone.users.list', compact('users'));
     }
 
     public function create()
@@ -57,13 +51,6 @@ class UserController extends Controller
         $roles = Role::pluck('name', 'id');
 
         return view('panel.administracja.uzytkownicy.create', compact('roles'));
-    }
-
-    public function schedule()
-    {
-        $users = User::with('roles')->paginate(10);
-
-        return view('panel.everyone.schedule.index', compact('users'));
     }
 
     public function store(Request $request)
@@ -127,7 +114,10 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //abort_if(Gate::denies('user_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        if(auth()->user()->id != $user->id && auth()->user()->roletype != 'SuperAdmin'):
+            Toastr::error('Brak uprawnień!','Błąd!');
+            return redirect()->route('users.index')->with('danger', 'Brak uprawnień!');
+        endif;
         $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',

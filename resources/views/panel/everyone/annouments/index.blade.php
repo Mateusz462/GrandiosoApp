@@ -40,7 +40,6 @@
                             </div>
                             <!--col-->
                             <div class="col text-end">
-                                <a href="{{ route('annouments.index') }}" class="btn btn-primary"><i class="fas fa-eye"></i> Zobacz więcej</a>
                                 <a href="{{ route('annouments.create') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Dodaj post</a>
                             </div>
                         </div>
@@ -51,7 +50,7 @@
                                 @foreach ($annouments as $row)
                                     @if($row->isActive())
                                         <a href="{{ route('annouments.show', $row->id ) }}" class="text-decoration-none text-white">
-                                            <div class="col-md-12 mb-4">
+                                            <div class="col-md-12">
                                                 <div class="card bg-dark border mt-2 p-0">
                                                     <div class="position-relative p-3">
                                                         <div class="d-flex justify-content-start">
@@ -60,26 +59,30 @@
                                                                 <div class="d-flex flex-column justify-content-center">
                                                                     <span class="d-flex align-items-center font-weight-bold">{{ $row->user->firstname }} {{ $row->user->lastname }}</span>
                                                                     <span class="d-flex align-items-center">
-                                                                        <span class="text-muted">
+                                                                        <span class="badge badge-light">
+                                                                            <i class="fas fa-shield-alt"></i>
                                                                             @if($row->user->roletype == 'SuperAdmin')
-                                                                                <span class="badge badge-light">Super Administrator</span>
+                                                                                Super Administrator
                                                                             @elseif($row->user->roletype == 'Admin')
-                                                                                <span class="badge badge-light">Administrator</span>
+                                                                                Administrator
                                                                             @elseif($row->user->roletype == 'Employee')
-                                                                                <span class="badge badge-light">Nauczyciel</span>
+                                                                                Nauczyciel
                                                                             @elseif($row->user->roletype == 'Parent')
-                                                                                <span class="badge badge-light">Rodzic / Opiekun</span>
+                                                                                Rodzic / Opiekun
                                                                             @elseif($row->user->roletype == 'User')
-                                                                                <span class="badge badge-light">Uczeń</span>
+                                                                                Uczeń
                                                                             @endif
-                                                                            <span class="badge badge-secondary">Autor posta</span>
                                                                         </span>
                                                                     </span>
                                                                 </div>
                                                             </div>
                                                             <div class="col text-end">
-                                                                <a href="{{ route('annouments.edit', $row->id) }}" class="btn btn-outline-warning"><i class="fas fa-edit"></i> Edytuj post</a>
-                                                                <button class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Usuń post</a>
+                                                                <button href="{{ route('annouments.edit', $row->id) }}" class="btn btn-outline-warning">
+                                                                    <i class="fas fa-edit"></i> Edytuj post
+                                                                </button>
+                                                                <button class="btn btn-outline-danger">
+                                                                    <i class="fas fa-trash-alt"></i> Usuń post
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -91,7 +94,7 @@
                                                             <!--col-->
                                                             @if($row->is_pinned)
                                                                 <div class="col text-end">
-                                                                    <h5><span class="badge badge-warning">Ważne!</span></h5>
+                                                                    <h5><span class="badge badge-danger">Ważne!</span></h5>
                                                                 </div>
                                                             @endif
                                                         </div>
@@ -100,7 +103,6 @@
                                                         <div class="d-flex flex-column justify-content-center">
                                                             {!! $row->text !!}
                                                         </div>
-                                                        <!-- <span>Zaginiony telefon wraz ładowarką jest do odebrania u mnie - po uiszczeniu opłaty za "dzikie ładowanie" 🤑</span> -->
                                                     </div>
                                                     <div class="position-relative px-3 mt-3">
                                                         <div class="d-flex align-items-center pb-2 border-bottom mb-2">

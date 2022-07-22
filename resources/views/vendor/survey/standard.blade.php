@@ -16,7 +16,7 @@
                 <!-- <img class="rounded-circle" width="24px" src="{{ $survey->user->getPicture() }}" alt=""> {{ $survey->user->firstname }} {{ $survey->user->lastname }} --><br>
             </p>
             @if($eligible)
-                <form action="{{ route('test.store', $survey->id)}}" method="post">
+                <form action="{{ route('surveys.store', $survey->id)}}" method="post">
                     @csrf
             @endif
                 @if($eligible)

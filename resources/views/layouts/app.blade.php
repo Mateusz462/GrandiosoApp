@@ -78,12 +78,12 @@
                     </div>
                 </nav> -->
                 <!-- Navbar -->
-                <div class="p-4 text-center bg-warning">
+                <!-- <div class="p-4 text-center bg-warning">
 			        <h1 class="mb-3">Komunikat Administratora Systemu</h1>
 			        <p class="mb-0">Korzystasz z testowej wersji systemu, w związku z tym część funkcji jest nie dostępna.</p>
                     <p class="mb-0">Znalazłeś/aś błąd? Napisz do nas <a href="#" class="text-link">wiadomość</a>.</p>
                     <p class="mb-0">Zachęcamy do pomocy w rozwoju! Skontaktuj się z nami wypełniając <a href="#" class="text-link">formularz</a>.</p>
-			    </div>
+			    </div> -->
                 <!-- Jumbotron -->
                 @yield('header')
 				<!-- Jumbotron -->

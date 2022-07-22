@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use MattDaneshvar\Survey\Models\Survey;
 use MattDaneshvar\Survey\Models\Entry;
 use App\Models\User;
+use Brian2694\Toastr\Facades\Toastr;
 
 class SurveyAdminController extends Controller
 {
@@ -47,9 +48,16 @@ class SurveyAdminController extends Controller
          $survey = $this->survey();
          $answers = $this->validate($request, $survey->rules);
          $user = auth()->user();
-         (new Entry)->for($survey)->by($user)->fromArray($answers)->push();
 
-         return back()->with('success', 'elo');
+         try{
+            (new Entry)->for($survey)->by($user)->fromArray($answers)->push();
+
+             Toastr::success('Ankieta została wypełniona pomyślnie','Sukces');
+             return redirect()->route('user.surveys')->with('success', 'Ankieta została wypełniona pomyślnie');
+         } catch (\Exception $e) {
+             Toastr::error('Wystąpił błąd podczas zapisywania odpowiedzi użytkownika','Błąd!');
+             return redirect()->route('user.surveys')->with('error', 'Wystąpił błąd podczas zapisywania odpowiedzi użytkownika');
+         }
      }
 
     /**

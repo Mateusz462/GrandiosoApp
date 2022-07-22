@@ -62,6 +62,8 @@ class AnnoumentsController extends Controller
             } elseif ($request->is_pinned == 'on') {
                 $request->is_pinned = 1;
             }
+            if (!$request->title)
+                $request->title = null;
 
             $data = [
                 'title' => $request->title,

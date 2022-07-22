@@ -30,6 +30,12 @@
                         </div>
                     </div>
                 @endif
+
+                <div class="col-12 mb-3">
+                    <div class="alert alert-primary mt-3 mb-1" role="alert">
+                        <b><i class="fas fa-info-circle fa-lg"></i></b> Dodano nową ankietę! Prosimy o jej najszybsze wypełnienie! <a href="surveys/3">Ankieta</a>
+                    </div>
+                </div>
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <div class="card-body">
@@ -54,7 +60,7 @@
                                             <b><i class="fas fa-info-circle fa-lg"></i></b> Obowiązkowo na <b>każdą próbę musztry</b> przynosimy okrycie głowy i wodę!
                                         </div>
                                         <div class="alert alert-secondary mt-3 mb-1" role="alert">
-                                            <b><i class="fas fa-info-circle fa-lg"></i></b> Program z musztrą można za darmo pobrać <a href="#">tutaj</a>. W razie pytań pisać do <a href="#">Mati Wydra</a>.
+                                            <b><i class="fas fa-info-circle fa-lg"></i></b> Program z musztrą można za darmo pobrać <a href="#">tutaj</a>. W razie pytań napisz do <a href="#">Mati Wydra</a>.
                                         </div>
                                         <!-- <div class="alert alert-warning mt-3 mb-1" role="alert">
                                             <b><i class="fas fa-times-circle fa-lg"></i></b> Anulowano 1 próbę!
@@ -71,19 +77,19 @@
                                                                 <div class="d-flex flex-column justify-content-center">
                                                                     <span class="d-flex align-items-center font-weight-bold">{{ $row->user->firstname }} {{ $row->user->lastname }}</span>
                                                                     <span class="d-flex align-items-center">
-                                                                        <span class="text-muted">
+                                                                        <span class="badge badge-light">
+                                                                            <i class="fas fa-shield-alt"></i>
                                                                             @if($row->user->roletype == 'SuperAdmin')
-                                                                                <span class="badge badge-light">Super Administrator</span>
+                                                                                Super Administrator
                                                                             @elseif($row->user->roletype == 'Admin')
-                                                                                <span class="badge badge-light">Administrator</span>
+                                                                                Administrator
                                                                             @elseif($row->user->roletype == 'Employee')
-                                                                                <span class="badge badge-light">Nauczyciel</span>
+                                                                                Nauczyciel
                                                                             @elseif($row->user->roletype == 'Parent')
-                                                                                <span class="badge badge-light">Rodzic / Opiekun</span>
+                                                                                Rodzic / Opiekun
                                                                             @elseif($row->user->roletype == 'User')
-                                                                                <span class="badge badge-light">Uczeń</span>
+                                                                                Uczeń
                                                                             @endif
-                                                                            <span class="badge badge-secondary">Autor posta</span>
                                                                         </span>
                                                                     </span>
                                                                 </div>
@@ -178,7 +184,7 @@
                                 <!--col-->
                                 <!--col-->
                                 <div class="col text-end">
-                                    <a href="{{ route('annouments.index') }}" class="btn btn-primary"><i class="fas fa-calendar"></i> Kalendarz</a>
+                                    <a href="{{ route('calendar') }}" class="btn btn-primary"><i class="fas fa-calendar"></i> Kalendarz</a>
                                 </div>
                             </div>
                             <!--row-->
@@ -193,7 +199,7 @@
 
                                 ?>
                                 @for($date = today()->copy(); $date->lte(today()->add(2, 'day')); $date->addDay())
-                                    <div class="col-xl-4">
+                                    <div class="col-lg-6 col-xl-6">
                                         <div class="card bg-dark shadow mb-4">
                                             <div class="card-body">
                                                 <div class="row">
@@ -213,29 +219,37 @@
                                                                     <div class="card shadow mb-4">
                                                                         <div class="card-body">
                                                                             @if($row->status == 1)
-                                                                                <h4 class="font-weight-bold mb-2 text-success"><i class="fas fa-check-circle"></i> {{ $row->shifttype }}: Zrealizowano!</h4>
+                                                                                <h4 class="font-weight-bold mb-2 text-success"><i class="fas fa-check-circle"></i> {{ $row->title }}: Zrealizowano!</h4>
                                                                             @elseif($row->status == 2)
-                                                                                <h4 class="font-weight-bold mb-2 text-secondary"><i class="fas fa-times-circle"></i> {{ $row->shifttype }}: Odwołano!</h4>
+                                                                                <h4 class="font-weight-bold mb-2 text-secondary"><i class="fas fa-times-circle"></i> {{ $row->title }}: Odwołano!</h4>
                                                                             @else
-                                                                                <h4 class="font-weight-bold mb-2"><i class="fas fa-check-circle"></i> {{ $row->shifttype }}</h4>
+                                                                                <h4 class="font-weight-bold mb-2"><i class="fas fa-check-circle"></i> {{ $row->title }}</h4>
                                                                             @endif
                                                                             @if($row->status == 2)<s>@endif
                                                                                 <p class="mb-0">
                                                                                     <b>Data:</b> {{ $row->date->format('d.m.Y') }}
                                                                                 </p>
                                                                                 <p class="mb-0">
-                                                                                    <b>Godzina:</b> {{ $row->time_from->format('H:i') }}-{{ $row->time_to->format('H:i') }}
+                                                                                    <b>Godzina:</b> {{ $row->time_from }}-{{ $row->time_to }}
                                                                                 </p>
                                                                                 <p class="mb-0">
                                                                                     <b>Typ próby:</b> {{ $row->rehearsaltype }}
                                                                                 </p>
-                                                                                <p class="@if($row->status == 1 || $row->status == 2) mb-3 @else mb-0 @endif">
+                                                                                <p class="mb-2">
                                                                                     <b>Miejsce:</b> {{ $row->place }}
+                                                                                </p>
+                                                                                <p class="mb-0">
+                                                                                    <b>Opis:</b>
+                                                                                    {!! $row->description !!}
+                                                                                </p>
+                                                                                <p class="@if($row->status == 1 || $row->status == 2) mb-3 @else mb-0 @endif">
+                                                                                    <b>Program nagrań:</b>
+                                                                                    <p class="mb-0"><b>brak danych!</b></p>
                                                                                 </p>
                                                                             @if($row->status == 2)</s>@endif
                                                                             @if($row->status == 1)
                                                                                 <p class="mb-0 text-success">
-                                                                                    <i class="fas fa-check-circle"></i> Byłeś obecny na <b>@if($row->shifttype == 'Próba') próbie @if($row->rehearsaltype == 'Musztra') musztry @else koncertowej @endif @else koncercie @endif</b>
+                                                                                    <i class="fas fa-check-circle"></i> Byłeś obecny na {{ $row->shifttype }}!
                                                                                 </p>
                                                                             @elseif($row->status == 2)
                                                                                 <p class="mt-3 mb-0"><b>Odwołał:</b>
@@ -265,24 +279,32 @@
                                                                     <div class="card shadow mb-4">
                                                                         <div class="card-body">
                                                                             @if($row->status == 1)
-                                                                                <h4 class="font-weight-bold mb-2 text-success"><i class="fas fa-check-circle"></i> {{ $row->shifttype }}: Zrealizowano!</h4>
+                                                                                <h4 class="font-weight-bold mb-2 text-success"><i class="fas fa-check-circle"></i> {{ $row->title }}: Zrealizowano!</h4>
                                                                             @elseif($row->status == 2)
-                                                                                <h4 class="font-weight-bold mb-2 text-secondary"><i class="fas fa-times-circle"></i> {{ $row->shifttype }}: Odwołano!</h4>
+                                                                                <h4 class="font-weight-bold mb-2 text-secondary"><i class="fas fa-times-circle"></i> {{ $row->title }}: Odwołano!</h4>
                                                                             @else
-                                                                                <h4 class="font-weight-bold mb-2"><i class="fas fa-check-circle"></i> {{ $row->shifttype }}</h4>
+                                                                                <h4 class="font-weight-bold mb-2"><i class="fas fa-check-circle"></i> {{ $row->title }}</h4>
                                                                             @endif
                                                                             @if($row->status == 2)<s>@endif
                                                                                 <p class="mb-0">
                                                                                     <b>Data:</b> {{ $row->date->format('d.m.Y') }}
                                                                                 </p>
                                                                                 <p class="mb-0">
-                                                                                    <b>Godzina:</b> {{ $row->time_from->format('H:i') }}-{{ $row->time_to->format('H:i') }}
+                                                                                    <b>Godzina:</b> {{ $row->time_from }}-{{ $row->time_to }}
                                                                                 </p>
                                                                                 <p class="mb-0">
                                                                                     <b>Typ próby:</b> {{ $row->rehearsaltype }}
                                                                                 </p>
-                                                                                <p class="@if($row->status == 1 || $row->status == 2) mb-3 @else mb-0 @endif">
+                                                                                <p class="mb-2">
                                                                                     <b>Miejsce:</b> {{ $row->place }}
+                                                                                </p>
+                                                                                <p class="mb-0">
+                                                                                    <b>Opis:</b>
+                                                                                    {!! $row->description !!}
+                                                                                </p>
+                                                                                <p class="@if($row->status == 1 || $row->status == 2) mb-3 @else mb-0 @endif">
+                                                                                    <b>Program nagrań:</b>
+                                                                                    <p class="mb-0"><b>brak danych!</b></p>
                                                                                 </p>
                                                                             @if($row->status == 2)</s>@endif
                                                                             @if($row->status == 1)
@@ -317,24 +339,32 @@
                                                                     <div class="card shadow mb-4">
                                                                         <div class="card-body">
                                                                             @if($row->status == 1)
-                                                                                <h4 class="font-weight-bold mb-2 text-success"><i class="fas fa-check-circle"></i> {{ $row->shifttype }}: Zrealizowano!</h4>
+                                                                                <h4 class="font-weight-bold mb-2 text-success"><i class="fas fa-check-circle"></i> {{ $row->title }}: Zrealizowano!</h4>
                                                                             @elseif($row->status == 2)
-                                                                                <h4 class="font-weight-bold mb-2 text-secondary"><i class="fas fa-times-circle"></i> {{ $row->shifttype }}: Odwołano!</h4>
+                                                                                <h4 class="font-weight-bold mb-2 text-secondary"><i class="fas fa-times-circle"></i> {{ $row->title }}: Odwołano!</h4>
                                                                             @else
-                                                                                <h4 class="font-weight-bold mb-2"><i class="fas fa-check-circle"></i> {{ $row->shifttype }}</h4>
+                                                                                <h4 class="font-weight-bold mb-2"><i class="fas fa-check-circle"></i> {{ $row->title }}</h4>
                                                                             @endif
                                                                             @if($row->status == 2)<s>@endif
                                                                                 <p class="mb-0">
                                                                                     <b>Data:</b> {{ $row->date->format('d.m.Y') }}
                                                                                 </p>
                                                                                 <p class="mb-0">
-                                                                                    <b>Godzina:</b> {{ $row->time_from->format('H:i') }}-{{ $row->time_to->format('H:i') }}
+                                                                                    <b>Godzina:</b> {{ $row->time_from }}-{{ $row->time_to }}
                                                                                 </p>
                                                                                 <p class="mb-0">
                                                                                     <b>Typ próby:</b> {{ $row->rehearsaltype }}
                                                                                 </p>
-                                                                                <p class="@if($row->status == 1 || $row->status == 2) mb-3 @else mb-0 @endif">
+                                                                                <p class="mb-2">
                                                                                     <b>Miejsce:</b> {{ $row->place }}
+                                                                                </p>
+                                                                                <p class="mb-0">
+                                                                                    <b>Opis:</b>
+                                                                                    {!! $row->description !!}
+                                                                                </p>
+                                                                                <p class="@if($row->status == 1 || $row->status == 2) mb-3 @else mb-0 @endif">
+                                                                                    <b>Program nagrań:</b>
+                                                                                    <p class="mb-0"><b>brak danych!</b></p>
                                                                                 </p>
                                                                             @if($row->status == 2)</s>@endif
                                                                             @if($row->status == 1)
@@ -390,7 +420,7 @@
                             </div>
                             <!--row-->
                             <div class="row mt-4">
-                                <div class="col-xl-3">
+                                <div class="col-md-6 col-xl-6 col-xl-3">
                                     <div class="card bg-dark shadow mb-4">
                                         <div class="card-body">
                                             <div class="row">
@@ -400,7 +430,7 @@
                                                     </h3>
                                                 </div>
                                                 <!--col-->
-                                                <div class="col-sm-5 text-end">
+                                                <div class="col text-end">
                                                     <a href="{{ route('calendar') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
                                                 </div>
                                             </div>
@@ -408,7 +438,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3">
+                                <div class="col-md-6 col-xl-6 col-xl-3">
                                     <div class="card bg-dark shadow mb-4">
                                         <div class="card-body">
                                             <div class="row">
@@ -426,7 +456,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3">
+                                <div class="col-md-6 col-xl-6 col-xl-3">
                                     <div class="card bg-dark shadow mb-4">
                                         <div class="card-body">
                                             <div class="row">
@@ -444,7 +474,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3">
+                                <div class="col-md-6 col-xl-6 col-xl-3">
                                     <div class="card bg-dark shadow mb-4">
                                         <div class="card-body">
                                             <div class="row">
@@ -464,7 +494,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xl-3">
+                                <div class="col-md-6 col-xl-6 col-xl-3">
                                     <div class="card bg-dark shadow mb-4">
                                         <div class="card-body">
                                             <div class="row">
@@ -482,7 +512,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3">
+                                <div class="col-md-6 col-xl-6 col-xl-3">
                                     <div class="card bg-dark shadow mb-4">
                                         <div class="card-body">
                                             <div class="row">
@@ -500,7 +530,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3">
+                                <div class="col-md-6 col-xl-6 col-xl-3">
                                     <div class="card bg-dark shadow mb-4">
                                         <div class="card-body">
                                             <div class="row">
@@ -518,7 +548,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3">
+                                <div class="col-md-6 col-xl-6 col-xl-3">
                                     <div class="card bg-dark shadow mb-4">
                                         <div class="card-body">
                                             <div class="row">
@@ -541,24 +571,28 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-6 col-xl-3">
+            <div class="col-sm-12 col-xl-3">
                 <div class="card bg-dark mb-4">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center">
                             <img class="rounded-circle" width="120px" src="{{ Auth::user()->getPicture() }}" alt="">
                             <p class="fw-bold h4 mt-3">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</p>
-                            <p class="text-muted">
-                                @if(auth()->user()->roletype == 'SuperAdmin')
-                                    <span class="badge badge-light">Super Administrator</span>
-                                @elseif(auth()->user()->roletype == 'Admin')
-                                    <span class="badge badge-light">Administrator</span>
-                                @elseif(auth()->user()->roletype == 'Employee')
-                                    <span class="badge badge-light">Nauczyciel</span>
-                                @elseif(auth()->user()->roletype == 'Parent')
-                                    <span class="badge badge-light">Rodzic / Opiekun</span>
-                                @elseif(auth()->user()->roletype == 'User')
-                                    <span class="badge badge-light">Uczeń</span>
-                                @endif
+                            <p class="mb-1">Orkiestra Grandioso Radom</p>
+                            <p class="">
+                                <span class="badge badge-light">
+                                    <i class="fas fa-shield-alt"></i>
+                                    @if(Auth::user()->roletype == 'SuperAdmin')
+                                        Super Administrator
+                                    @elseif(Auth::user()->roletype == 'Admin')
+                                        Administrator
+                                    @elseif(Auth::user()->roletype == 'Employee')
+                                        Nauczyciel
+                                    @elseif(Auth::user()->roletype == 'Parent')
+                                        Rodzic / Opiekun
+                                    @elseif(Auth::user()->roletype == 'User')
+                                        Uczeń
+                                    @endif
+                                </span>
                             </p>
                             <p class="pb-0 text-center">
                                 @if(count(Auth::user()->rolesections) < 1)
@@ -578,7 +612,7 @@
 
     			<div class="card shadow mb-4">
     				<div class="card-body">
-    					<h3 class="font-weight-bold text-center mb-4"><i class="fas fa-users"></i> Sekcje</h3>
+    					<h3 class="font-weight-bold mb-4"><i class="fas fa-users"></i> Sekcje</h3>
     					<p class="mb-1 h5">
     						O to lista przypisanych do ciebie sekcji:
     					</p>
@@ -617,13 +651,6 @@
                                     </div>
                                     <!--row-->
     								<p>
-    									<b>CZERWIEC 2022</b><br>
-                                        <span class="text-muted">
-    										<s>
-            									<b>19.06 niedziela</b> Festiwal Orkiestr w Skale<br>
-                                            </s>
-                                        </span>
-                                        <b>25.06-04.07</b> warsztaty i Mistrzostwa Europy w Rastede<br><br>
     									<b>LIPIEC 2022</b><br>
     									<b>25.06-04.07</b> Mistrzostwa Europy w Rastede<br>
     									<b>07-10.07</b> Mistrzostwa Polski Orkiestr<br>
@@ -637,7 +664,7 @@
     									<b>25-28.11</b> KONCERTY GALOWE<br>
     								</p>
     								<p>
-    									<button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Zobacz więcej</button>
+    									<a href="{{ route('calendar') }}" class="btn btn-primary"><i class="fas fa-eye"></i> Zobacz więcej</a>
     								</p>
     								<!-- <p class="text-muted">Na razie nie zaplanowano żadnych koncertów</p> -->
     							</div>
@@ -666,7 +693,7 @@
     									<b>SOBOTA</b> 9-13 próba jeśli sekcje to od 8:30<br>
     								</p>
     								<p>
-    									<button type="button" class="btn btn-primary"><i class="fas fa-eye"></i> Zobacz więcej</button>
+    									<a href="{{ route('calendar') }}" class="btn btn-primary"><i class="fas fa-eye"></i> Zobacz więcej</a>
                                     </p>
     								<!-- <p class="text-muted">Na razie nie zaplanowano żadnych prób...</p> -->
     							</div>

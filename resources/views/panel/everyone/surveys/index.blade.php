@@ -23,7 +23,7 @@
         <!-- row -->
 		<div class="row">
             @forelse($surveys as $survey)
-                <div class="col-3">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-3">
                     <div class="card shadow mb-4">
     					<div class="card-body">
                             <p>

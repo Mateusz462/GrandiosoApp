@@ -13,18 +13,22 @@ class Schedule extends Model
     protected $dates = [
         'date',
         'time_from',
-        'time_to',
+        'time_to'
     ];
 
     protected $fillable = [
+        'title',
+        'date',
         'time_from',
         'time_to',
+        'rehearsaltype',
+        'shifttype',
+        'description',
         'place',
+        'program',
         'status',
         'user_id',
         'reason',
-        'shifttype',
-        'rehearsaltype',
     ];
 
     public function user(){

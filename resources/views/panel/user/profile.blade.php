@@ -20,8 +20,6 @@
 
 @section('content')
     <div class="container-fluid">
-        <!-- row -->
-
         <div class="row">
             <div class="col-5">
                 <div class="card bg-dark mb-4">
@@ -29,18 +27,21 @@
                         <div class="d-flex flex-column align-items-center">
                             <img class="rounded-circle" height="100px" width="100px" src="{{ auth()->user()->getPicture() }}" alt="">
                             <p class="fw-bold h4 mt-3">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }}</p>
-                            <p class="text-muted">
-                                @if(auth()->user()->roletype == 'SuperAdmin')
-                                    <span class="badge badge-light">Super Administrator</span>
-                                @elseif(auth()->user()->roletype == 'Admin')
-                                    <span class="badge badge-light">Administrator</span>
-                                @elseif(auth()->user()->roletype == 'Employee')
-                                    <span class="badge badge-light">Nauczyciel</span>
-                                @elseif(auth()->user()->roletype == 'Parent')
-                                    <span class="badge badge-light">Rodzic / Opiekun</span>
-                                @elseif(auth()->user()->roletype == 'User')
-                                    <span class="badge badge-light">Uczeń</span>
-                                @endif
+                            <p class="">
+                                <span class="badge badge-light">
+                                    <i class="fas fa-shield-alt"></i>
+                                    @if(Auth::user()->roletype == 'SuperAdmin')
+                                        Super Administrator
+                                    @elseif(Auth::user()->roletype == 'Admin')
+                                        Administrator
+                                    @elseif(Auth::user()->roletype == 'Employee')
+                                        Nauczyciel
+                                    @elseif(Auth::user()->roletype == 'Parent')
+                                        Rodzic / Opiekun
+                                    @elseif(Auth::user()->roletype == 'User')
+                                        Uczeń
+                                    @endif
+                                </span>
                             </p>
                             <p class="mb-3">
                                 @if(count(auth()->user()->rolesections) < 1)

@@ -4,7 +4,7 @@
         <!-- Container wrapper -->
         <div class="container-fluid px-4">
             <!-- Navbar brand -->
-            <a class="navbar-brand " href="{{ route('home') }}">
+            <a class="navbar-brand " href="{{ url('/') }}">
                 <div class="h3 me-2 mb-1 d-flex align-items-center">
                     <span class="me-2">Grandioso App</span> <i class="fas fa-music text-success"></i>
                 </div>
@@ -47,9 +47,9 @@
         <!-- Container wrapper -->
         <div class="container-fluid px-4">
             <!-- Navbar brand -->
-            <a class="navbar-brand " href="{{ route('home') }}">
+            <a class="navbar-brand " href="{{ url('/') }}">
                 <div class="h3 me-2 mb-1 d-flex align-items-center">
-                    <span class="me-2">Grandioso App</span> <i class="fas fa-music text-success"></i>
+                    <span class="me-2">Grandioso App</span> <i class="fas fa-music text-success"></i> &nbsp;&nbsp; <span class="badge bg-danger astext-danger"><i class="fas fa-star text-warning"></i> PREMIUM</span>
                 </div>
             </a>
 
@@ -92,10 +92,10 @@
                     </li>
 
                     <li class="nav-item me-3 me-lg-1">
-                        <a class="nav-link" href="{{ route('users.index') }}">
+                        <a class="nav-link" href="{{ route('everyone.users') }}">
                             <span><i class="fas fa-users fa-lg"></i></span>
                             <span class="badge rounded-pill badge-notification bg-danger">2</span>
-                            <span class="ms-3 d-lg-none">Sekcje</span>
+                            <span class="ms-3 d-lg-none">Użytkownicy</span>
                         </a>
                     </li>
                 </ul>
@@ -565,7 +565,7 @@
                                 </ul>
                             </li>
                             <div class="d-inline text-muted">
-                                <a href="#" class="text-decoration-none text-muted">
+                                <a href="{{ route('terms') }}" class="text-decoration-none text-muted">
                                     Regulamin &nbsp;
                                 </a>
                                 <span> · </span>&nbsp;
@@ -583,4 +583,5 @@
         </div>
         <!-- Container wrapper -->
     </nav>
+    <!-- Navbar -->
 @endguest

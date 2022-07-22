@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Models\Schedule;
 use Carbon\CarbonPeriod;
 use Carbon\Carbon;
 use Gate;
@@ -20,11 +21,41 @@ class ScheduleController extends Controller
     public function index()
     {
         //abort_if(Gate::denies('user_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $y = '2022';
+        $d = '31';
+        $m = '5';
+        $date = null;
+        $date = empty($date) ? Carbon::today() : Carbon::createFromDate($y, $m, $d);
+    //    $date = Carbon::createFromDate($y, $m, $d);
 
-        //dd($dates);
-        $users = User::with('roles')->paginate(10);
+        $startOfCalendar = $date->copy()->firstOfMonth()->startOfWeek(Carbon::MONDAY);
+        $endOfCalendar = $date->copy()->lastOfMonth()->endOfWeek(Carbon::SUNDAY);
+        $dni = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'];
+        $dniformat = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
+        $miesiace = [1 => 'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
+        $checkdate = $date->format('d.m.Y');
+        $schedules = Schedule::all();
 
-        return view('panel.everyone.schedule.index', compact('users'));
+        return view('panel.everyone.schedule.index',
+            compact(
+                'date',
+                'startOfCalendar',
+                'endOfCalendar',
+                'dni',
+                'miesiace',
+                'checkdate',
+                'schedules',
+                'dniformat'
+            )
+        );
+    }
+
+    public function getallevents($date)
+    {
+        //dd($date);
+        $events = Schedule::where('date', $date)->get();
+
+        return response()->json($events);
     }
 
     public function calendar($date = null)

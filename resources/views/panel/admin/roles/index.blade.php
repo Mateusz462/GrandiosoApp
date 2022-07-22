@@ -28,22 +28,27 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-    		<div class="col-12">
-    			<div class="card mb-4">
+            <div class="col-3">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        @include('panel.admin.settings.sidebar')
+                    </div>
+                </div>
+            </div>
+    		<div class="col">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h3 class="font-weight-bold mb-2">
+                            <i class="fas fa-theater-masks"></i> Rangi
+                        </h3>
+                    </div>
+                    <!--col-->
+                    <div class="col text-end">
+                        <a href="{{ route('roles.create') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Stwórz range</a>
+                    </div>
+                </div>
+    			<div class="row card mt-4 mb-4">
     				<div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <h4 class="card-title mb-0">
-                                    <i class="fas fa-theater-masks"></i> Rangi
-                                </h4>
-                            </div>
-                            <!--col-->
-                            <div class="col text-end">
-                                <a href="{{ route('roles.create') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Stwórz range</a>
-                            </div>
-                        </div>
-                        <!--row-->
-
                         <div class="mt-4 d-block">
                             @if(count($roles) > 0)
                                 <div class="row">

@@ -45,7 +45,7 @@
                     <!--row-->
 
                     <div class="row mt-4">
-                        <div class="col-4">
+                        <div class="col-md-6 col-lg-4">
                             <div class="card bg-dark  shadow mb-4">
                                 <div class="card-body">
                                     <div class="row">
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-6 col-lg-4">
                             <div class="card bg-dark  shadow mb-4">
                                 <div class="card-body">
                                     <div class="row">
@@ -105,7 +105,7 @@
                             </div>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-md-6 col-lg-4">
                             <div class="card bg-dark shadow mb-4">
                                 <div class="card-body text-muted">
                                     <div class="row">
@@ -124,12 +124,8 @@
 
                                     <div class="row">
                                         <div class="position-relative pt-3">
-                                            <div class="d-flex align-items-center mb-2">
-                                                <div class="d-flex">
-                                                    <i class="fas fa-tools"></i>
-                                                    <span class="ms-2">W budowie</span>
-                                                </div>
-                                            </div>
+                                            <p class="mb-0">Zdecyduj co ma się tutaj znaleść!</p>
+                                            <p class="mb-0"><a href="mailto:mtszwydra@gmail.com">Napisz do nas!</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +152,7 @@
                     <!--row-->
 
                     <div class="row mt-4">
-                        <div class="col-4">
+                        <div class="col-md-6 col-lg-4">
                             <div class="card bg-dark shadow mb-4">
                                 <div class="card-body">
                                     <div class="row">
@@ -174,7 +170,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-6 col-lg-4">
                             <div class="card bg-dark shadow mb-4">
                                 <div class="card-body">
                                     <div class="row">
@@ -192,7 +188,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-6 col-lg-4">
                             <div class="card bg-dark shadow mb-4">
                                 <div class="card-body">
                                     <div class="row">
