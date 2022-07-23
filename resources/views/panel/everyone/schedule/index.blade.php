@@ -252,7 +252,7 @@
                                                         $data = $startOfCalendar->format('Y.m.d');
                                                     ?>
                                                     <a class="{{ $linkclass }}" href="#!" role="button" onclick="Podglad('{{ $format }}', '{{ $tyd }}', '{{ $data }}')">
-                                                        
+
                                                         <i class="{{ $icon }} {{ $iconclass }}" id="icon-class-{{ $format }}"></i>
 
                                                     </a>
@@ -335,6 +335,15 @@
                                 </div>
                             </div>
                             <?php
+                                foreach ($swieta as $row) {
+                                    // code...
+                                    // print "<pre>";
+                                    // print_r($row);
+                                    // print "</pre>";
+                                    if($event['data'] == $row):
+                                        echo 'tak';
+                                    endif;
+                                }
                                 for ($i=0; $i < 11 ; $i++) {
                                     // code...
                                     if(in_array($event['data'], $swieta[$i])):
@@ -377,22 +386,22 @@
         $("#modal-podglad-loading").css("display", "block");
         $("#modal-podglad-zawartosc").css("display", "none");
 
-        if($("#icon-class-date").hasClass("text-swieto")){
+        if($("#icon-class-date-", format).hasClass("text-swieto")){
             $("#modal-podglad-holiday-header").html('ads');
             $("#modal-podglad-holiday-row").css("display", "block");
         }
+
         $.ajax({
             type: 'GET', //THIS NEEDS TO BE GET
             url: "schedule/json/" + date,
             //dataType: 'json',
             success: function (response) {
-                if(response.length > 0) {
+                console.log(response);
 
-
-
+                if(response.events.length > 0) {
                     $("#modal-podglad-event-row-error").css("display", "none");
                     $("#modal-podglad-event-row").empty();
-                    $.each(response, function(index, event) {
+                    $.each(response.events, function(index, event) {
                         console.log(event);
                         const text = '<div class="col-12" id="modal-podglad-event-col-'+ index +'">'+
                             '<div class="card bg-dark shadow mb-4">'+
@@ -446,6 +455,28 @@
                     $("#modal-podglad-loading").css("display", "none");
                     $("#modal-podglad-zawartosc").css("display", "block");
                     $("#modal-podglad-event-row-error").css("display", "block");
+                }
+
+                if(response.holidays.length > 0) {
+                    $("#modal-podglad-holiday-row").css("display", "none");
+                    $("#modal-podglad-holiday-row").empty();
+                    $.each(response.holidays, function(index, holiday) {
+                        console.log(holiday);
+                        if(holiday.data == format){
+                            const text = '<div class="col-12" id="modal-podglad-holiday-col-'+ index +'">'+
+                                '<div class="alert alert-danger mt-2 mb-3" role="alert">'+
+                                    '<i class="fas fa-info-circle fa-lg"></i>&nbsp;' + '<b>'+ holiday.data +'</b> '+ holiday.tytul +
+                                '</div>'+
+                            '</div>';
+                            $("#modal-podglad-holiday-row").append(text);
+                            $("#modal-podglad-holiday-row").css("display", "block");
+                        }
+
+
+
+
+
+                    });
                 }
             },error:function(){
                 console.log(data);

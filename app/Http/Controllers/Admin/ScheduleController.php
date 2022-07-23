@@ -53,7 +53,96 @@ class ScheduleController extends Controller
     public function getallevents($date)
     {
         //dd($date);
-        $events = Schedule::where('date', $date)->get();
+        $events['events'] = Schedule::where('date', $date)->get();
+        $events['holidays'] = array(
+           //maj
+           [
+               'id' => '1',
+               'data' => '01.05.2022',
+               'tytul' => 'Święto Pracy',
+               'swieto' => '1',
+           ],
+           [
+               'id' => '2',
+               'data' => '02.05.2022',
+               'tytul' => 'Dzień Flagi Rzeczpospolitej Polskiej',
+               'swieto' => '0',
+           ],
+           [
+               'id' => '3',
+               'data' => '03.05.2022',
+               'tytul' => 'Święto Konstytucji Trzeciego Maja',
+               'swieto' => '1',
+           ],
+           [
+               'id' => '4',
+               'data' => '26.05.2022',
+               'tytul' => 'Dzień Matki',
+               'swieto' => '0',
+           ],
+           [
+               'id' => '5',
+               'data' => '01.06.2022',
+               'tytul' => 'Dzień Dziecka',
+               'swieto' => '0',
+           ],
+           [
+               'id' => '6',
+               'data' => '02.06.2022',
+               'tytul' => 'Zielone Świątki',
+               'swieto' => '0',
+           ],
+           [
+               'id' => '7',
+               'data' => '28.06.2022',
+               'tytul' => 'Boże Ciało',
+               'swieto' => '1',
+           ],
+           [
+               'id' => '8',
+               'data' => '01.07.2022',
+               'tytul' => 'Dzień Ojca',
+               'swieto' => '1',
+
+           ],
+           [
+               'id' => '9',
+               'data' => '01.08.2022',
+               'tytul' => 'Narodowy Dzień Pamięci Powstania Warszawskiego',
+               'swieto' => '0',
+
+           ],
+           [
+               'id' => '10',
+               'data' => '15.08.2022',
+               'tytul' => 'Święto Wojska Polskiego',
+               'swieto' => '1',
+
+           ],
+           [
+               'id' => '11',
+               'data' => '04.05.2022',
+               'tytul' => 'Wybuch II Wojny Światowej',
+               'swieto' => '1',
+
+           ],
+           [
+               'id' => '12',
+               'data' => '18.07.2022',
+               'tytul' => 'Wybuch II Wojny Światowej',
+               'swieto' => '1',
+
+           ],
+           [
+               'id' => '13',
+               'data' => '18.07.2022',
+               'tytul' => 'Wybuch III Wojny Światowej',
+               'swieto' => '1',
+
+           ]
+
+       );
+
 
         return response()->json($events);
     }
