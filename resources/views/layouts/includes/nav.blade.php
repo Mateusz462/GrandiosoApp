@@ -49,7 +49,7 @@
             <!-- Navbar brand -->
             <a class="navbar-brand " href="{{ url('/') }}">
                 <div class="h3 me-2 mb-1 d-flex align-items-center">
-                    <span class="me-2">Grandioso App</span> <i class="fas fa-music text-success"></i> &nbsp;&nbsp; <span class="badge bg-danger astext-danger"><i class="fas fa-star text-warning"></i> PREMIUM</span>
+                    <span class="me-2">Grandioso App</span> <i class="fas fa-music text-success"></i> &nbsp;&nbsp; @if(auth()->user()->UI_type == '0')<span class="badge bg-danger astext-danger"><i class="fas fa-star text-warning"></i> PREMIUM</span>@endif
                 </div>
             </a>
 
@@ -209,7 +209,7 @@
                             </li>
                             <!-- admin users -->
                             <li class="dropdown-item nav-item p-1 my-1 rounded" type="button">
-                                <a href="{{ route('users.index') }}" class="d-flex text-decoration-none text-white">
+                                <a href="{{ route('calendar') }}" class="d-flex text-decoration-none text-white">
                                     <i class="fas fa-calendar-alt bg-gray p-2 rounded-circle"></i>
                                     <div class="ms-3 d-flex justify-content-between align-items-center w-100">
                                         <p class="m-0">Grafik prób i koncertów</p>
@@ -218,7 +218,7 @@
                             </li>
                             <!-- admin roles -->
                             <li class="dropdown-item nav-item p-1 my-1 rounded" type="button">
-                                <a href="#" class="d-flex text-decoration-none text-white">
+                                <a href="{{ route('sections') }}" class="d-flex text-decoration-none text-white">
                                     <i class="fas fa-users bg-gray p-2 rounded-circle"></i>
                                     <div class="ms-3 d-flex justify-content-between align-items-center w-100">
                                         <p class="m-0">Sekcje</p>
@@ -565,11 +565,11 @@
                                 </ul>
                             </li>
                             <div class="d-inline text-muted">
-                                <a href="{{ route('terms') }}" class="text-decoration-none text-muted">
+                                <a href="{{ route('policies.terms') }}" class="text-decoration-none text-muted">
                                     Regulamin &nbsp;
                                 </a>
                                 <span> · </span>&nbsp;
-                                <a href="#" class="text-decoration-none text-muted">
+                                <a href="{{ route('policies.privacy') }}" class="text-decoration-none text-muted">
                                     Polityka prywatności &nbsp;
                                 </a>
                                 GrandiosoApp © 2021 by Mateusz Wydra

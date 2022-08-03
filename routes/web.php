@@ -28,7 +28,11 @@ Route::get('login/{provider}/callback', [App\Http\Controllers\User\SocialLoginCo
 
 Route::get('/test', [App\Http\Controllers\Admin\SurveyAdminController::class, 'index'])->name('test');
 Route::post('/test', [App\Http\Controllers\Admin\SurveyAdminController::class, 'store'])->name('test.store');
-Route::get('/terms', function () { return view('panel.tos.termsofservice'); })->name('terms');
+Route::prefix('policies')->group(function () {
+    Route::get('/', function () { return view('panel.tos.termsofservice'); })->name('policies.terms');
+    Route::get('/cookies', function () { return view('panel.tos.termsofservice'); })->name('policies.cookies');
+    Route::get('/privacy', function () { return view('panel.tos.termsofservice'); })->name('policies.privacy');
+});
 
 Route::group(['middleware' => ['auth']], function () {
     ////////////
@@ -39,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'list'])->name('everyone.users');
+
 
 
     ////////

@@ -106,10 +106,9 @@
         <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
         <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
         {!! Toastr::message() !!}
+        @yield('js-files')
         <!-- Custom scripts -->
-		<script type="text/javascript">
-			@yield('javascript')
-		</script>
-		@yield('js-files')
+		@yield('javascript')
+
     </body>
 </html>

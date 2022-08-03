@@ -99,7 +99,7 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    <div class="position-relative px-3 mt-2">
+                                                    <div  class="position-relative px-3 mt-2" style="max-height: 550px; scrollbar-gutter: stable; overflow: auto;">
                                                         <div class="d-flex flex-column justify-content-center">
                                                             {!! $row->text !!}
                                                         </div>

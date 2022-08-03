@@ -23,8 +23,11 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "fortawesome": "0.0.1-security",
         "jquery": "^3.6.0",
         "mdb-ui-kit": "^4.0.0",
-        "popper.js": "^1.16.1"
+        "perfect-scrollbar": "^1.5.5",
+        "popper.js": "^1.16.1",
+        "select2": "^4.1.0-rc.0"
     }
 }

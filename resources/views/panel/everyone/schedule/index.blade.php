@@ -378,115 +378,118 @@
 
 
 @section('javascript')
-    function Podglad(format, week, date) {
-        const header = week + ' ' + format;
-        $("#modal-podglad-header").html(header);
-        $("#modal-podglad-event-row").css("display", "none");
+    <script type="text/javascript">
+        function Podglad(format, week, date) {
+            const header = week + ' ' + format;
+            $("#modal-podglad-header").html(header);
+            $("#modal-podglad-event-row").css("display", "none");
 
-        $("#modal-podglad-loading").css("display", "block");
-        $("#modal-podglad-zawartosc").css("display", "none");
+            $("#modal-podglad-loading").css("display", "block");
+            $("#modal-podglad-zawartosc").css("display", "none");
 
-        if($("#icon-class-date-", format).hasClass("text-swieto")){
-            $("#modal-podglad-holiday-header").html('ads');
-            $("#modal-podglad-holiday-row").css("display", "block");
-        }
+            if($("#icon-class-date-", format).hasClass("text-swieto")){
+                $("#modal-podglad-holiday-header").html('ads');
+                $("#modal-podglad-holiday-row").css("display", "block");
+            }
 
-        $.ajax({
-            type: 'GET', //THIS NEEDS TO BE GET
-            url: "schedule/json/" + date,
-            //dataType: 'json',
-            success: function (response) {
-                console.log(response);
+            $.ajax({
+                type: 'GET', //THIS NEEDS TO BE GET
+                url: "schedule/json/" + date,
+                //dataType: 'json',
+                success: function (response) {
+                    console.log(response);
 
-                if(response.events.length > 0) {
-                    $("#modal-podglad-event-row-error").css("display", "none");
-                    $("#modal-podglad-event-row").empty();
-                    $.each(response.events, function(index, event) {
-                        console.log(event);
-                        const text = '<div class="col-12" id="modal-podglad-event-col-'+ index +'">'+
-                            '<div class="card bg-dark shadow mb-4">'+
-                                '<div class="card-body">'+
-                                    '<h4 class="font-weight-bold mb-2">'+
-                                        '<i class="fas fa-check-circle"></i> '
-                                         + event.title +
-                                    '</h4>'+
-                                    '<p class="mb-0">'+
-                                        '<b>Data:</b> '
-                                         + new Date(event.date * 1000).toUTCString().match(/(\d\d:\d\d:\d\d)/) +' - '+ event.date +
-                                    '</p>'+
-                                    '<p class="mb-0">'+
-                                        '<b>Godzina:</b> '
-                                         + event.time_from + '-'+ event.time_to +
-                                    '</p>'+
-                                    '<p class="mb-0">'+
-                                        '<b>Typ próby:</b> Próba koncertowa'+
-                                    '</p>'+
-                                    '<p class="mb-2">'+
-                                        '<b>Miejsce:</b> '
-                                        + event.place +
-                                    '</p>' +
-                                    '<p class="mb-2">'+
-                                        '<b>Opis:</b> '
-                                        + event.description +
-                                    '</p>'+
-                                    '<p class="mb-0">'+
-                                        '<b>Program nagrań:</b>'+
-                                        '<p class="mb-2">brak danych!</p>'+
-                                    '</p>'+
-                                    '<p class="mb-0">'+
-                                        '<button class="btn btn-success" name="button"><i class="fas fa-check"></i></button> '+
-                                        '<button class="btn btn-danger" name="button" disabled><i class="fas fa-times"></i></button> '+
-                                        '<span class="text-success ms-2 pb-2">Będę na próbie!</span>'+
-                                    '</p>'+
-                                '</div>'+
-                            '</div>'+
-                        '</div>';
-                        $("#modal-podglad-event-row").append(text);
-
-
-
-                        $("#modal-podglad-loading").css("display", "none");
-                        $("#modal-podglad-zawartosc").css("display", "block");
-                        $("#modal-podglad-event-row").css("display", "block");
+                    if(response.events.length > 0) {
                         $("#modal-podglad-event-row-error").css("display", "none");
-
-                    });
-                } else {
-                    $("#modal-podglad-loading").css("display", "none");
-                    $("#modal-podglad-zawartosc").css("display", "block");
-                    $("#modal-podglad-event-row-error").css("display", "block");
-                }
-
-                if(response.holidays.length > 0) {
-                    $("#modal-podglad-holiday-row").css("display", "none");
-                    $("#modal-podglad-holiday-row").empty();
-                    $.each(response.holidays, function(index, holiday) {
-                        console.log(holiday);
-                        if(holiday.data == format){
-                            const text = '<div class="col-12" id="modal-podglad-holiday-col-'+ index +'">'+
-                                '<div class="alert alert-danger mt-2 mb-3" role="alert">'+
-                                    '<i class="fas fa-info-circle fa-lg"></i>&nbsp;' + '<b>'+ holiday.data +'</b> '+ holiday.tytul +
+                        $("#modal-podglad-event-row").empty();
+                        $.each(response.events, function(index, event) {
+                            console.log(event);
+                            const text = '<div class="col-12" id="modal-podglad-event-col-'+ index +'">'+
+                                '<div class="card bg-dark shadow mb-4">'+
+                                    '<div class="card-body">'+
+                                        '<h4 class="font-weight-bold mb-2">'+
+                                            '<i class="fas fa-check-circle"></i> '
+                                             + event.title +
+                                        '</h4>'+
+                                        '<p class="mb-0">'+
+                                            '<b>Data:</b> '
+                                             + new Date(event.date * 1000).toUTCString().match(/(\d\d:\d\d:\d\d)/) +' - '+ event.date +
+                                        '</p>'+
+                                        '<p class="mb-0">'+
+                                            '<b>Godzina:</b> '
+                                             + event.time_from + '-'+ event.time_to +
+                                        '</p>'+
+                                        '<p class="mb-0">'+
+                                            '<b>Typ próby:</b> Próba koncertowa'+
+                                        '</p>'+
+                                        '<p class="mb-2">'+
+                                            '<b>Miejsce:</b> '
+                                            + event.place +
+                                        '</p>' +
+                                        '<p class="mb-2">'+
+                                            '<b>Opis:</b> '
+                                            + event.description +
+                                        '</p>'+
+                                        '<p class="mb-0">'+
+                                            '<b>Program:</b>'+
+                                            '<p class="mb-2">brak danych!</p>'+
+                                        '</p>'+
+                                        '<p class="mb-0">'+
+                                            '<button class="btn btn-success" name="button"><i class="fas fa-check"></i></button> '+
+                                            '<button class="btn btn-danger" name="button" disabled><i class="fas fa-times"></i></button> '+
+                                            '<span class="text-success ms-2 pb-2">Będę na próbie!</span>'+
+                                        '</p>'+
+                                    '</div>'+
                                 '</div>'+
                             '</div>';
-                            $("#modal-podglad-holiday-row").append(text);
-                            $("#modal-podglad-holiday-row").css("display", "block");
-                        }
+                            $("#modal-podglad-event-row").append(text);
+
+
+
+                            $("#modal-podglad-loading").css("display", "none");
+                            $("#modal-podglad-zawartosc").css("display", "block");
+                            $("#modal-podglad-event-row").css("display", "block");
+                            $("#modal-podglad-event-row-error").css("display", "none");
+
+                        });
+                    } else {
+                        $("#modal-podglad-loading").css("display", "none");
+                        $("#modal-podglad-zawartosc").css("display", "block");
+                        $("#modal-podglad-event-row-error").css("display", "block");
+                    }
+
+                    if(response.holidays.length > 0) {
+                        $("#modal-podglad-holiday-row").css("display", "none");
+                        $("#modal-podglad-holiday-row").empty();
+                        $.each(response.holidays, function(index, holiday) {
+                            console.log(holiday);
+                            if(holiday.data == format){
+                                const text = '<div class="col-12" id="modal-podglad-holiday-col-'+ index +'">'+
+                                    '<div class="alert alert-danger mt-2 mb-3" role="alert">'+
+                                        '<i class="fas fa-info-circle fa-lg"></i>&nbsp;' + '<b>'+ holiday.data +'</b> '+ holiday.tytul +
+                                    '</div>'+
+                                '</div>';
+                                $("#modal-podglad-holiday-row").append(text);
+                                $("#modal-podglad-holiday-row").css("display", "block");
+                            }
 
 
 
 
 
-                    });
+                        });
+                    }
+                },error:function(){
+                    console.log(data);
                 }
-            },error:function(){
-                console.log(data);
-            }
-        });
+            });
 
 
 
-        console.log();
-        $("#modal-podglad").modal("show");
+            console.log();
+            $("#modal-podglad").modal("show");
 
-    }
+        }
+
+    </script>
 @endsection
