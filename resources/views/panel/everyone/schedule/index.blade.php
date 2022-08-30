@@ -17,10 +17,15 @@
     .text-niedziela {
         color: #9bdf14
     }
+
+    .form-select {
+        background-color: #4f4f4f;
+        color:#fff;
+    }
 @endsection
 
 @section('content-header')
-    <div class="container-fluid mb-5">
+    <div class="container-fluid px-4 my-5">
         <div class="row">
             <div class="col-sm-12">
                 <h1 class="m-0">Grafik prób i koncertów</h1>
@@ -41,108 +46,59 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid px-4">
         <div class="row">
-            <!-- <div class="col-12">
-                <div class="alert alert-warning mt-2 mb-2" role="alert">
-                    <i class="fas fa-info-circle fa-lg"></i> <b>Kalendarz</b> jest specjalnie ustawiony na maj w celu lepszego zapoznania się z możliwymi funkcjami
-                </div>
-            </div> -->
+
             <div class="col-12">
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <?php
-                            $swieta = array(
-                               //maj
-                               [
-                                   'id' => '1',
-                                   'data' => '01.05.2022',
-                                   'tytul' => 'Święto Pracy',
-                                   'swieto' => '1',
-                               ],
-                               [
-                                   'id' => '2',
-                                   'data' => '02.05.2022',
-                                   'tytul' => 'Dzień Flagi Rzeczpospolitej Polskiej',
-                                   'swieto' => '0',
-                               ],
-                               [
-                                   'id' => '3',
-                                   'data' => '03.05.2022',
-                                   'tytul' => 'Święto Konstytucji Trzeciego Maja',
-                                   'swieto' => '1',
-                               ],
-                               [
-                                   'id' => '4',
-                                   'data' => '26.05.2022',
-                                   'tytul' => 'Dzień Matki',
-                                   'swieto' => '0',
-                               ],
-                               [
-                                   'id' => '5',
-                                   'data' => '01.06.2022',
-                                   'tytul' => 'Dzień Dziecka',
-                                   'swieto' => '0',
-                               ],
-                               [
-                                   'id' => '6',
-                                   'data' => '02.06.2022',
-                                   'tytul' => 'Zielone Świątki',
-                                   'swieto' => '0',
-                               ],
-                               [
-                                   'id' => '7',
-                                   'data' => '28.06.2022',
-                                   'tytul' => 'Boże Ciało',
-                                   'swieto' => '1',
-                               ],
-                               [
-                                   'id' => '8',
-                                   'data' => '01.07.2022',
-                                   'tytul' => 'Dzień Ojca',
-                                   'swieto' => '1',
-
-                               ],
-                               [
-                                   'id' => '9',
-                                   'data' => '01.08.2022',
-                                   'tytul' => 'Narodowy Dzień Pamięci Powstania Warszawskiego',
-                                   'swieto' => '0',
-
-                               ],
-                               [
-                                   'id' => '10',
-                                   'data' => '15.08.2022',
-                                   'tytul' => 'Święto Wojska Polskiego',
-                                   'swieto' => '1',
-
-                               ],
-                               [
-                                   'id' => '11',
-                                   'data' => '04.05.2022',
-                                   'tytul' => 'Wybuch II Wojny Światowej',
-                                   'swieto' => '1',
-
-                               ]
-
-                           );
-
-                        ?>
                         <div class="row">
-                            <h1 class="mb-3">{{ $miesiace[$date->format('n')] }} <small class="text-muted">{{ $date->format('Y') }}</small></h1>
-                            <p class="px-2">
-                                <button class="btn btn-outline-success me-2"><i class="fas fa-calendar-alt fa-lg"></i>&nbsp; Wszystko</button>
-                                <button class="btn btn-outline-warning me-2"><i class="fas fa-music fa-lg"></i>&nbsp; Próby</button>
-                                <button class="btn btn-outline-danger me-2"><i class="fas fa-calendar-plus fa-lg"></i>&nbsp; Koncerty</button>
-                                <button class="btn btn-outline-info me-2"><i class="fas fa-plane fa-lg"></i>&nbsp; Wyjazdy</button>
-                            </p>
+                            <div class="col">
+                                <h1 class="mb-3"><span id="msc">{{ $miesiace[$date->format('n')] }}</span> <small class="text-muted">{{ $date->format('Y') }}</small></h1>
+                                <p class="px-2">
+                                    <button class="btn btn-outline-success me-2"><i class="fas fa-calendar-alt fa-lg"></i>&nbsp; Wszystko</button>
+                                    <button class="btn btn-outline-warning me-2"><i class="fas fa-music fa-lg"></i>&nbsp; Próby</button>
+                                    <button class="btn btn-outline-danger me-2"><i class="fas fa-calendar-plus fa-lg"></i>&nbsp; Koncerty</button>
+                                    <button class="btn btn-outline-info me-2"><i class="fas fa-plane fa-lg"></i>&nbsp; Wyjazdy</button>
+                                </p>
+                            </div>
                             <!--col-->
-                            <!-- <div class="col text-end">
-                                <a href="{{ route('roles.create') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Dodaj</a>
-                            </div> -->
+                            <div class="col text-end me-4">
+                                <form class="" action="" method="get">
+                                    <div class="form-check form-check-inline">
+                                        <select class="form-select" name="month">
+                                            <?php
+
+                                            ?>
+                                            <option value="1">Styczeń</option>
+                                            <option value="2">Luty</option>
+                                            <option value="3">Marzec</option>
+                                            <option value="4">Kwiecień</option>
+                                            <option value="5">Maj</option>
+                                            <option value="6">Czerwiec</option>
+                                            <option value="7">Lipiec</option>
+                                            <option value="8">Sierpień</option>
+                                            <option value="9">Wrzesień</option>
+                                            <option value="10">Październik</option>
+                                            <option value="11">Listopad</option>
+                                            <option value="12">Grudzień</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <select class="form-select" name="year">
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-calendar-alt me-1"></i>Wybierz datę</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                         <!--row-->
-
                         <div class="row mt-4">
                             <div class="row">
                                 @foreach ($dni as $dayLabel)
@@ -184,10 +140,16 @@
                                                 $iconclass = "";
                                                 $modal ='';
                                                 $event ='';
-                                                $icon = "fas fa-calendar-times fa-2x";
+                                                $icon = "";
                                             break;
                                         endswitch;
 
+
+                                        // print "<pre>";
+                                        // print_r($startOfCalendar->format('d.m.Y'));
+                                        // echo '<br />';
+                                        // print_r(today());
+                                        // print "</pre>";
                                         if($startOfCalendar->format('d.m.Y') == $checkdate):
                                             $bgcolor = "bg-success";
                                             $linkclass = "text-white";
@@ -196,8 +158,10 @@
                                             $modal ='';
                                             $event ='';
 
+
                                         endif;
 
+                                        $icon = "fas fa-calendar-times fa-2x";
                                         for ($i=0; $i < 11 ; $i++) {
                                             // code...
                                             if(in_array($startOfCalendar->format('d.m.Y'), $swieta[$i])):
@@ -220,11 +184,12 @@
                                             // print "<pre>";
                                             // print_r($startOfCalendar->format('d.m.Y'));
                                             // echo '<br />';
-                                            // print_r($startOfCalendar->format('d.m.Y'));
+                                            // print_r($row->date->format('d.m.Y'));
                                             // print "</pre>";
                                             if($startOfCalendar->format('d.m.Y') == $row->date->format('d.m.Y')):
-                                                // echo 'tak';
-                                                $icon = "fas fa-calendar-check fa-2x";
+                                                // echo "string";
+                                                $icon = "fas fa-calendar-check fa-2x zd";
+
                                             endif;
                                         }
 
@@ -360,9 +325,7 @@
                             ?>
                         </div>
                         <div id="modal-podglad-event-row-error" class="text-center row" style="display: none">
-                            <br><br><div class="col-12">
-                                Brak wydarzeń!
-                            </div><br><br>
+
                         </div>
                         <div id="modal-podglad-event-row" class="row">
                         </div>
@@ -397,13 +360,13 @@
                 url: "schedule/json/" + date,
                 //dataType: 'json',
                 success: function (response) {
-                    console.log(response);
+                    // console.log(response);
 
                     if(response.events.length > 0) {
                         $("#modal-podglad-event-row-error").css("display", "none");
                         $("#modal-podglad-event-row").empty();
                         $.each(response.events, function(index, event) {
-                            console.log(event);
+                            // console.log(event);
                             const text = '<div class="col-12" id="modal-podglad-event-col-'+ index +'">'+
                                 '<div class="card bg-dark shadow mb-4">'+
                                     '<div class="card-body">'+
@@ -455,6 +418,8 @@
                     } else {
                         $("#modal-podglad-loading").css("display", "none");
                         $("#modal-podglad-zawartosc").css("display", "block");
+                        $("#modal-podglad-event-row-error").html('<br><br><div class="col-12">Brak wydarzeń!</div><br><br>');
+
                         $("#modal-podglad-event-row-error").css("display", "block");
                     }
 
@@ -462,7 +427,7 @@
                         $("#modal-podglad-holiday-row").css("display", "none");
                         $("#modal-podglad-holiday-row").empty();
                         $.each(response.holidays, function(index, holiday) {
-                            console.log(holiday);
+                            // console.log(holiday);
                             if(holiday.data == format){
                                 const text = '<div class="col-12" id="modal-podglad-holiday-col-'+ index +'">'+
                                     '<div class="alert alert-danger mt-2 mb-3" role="alert">'+
@@ -490,6 +455,5 @@
             $("#modal-podglad").modal("show");
 
         }
-
     </script>
 @endsection

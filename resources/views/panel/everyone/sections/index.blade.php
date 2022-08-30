@@ -9,7 +9,7 @@
 @endsection
 
 @section('content-header')
-    <div class="container-fluid mb-5">
+    <div class="container-fluid px-4 my-5">
         <div class="row">
             <div class="col-sm-10">
                 <h1 class="m-0">Sekcje</h1>
@@ -27,192 +27,34 @@
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow mb-4">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <h3 class="font-weight-bold mb-2">
-                                <i class="fas fa-info-circle"></i> Najważniejsze informacje
-                            </h3>
-                        </div>
-                        <!--col-->
-                        <div class="col text-end">
-                            <a href="{{ route('roles.create') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Dodaj</a>
-                        </div>
-                    </div>
-                    <!--row-->
+    <div class="container-fluid px-4">
 
-                    <div class="row mt-4">
-                        <div class="col-4">
-                            <div class="card bg-dark  shadow mb-4">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <h3 class="font-weight-bold mb-2">
-                                                <i class="fas fa-bullhorn"></i> Repertuar
-                                            </h3>
-                                        </div>
-                                        <!--col-->
-                                        <div class="col text-end">
-                                            <a href="{{ route('roles.create') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Dodaj</a>
-                                        </div>
-                                    </div>
-                                    <!--row-->
+        <div class="row mt-4">
+            @foreach ($sections as $row)
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="card mb-4">
+                        <!-- <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" style="height: 16rem;" class="card-img-top" alt="Fissure in Sandstone"/> -->
+                        <div class="card-body">
+                            <h2 class="card-title"><strong>{{ $row->name }}</strong></h2>
+                            <h4 class="text-muted">Orkiestra Grandioso Radom</h4>
+                            <ul class="list-unstyled text-muted mt-2">
+                                <li class="mb-1"><i class="fas fa-users me-2"></i>Członków: <a href="" class="text-wrap text-reset lh-sm"><strong>12</strong></a></li>
+                                <li class="mb-1"><i class="fas fa-user-tie me-2"></i>Opiekun sekcji: <a href="" class="text-wrap text-reset lh-sm"><strong>{{ $row->owner->firstname }} {{ $row->owner->lastname }}</strong></a></li>
+                                <li class="mb-1">
+                                    <i class="fas fa-lock me-2"></i>Prywatna
+                                </li>
+                                <li class="mb-1">
+                                    <i class="fas fa-eye me-2"></i>Widoczna
+                                </li>
 
-                                    <div class="row mt-4">
-                                        <p>
-                                            <b>Poranek</b> - Edward Grieg<br>
-                                            <b>Werble</b> - nabicie<br>
-                                            <b>In Flight</b> - Samuel Hazo<br>
-                                            <b>Solo werbli</b> - Tadeusz Krzyczkowski<br>
-                                            <b>Wiwat</b> - Leon Landowski<br>
-                                            <b>Noc na Łysej Górze</b> - Modest Mussorgski<br>
-                                            <b>Mars</b> - Gustav Holst<br>
-                                            <b>Dies Irae z Requiem</b> - Giuseppe Verdi<br>
-                                            <b>Flower Duet z opery Lakme</b> - Leo Delibes<br>
-                                            <b>Walking on Sunshine</b> - Kate and The Waves<br>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card bg-dark  shadow mb-4">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <h3 class="font-weight-bold mb-2">
-                                                <i class="fas fa-music"></i> Plan prób - Musztra
-                                            </h3>
-                                        </div>
-                                        <!--col-->
-                                        <div class="col text-end">
-                                            <a href="{{ route('roles.create') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Dodaj</a>
-                                        </div>
-                                    </div>
-                                    <!--row-->
-
-                                    <div class="row mt-4">
-                                        <p>
-                                            <b>2022</b><br>
-                                            <b>ŚRODA</b> 17-19 próba<br>
-                                            <b>SOBOTA</b> 9-13 próba jeśli sekcje to od 8:30<br>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-4">
-                            <div class="card bg-dark shadow mb-4">
-                                <div class="card-body text-muted">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <h3 class="font-weight-bold mb-2">
-                                                <i class="fas fa-tools"></i>
-                                                <span class="ms-2">W budowie</span>
-                                            </h3>
-                                        </div>
-                                        <!--col-->
-                                        <div class="col text-end">
-                                            <a href="{{ route('roles.create') }}" class="btn btn-success disabled"><i class="fas fa-plus"></i> Dodaj post</a>
-                                        </div>
-                                    </div>
-                                    <!--row-->
-
-                                    <div class="row">
-                                        <div class="position-relative pt-3">
-                                            <div class="d-flex align-items-center mb-2">
-                                                <div class="d-flex">
-                                                    <i class="fas fa-tools"></i>
-                                                    <span class="ms-2">W budowie</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <li class=""><i class="fas fa-clock me-2"></i>Data utworzenia: <a href="" class="text-wrap text-reset lh-sm"><strong>{{ $row->created_at->format('d M Y') }}</strong></a></li>
+                            </ul>
+                            <a href="/user/sections/{{ $row->id }}" class="btn btn-primary btn-block"><i class="fas fa-eye me-1"></i>Zobacz</a>
+                            <button class="btn btn-secondary btn-block"><i class="fas fa-cogs me-1"></i>Zarządzaj</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="card shadow mb-4">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <h3 class="font-weight-bold mb-2">
-                                <i class="fas fa-graduation-cap"></i> Materiały do nauki
-                            </h3>
-                        </div>
-                        <!--col-->
-                        <div class="col text-end">
-                            <a href="{{ route('roles.create') }}" class="btn btn-outline-success"><i class="fas fa-plus"></i> Dodaj</a>
-                        </div>
-                    </div>
-                    <!--row-->
-
-                    <div class="row mt-4">
-                        <div class="col-4">
-                            <div class="card bg-dark shadow mb-4">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <h3 class="font-weight-bold mb-2">
-                                                <i class="fas fa-film"></i> Video-symulacje
-                                            </h3>
-                                        </div>
-                                        <!--col-->
-                                        <div class="col text-end">
-                                            <a href="{{ route('roles.create') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
-                                        </div>
-                                    </div>
-                                    <!--row-->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card bg-dark shadow mb-4">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <h3 class="font-weight-bold mb-2">
-                                                <i class="fas fa-video"></i> Video
-                                            </h3>
-                                        </div>
-                                        <!--col-->
-                                        <div class="col text-end">
-                                            <a href="{{ route('roles.create') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
-                                        </div>
-                                    </div>
-                                    <!--row-->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card bg-dark shadow mb-4">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <h3 class="font-weight-bold mb-2">
-                                                <i class="fas fa-file"></i> Dokumenty
-                                            </h3>
-                                        </div>
-                                        <!--col-->
-                                        <div class="col text-end">
-                                            <a href="{{ route('roles.create') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
-                                        </div>
-                                    </div>
-                                    <!--row-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

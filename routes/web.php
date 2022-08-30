@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test1', function () {
+    return view('panel.user.test');
+});
+
 Auth::routes(['verify' => false]);
 // Auth::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register.post');
 
@@ -63,7 +67,23 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/documents/{travel}', [App\Http\Controllers\User\DocumentsController::class, 'store'])->name('user.documents.store');
 
     Route::prefix('user')->group(function () {
-        Route::get('/sections/1', [App\Http\Controllers\MarshingController::class, 'sections'])->name('sections');
+        Route::get('/sections', [App\Http\Controllers\SectionsController::class, 'index'])->name('user.sections.index');
+
+        Route::group(['prefix' => '/sections/{section}', 'as' => 'user.sections.'], function () {
+            Route::get('/', [App\Http\Controllers\SectionsController::class, 'show'])->name('show');
+            Route::get('/chat', [App\Http\Controllers\SectionsController::class, 'chat'])->name('chat');
+            Route::get('/announcements', [App\Http\Controllers\SectionsController::class, 'announcements'])->name('announcements');
+            Route::get('/hashtags', [App\Http\Controllers\SectionsController::class, 'hashtags'])->name('hashtags');
+            Route::get('/members', [App\Http\Controllers\SectionsController::class, 'members'])->name('members');
+            Route::get('/media', [App\Http\Controllers\SectionsController::class, 'media'])->name('media');
+            Route::get('/files/files', [App\Http\Controllers\SectionsController::class, 'files'])->name('files');
+            Route::get('/overview', [App\Http\Controllers\SectionsController::class, 'overview'])->name('overview');
+            Route::get('/admin_assistant', [App\Http\Controllers\SectionsController::class, 'admin_assistant'])->name('admin_assistant');
+        });
+
+        Route::get('/sections/{section}/message/get', [App\Http\Controllers\SectionsController::class, 'getmessage'])->name('user.sections.message.get');
+        Route::post('/sections/{section}/message/send', [App\Http\Controllers\SectionsController::class, 'sendmessage'])->name('user.sections.message.send');
+        Route::get('/sections/{section}/chat/user/get', [App\Http\Controllers\SectionsController::class, 'getuserchatperm'])->name('user.sections.chat.user.get');
         Route::resource('profile', App\Http\Controllers\User\ProfileController::class);
     });
 

@@ -27,9 +27,9 @@
                         <span style="color: hsl(218, 81%, 75%)">twój najlepszy wybór!</span>
                     </h1>
                     <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-                        <p class="mb-0 opacity-70">GraniosoAPP to aplikacja internetowa stworzona na potrzeby zarządzania polskimi zespołami muzycznymi, takimi jak orkiestry dęte.</p>
-                        <p class="mb-0 opacity-70">Aplikacja demonstracyjna dostosowana jest do potrzeb Orkiestry GRANDIOSO z Radomia.</p>
-                        <p class="mb-0 opacity-70">Administratorem i autorem GrandiosoAPP jest Mateusz Wydra.</p>
+                        <p class="mb-0 opacity-70">
+                            Przejmij kontrolę nad swoim zespółem, zaoszczędź czas na organizacji i wykorzystaj wszystkie dostępne dane do rozwoju swojego zespołu. <br> Wszystko z jednego miejsca!
+                        </p>
                     </p>
                 </div>
                 <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
@@ -114,33 +114,32 @@
     <section class="container pt-5">
         <section class="mb-10 text-center">
             <h2 class="fw-bold mb-5 text-center">
-                <span class="me-1">Dlaczego jesteśmy</span>
-                <u class="text-primary">najlepsi?</u>
+                <span class="me-1">Co oferujemy?</span>
             </h2>
             <div class="row gx-lg-5">
                 <div class="col-md-4 mb-5 mb-md-0">
                     <div class="p-3 bg-primary rounded-4 shadow-2-strong d-inline-block mb-4">
-                        <i class="fas fa-headset fa-lg text-white fa-fw"></i>
+                        <i class="fas fa-copy fa-lg text-white fa-fw"></i>
                     </div>
-                    <h5 class="fw-bold mb-3">Potęga danych</h5>
+                    <h5 class="fw-bold mb-3">Orginalność</h5>
                     <p class="text-muted mb-0">
-                        Wykorzystaj wszystkie dostępne dane i pomóż swojej społeczności rozwijać się.
+                        Jesteśmy jedyną polską aplikacją do zarządzania orkiestrą. Stosujemy własne orginalne rozwiązania.
                     </p>
                 </div>
                 <div class="col-md-4 mb-5 mb-md-0">
                     <div class="p-3 bg-primary rounded-4 shadow-2-strong d-inline-block mb-4">
-                        <i class="fas fa-shield-alt fa-lg text-white fa-fw"></i>
+                        <i class="fas fa-edit fa-lg text-white fa-fw"></i>
                     </div>
-                    <h5 class="fw-bold mb-3">Zapomnij o papierach</h5>
+                    <h5 class="fw-bold mb-3">Unikalny design</h5>
                     <p class="text-muted mb-0">
-                        Najprostszy sposób dzielenia się z wami repertuarem, zawsze dostępny.
+                        Cechujemy się przejrzystością i dbałością o każdy szczegół. Wygląd strony jest bardzo starannie wykonany i dobrze przemyślany
                     </p>
                 </div>
                 <div class="col-md-4 mb-5 mb-md-0">
                     <div class="p-3 bg-primary rounded-4 shadow-2-strong d-inline-block mb-4">
-                        <i class="fas fa-shipping-fast fa-lg text-white fa-fw"></i>
+                        <i class="fas fa-cogs fa-lg text-white fa-fw"></i>
                     </div>
-                    <h5 class="fw-bold mb-3">Zaprojektowany dla muzyków</h5>
+                    <h5 class="fw-bold mb-3">Funkcjonalność</h5>
                     <p class="text-muted mb-0">
                         E-mail, Excel, Drive... Ile czasu zaoszczędziłbyś, korzystając z jednego narzędzia?
                     </p>
@@ -148,7 +147,144 @@
             </div>
         </section>
     </section>
-    <section draggable="false" class="container pt-5" data-v-271253ee="">
+    <section class="container pt-5">
+        <section class="mb-10">
+            <h2 class="fw-bold mb-5 text-center">
+                Zobacz jak wygląda GrandiosoAPP
+            </h2>
+            <div class="row gx-lg-5 align-items-center mb-5">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="bg-image hover-overlay ripple shadow-4-strong rounded-4 mb-4" data-mdb-ripple-color="light">
+                        <img src="https://media.discordapp.net/attachments/964876530792685668/1013183607734554724/unknown.png" class="w-100" alt="" "image">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h3 class="fw-bold">
+                        Witamy w GrandiosoAPP!
+                    </h3>
+                    <div class="mb-2 text-danger small">
+                        <i class="fas fa-globe-americas me-2"></i>
+                        <span>Strona Główna</span>
+                    </div>
+                    <p class="text-muted">
+                        GraniosoAPP to aplikacja internetowa do zarządzania orkiestrami dętych. <br>
+                        Pomysł stworzenia tego typu aplikacji zrodził się podczas <strong>III Ogólnopolskiej Konferencji Orkiestr Dętych.</strong>
+                        Autorem GrandiosoAPP, odpowiedzialny jest <strong>Mateusz Wydra.</strong><br>
+                        Projekt zakłada późniejszą rozbudowę wersji internetowej aplikacji do dedykowanych aplikacji na urządzenia mobilne.
+                    </p>
+                </div>
+            </div>
+            <div class="row gx-lg-5 align-items-center mb-5 flex-lg-row-reverse">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="bg-image hover-overlay ripple shadow-4-strong rounded-4 mb-4" data-mdb-ripple-color="light">
+                        <img src="https://media.discordapp.net/attachments/964876530792685668/994649559366123550/unknown.png" class="w-100 border shadow-5-strong" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h3 class="fw-bold">
+                        Przejrzysty grafik
+                    </h3>
+                    <div class="mb-2 text-primary small">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        <span>Kalendarz</span>
+                    </div>
+                    <p class="text-muted">
+                        Grafik jest to przejrzysty kalendarz, w którym znajdziesz wszelkie informacje dotyczące najbliższych (i nie tylko) prób i koncertów. Gdy w danym dniu, odbędzie się próba, pojawi się ikonka <i class="fas fa-calendar-check"></i>. <br> Po jej kliknięciu wyświetlą się szczegóły wydarzenia, takie jak: <br>
+                        <strong>Data, godziny rozpoczęcia i zakończenia, miejsce, rodzaj próby, informacje dodatkowe.</strong><br>W przyszłości będzie moża zadeklarować swoją obecność.
+                    </p>
+                </div>
+            </div>
+            <div class="row gx-lg-5 align-items-center mb-5">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="bg-image hover-overlay ripple shadow-4-strong rounded-4 mb-4" data-mdb-ripple-color="light">
+                        <img src="https://media.discordapp.net/attachments/964876530792685668/1012065800938606673/unknown.png" class="w-100" alt="" "image">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h3 class="fw-bold">
+                        Niesamowite sekcje
+                    </h3>
+                    <div class="mb-2 text-success small">
+                        <i class="fas fa-users me-2"></i>
+                        <span>Sekcje</span>
+                    </div>
+                    <p class="text-muted">
+                        W tym miejscu znajdują się informacje o sekcji w której grasz. Znajdziesz tutaj wewnętrzne ogłoszenia, czaty, multimedia czy też materiały do nauki: nuty, filmiki video itp.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </section>
+    <section class="container pt-5">
+        <section class="mb-10">
+            <h2 class="fw-bold text-center mb-5">
+                Cennik
+            </h2>
+            <div class="row gx-lg-5 d-flex justify-content-center">
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                    <div class="card h-100">
+                        <div class="card-header text-center pt-4">
+                            <p class="text-uppercase">
+                                <strong>Podstawowy</strong>
+                            </p>
+                            <h3 class="mb-4">
+                                <strong>$ 129</strong>
+                                <small class="text-muted" style="font-size: 16px">/rok</small>
+                            </h3>
+                            <button type="button" class="btn btn-primary w-100 mb-3">Kup</button>
+                        </div>
+                        <div class="card-body">
+                            <ol class="list-unstyled mb-0">
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i>
+                                    <span>Unlimited updates</span>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i>
+                                    <span>Git repository</span>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i>
+                                    <span>npm installation</span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                    <div class="card h-100">
+                        <div class="card-header text-center pt-4">
+                            <p class="text-uppercase">
+                                <strong>Podstawowy</strong>
+                            </p>
+                            <h3 class="mb-4">
+                                <strong>$ 129</strong>
+                                <small class="text-muted" style="font-size: 16px">/rok</small>
+                            </h3>
+                            <button type="button" class="btn btn-primary w-100 mb-3">Kup</button>
+                        </div>
+                        <div class="card-body">
+                            <ol class="list-unstyled mb-0">
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i>
+                                    <span>Unlimited updates</span>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i>
+                                    <span>Git repository</span>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-success me-3"></i>
+                                    <span>npm installation</span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <section class="container pt-5">
         <section class="mb-10 text-center">
             <h2 class="fw-bold mb-10">
                 <span>Nasz</span>

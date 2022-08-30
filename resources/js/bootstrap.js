@@ -1,5 +1,5 @@
 window._ = require('lodash');
-import PerfectScrollbar from 'perfect-scrollbar';
+// import PerfectScrollbar from 'perfect-scrollbar';
 
 try {
     window.Popper = require('popper.js').default;
@@ -7,9 +7,9 @@ try {
     require('bootstrap');
 
     require('mdb-ui-kit');
-    require('perfect-scrollbar');
+    // require('perfect-scrollbar');
     require('select2');
-    $('select').select2();
+    // $('select').select2();
 } catch (e) {}
 
 /**

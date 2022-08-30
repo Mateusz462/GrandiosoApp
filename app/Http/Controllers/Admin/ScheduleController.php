@@ -18,24 +18,104 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class ScheduleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // dd($request->month);
         //abort_if(Gate::denies('user_list_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $y = '2022';
-        $d = '31';
-        $m = '5';
-        $date = null;
-        $date = empty($date) ? Carbon::today() : Carbon::createFromDate($y, $m, $d);
-    //    $date = Carbon::createFromDate($y, $m, $d);
+        $y = $request->year;
+        $m = $request->month;
+        $d = '1';
+        // $date = null;
+        $date = $y. ''. $m. ''. $d;
+        if(empty($request)){
+            $date = Carbon::today();
+        } else {
+            $date = Carbon::createFromDate($y, $m, $d);
+        }
+        // $date = ($date) ? Carbon::today() : Carbon::createFromDate($y, $m, $d);
+        // $date = Carbon::createFromDate($y, $m, $d);
 
         $startOfCalendar = $date->copy()->firstOfMonth()->startOfWeek(Carbon::MONDAY);
         $endOfCalendar = $date->copy()->lastOfMonth()->endOfWeek(Carbon::SUNDAY);
         $dni = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela'];
         $dniformat = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
         $miesiace = [1 => 'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
-        $checkdate = $date->format('d.m.Y');
+        $checkdate = today()->format('d.m.Y');
         $schedules = Schedule::all();
+        $swieta = array(
+           //maj
+           [
+               'id' => '1',
+               'data' => '01.05.2022',
+               'tytul' => 'Święto Pracy',
+               'swieto' => '1',
+           ],
+           [
+               'id' => '2',
+               'data' => '02.05.2022',
+               'tytul' => 'Dzień Flagi Rzeczpospolitej Polskiej',
+               'swieto' => '0',
+           ],
+           [
+               'id' => '3',
+               'data' => '03.05.2022',
+               'tytul' => 'Święto Konstytucji Trzeciego Maja',
+               'swieto' => '1',
+           ],
+           [
+               'id' => '4',
+               'data' => '26.05.2022',
+               'tytul' => 'Dzień Matki',
+               'swieto' => '0',
+           ],
+           [
+               'id' => '5',
+               'data' => '01.06.2022',
+               'tytul' => 'Dzień Dziecka',
+               'swieto' => '0',
+           ],
+           [
+               'id' => '6',
+               'data' => '02.06.2022',
+               'tytul' => 'Zielone Świątki',
+               'swieto' => '0',
+           ],
+           [
+               'id' => '7',
+               'data' => '28.06.2022',
+               'tytul' => 'Boże Ciało',
+               'swieto' => '1',
+           ],
+           [
+               'id' => '8',
+               'data' => '01.07.2022',
+               'tytul' => 'Dzień Ojca',
+               'swieto' => '1',
 
+           ],
+           [
+               'id' => '9',
+               'data' => '01.08.2022',
+               'tytul' => 'Narodowy Dzień Pamięci Powstania Warszawskiego',
+               'swieto' => '0',
+
+           ],
+           [
+               'id' => '10',
+               'data' => '15.08.2022',
+               'tytul' => 'Święto Wojska Polskiego',
+               'swieto' => '1',
+
+           ],
+           [
+               'id' => '11',
+               'data' => '04.05.2022',
+               'tytul' => 'Wybuch II Wojny Światowej',
+               'swieto' => '1',
+
+           ]
+
+        );
         return view('panel.everyone.schedule.index',
             compact(
                 'date',
@@ -45,7 +125,8 @@ class ScheduleController extends Controller
                 'miesiace',
                 'checkdate',
                 'schedules',
-                'dniformat'
+                'dniformat',
+                'swieta'
             )
         );
     }

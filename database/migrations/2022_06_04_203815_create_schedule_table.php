@@ -55,7 +55,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schedule');
         Schema::dropIfExists('schedule_program');
+        Schema::dropIfExists('schedule');
     }
 };

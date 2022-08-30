@@ -7,7 +7,7 @@
     	<meta name="description" content="">
     	<meta name="author" content="">
         <title>@yield('title')</title>
-        <meta name="csrf-token" value="{{ csrf_token() }}"/>
+        <meta name="csrf-token" content="{{ csrf_token() }}"/>
     	<!-- MDB -->
         <link href="{{ mix('css/app.css') }}" type="text/css" rel="stylesheet"/>
     	<link rel="icon" type="image/png" sizes="96x96" href="https://wirtualne-pomorze.pl/portal/img/WP-logo250.png">
@@ -47,7 +47,7 @@
             }
         </style>
         <style type="text/css">
-            @yield('custom-style');
+            @yield('custom-style')
         </style>
     </head>
     <body>
@@ -88,7 +88,7 @@
                 @yield('header')
 				<!-- Jumbotron -->
             </header>
-            <main id="content" class="my-5 d-flex flex-column px-4">
+            <main id="content" class="d-flex flex-column">
                 <section class="content-header ">
                     @yield('content-header')
                 </section>

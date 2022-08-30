@@ -5,7 +5,7 @@
 @endsection
 
 @section('content-header')
-    <div class="container-fluid mb-5">
+    <div class="container-fluid px-4 my-5">
         <div class="row">
             <div class="col-sm-10">
                 <h1 class="m-0">Zarządzanie rangami</h1>
@@ -26,7 +26,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid px-4">
         <div class="row">
             <div class="col-3">
                 <div class="card mb-4">

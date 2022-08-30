@@ -9,7 +9,7 @@
 @endsection
 
 @section('content-header')
-    <div class="container-fluid mb-5">
+    <div class="container-fluid px-4 my-5">
         <div class="row">
             <div class="col-sm-10">
                 <h1 class="m-0">Ustawienia - Orkiestra Grandioso Radom</h1>
@@ -27,7 +27,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid px-4">
         <div class="row">
             <div class="col-3">
                 <div class="card mb-4">
@@ -39,6 +39,14 @@
 
             <div class="col-9">
                 <div class="row">
+                    <div class="col-sm-10">
+                        <h3 class="font-weight-bold mb-2">
+                            <i class="fas fa-home"></i> Strona Główna
+                        </h3>
+                    </div>
+                    <!--col-->
+                </div>
+                <div class="row mt-4">
                     <div class="col-6">
                         <div class="card mb-4">
                             <div class="card-body">

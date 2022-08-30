@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content-header')
-    <div class="container-fluid mb-5">
+    <div class="container-fluid px-4 my-5">
         <div class="row">
             <div class="col-sm-12">
                 <h1 class="m-0">Aktualności</h1>
@@ -19,11 +19,11 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid px-4">
         <!-- row -->
 		<div class="row">
             <div class="col">
-                @if(auth()->user()->UI_type == '0')
+                @if(auth()->user()->UI_type == '1')
                     @if(auth()->user()->status == '0')
                         <div class="col-12 mb-3">
                             <div class="alert alert-danger mt-3 mb-1" role="alert">
@@ -32,11 +32,11 @@
                         </div>
                     @endif
 
-                    <div class="col-12 mb-3">
+                    <!-- <div class="col-12 mb-3">
                         <div class="alert alert-primary mt-3 mb-1" role="alert">
                             <b><i class="fas fa-info-circle fa-lg"></i></b> Dodano nową ankietę! Prosimy o jej najszybsze wypełnienie! <a href="surveys/3">Ankieta</a>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-12">
                         <div class="card shadow mb-4">
                             <div class="card-body">
@@ -54,21 +54,21 @@
                                 </div>
                                 <!--row-->
 
-                                <div class="row">
+                                <div class="row mt-2">
                                     @if(count($annouments) > 0)
-                                        <div class="col-md-12">
+                                        <!-- <div class="col-md-12">
                                             <div class="alert alert-info mt-3 mb-1" role="alert">
                                                 <b><i class="fas fa-info-circle fa-lg"></i></b> Obowiązkowo na <b>każdą próbę musztry</b> przynosimy okrycie głowy i wodę!
                                             </div>
                                             <div class="alert alert-secondary mt-3 mb-1" role="alert">
                                                 <b><i class="fas fa-info-circle fa-lg"></i></b> Program z musztrą można za darmo pobrać <a href="#">tutaj</a>. W razie pytań napisz do <a href="#">Mati Wydra</a>.
                                             </div>
-                                            <!-- <div class="alert alert-warning mt-3 mb-1" role="alert">
+                                            <div class="alert alert-warning mt-3 mb-1" role="alert">
                                                 <b><i class="fas fa-times-circle fa-lg"></i></b> Anulowano 1 próbę!
-                                            </div> -->
-                                        </div>
+                                            </div>
+                                        </div> -->
                                         @foreach ($annouments as $row)
-                                            <a href="{{ route('annouments.show', $row->id ) }}" class="text-decoration-none text-white">
+                                            <a href="{{ route('annouments.show', $row->id ) }}" class="text-decoration-none text-white mt-2">
                                                 <div class="col-md-12">
                                                     <div class="card bg-dark border mt-2 p-0">
                                                         <div class="position-relative p-3">
@@ -465,7 +465,7 @@
                                                     </div>
                                                     <!--col-->
                                                     <div class="col-sm-5 text-end">
-                                                        <a href="{{ route('sections') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
+                                                        <a href="{{ route('user.sections.index') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
                                                     </div>
                                                 </div>
                                                 <!--row-->
@@ -571,22 +571,24 @@
                 @else
                     <div class="col-12">
                         <div class="row">
-                            @if(count($annouments) > 0)
-                                <div class="col-md-12">
-                                    <div class="alert alert-info mt-3 mb-1" role="alert">
-                                        <b><i class="fas fa-info-circle fa-lg"></i></b> Obowiązkowo na <b>każdą próbę musztry</b> przynosimy okrycie głowy i wodę!
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body bg-  ">
+                                        <div class="d-flex justify-content-start align-items-end pe-3">
+                                            @csrf
+                                            <img class="rounded-circle" src="{{ auth()->user()->getPicture() }}" alt="avatar 3" style="width: 40px; height: 100%;">
+                                            <input type="text" class="form-control rounded-pill border-0 bg-dark form-control-lg pointer mx-2" disabled="" placeholder="Mapisz wiadomość" data-bs-toggle="modal" data-bs-target="#createModal">
+                                            <button class="btn btn-success btn-lg ms-2" id="chat-button-send" type="button" data-mdb-toggle="tooltip" data-mdb-html="true" title='<i class="fas fa-paper-plane"></i> Wyślij' onclick="sendmessage()"><i class="fas fa-paper-plane fa-lg"></i></button>
+                                        </div>
                                     </div>
-                                    <div class="alert alert-secondary mt-3 mb-1" role="alert">
-                                        <b><i class="fas fa-info-circle fa-lg"></i></b> Program z musztrą można za darmo pobrać <a href="#">tutaj</a>. W razie pytań napisz do <a href="#">Mati Wydra</a>.
-                                    </div>
-                                    <!-- <div class="alert alert-warning mt-3 mb-1" role="alert">
-                                        <b><i class="fas fa-times-circle fa-lg"></i></b> Anulowano 1 próbę!
-                                    </div> -->
                                 </div>
+                            </div>
+                            @if(count($annouments) > 0)
+
                                 @foreach ($annouments as $row)
                                     <a href="{{ route('annouments.show', $row->id ) }}" class="text-decoration-none text-white">
                                         <div class="col-md-12">
-                                            <div class="card mt-2 mb-2 p-0">
+                                            <div class="card bg-dark shadow border mt-2 mb-2 p-0">
                                                 <div class="position-relative p-3">
                                                     <div class="d-flex justify-content-start">
                                                         <div class="position-relative d-flex align-items-center">
@@ -728,7 +730,7 @@
                             </div>
                         </div>
                     </div>
-                    @if(auth()->user()->UI_type == 0)
+                    @if(auth()->user()->UI_type == 1)
             			<div class="card shadow mb-4">
             				<div class="card-body">
             					<h3 class="font-weight-bold mb-4"><i class="fas fa-users"></i> Sekcje</h3>
@@ -743,10 +745,6 @@
 
             					<p class="mb-2 h5">
             						Informacje dotyczące sekcji:
-            					</p>
-            					<p class="mb-0">
-            						<b>Plan prób sekcji:</b> PUZON<br>
-            						<b>8:30 - 10</b> SOBOTA<br>
             					</p>
             				</div>
             			</div>
@@ -771,9 +769,12 @@
                                             <!--row-->
             								<p>
             									<b>LIPIEC 2022</b><br>
-            									<b>25.06-04.07</b> Mistrzostwa Europy w Rastede<br>
-            									<b>07-10.07</b> Mistrzostwa Polski Orkiestr<br>
-            									<b>26.07-02.08</b> World Music Contest - Holandia<br><br>
+            									<s class="text-muted">
+                                                    <b>25.06-04.07</b> Mistrzostwa Europy w Rastede<br>
+                									<b>07-10.07</b> Mistrzostwa Polski Orkiestr<br>
+                									<b>26.07-02.08</b> World Music Contest - Holandia<br><br>
+                                                </s>
+                                                <b>SIERPIEŃ 2022</b><br><br>
             									<b>WRZESIEŃ 2022</b><br>
             									<em>
             										<b>11.09</b> Dni Jerozolimy - Miechów - do potw.<br>
@@ -1147,7 +1148,7 @@
                                                     </div>
                                                     <!--col-->
                                                     <div class="col-sm-5 text-end">
-                                                        <a href="{{ route('sections') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
+                                                        <a href="{{ route('user.sections.index') }}" class="btn btn-outline-primary"><i class="fas fa-eye"></i> Zobacz</a>
                                                     </div>
                                                 </div>
                                                 <!--row-->
@@ -1275,4 +1276,128 @@
     			</div>
             </div>
     </div>
+    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" data-bs-backdrop="false" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <!-- head -->
+            <div class="modal-header align-items-center">
+              <h5 class="text-center w-100 m-0" id="exampleModalLabel">
+                Create Post
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- body -->
+            <div class="modal-body">
+              <div class="my-1 p-1">
+                <div class="d-flex flex-column">
+                  <!-- name -->
+                  <div class="d-flex align-items-center">
+                    <div class="p-2">
+                      <img src="{{ auth()->user()->getPicture() }}" alt="from fb" class="rounded-circle" style="
+                          width: 38px;
+                          height: 38px;
+                          object-fit: cover;
+                        ">
+                    </div>
+                    <div>
+                      <p class="m-0 fw-bold">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }}</p>
+                      <select class="form-control select2 ">
+                        <option selected="" value="1">Public</option>
+                        <option value="2">Pin To Top</option>
+                        <option value="3">Hide</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- text -->
+                  <div>
+                    <textarea cols="30" rows="5" class="form-control border-0"></textarea>
+                  </div>
+                  <!-- emoji  -->
+                  <div class="
+                      d-flex
+                      justify-content-between
+                      align-items-center
+                    ">
+                    <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" class="pointer" alt="fb text" style="
+                        width: 30px;
+                        height: 30px;
+                        object-fit: cover;
+                      ">
+                    <i class="far fa-laugh-wink fs-5 text-muted pointer"></i>
+                  </div>
+                  <!-- options -->
+                  <div class="
+                      d-flex
+                      justify-content-between
+                      border border-1 border-light
+                      rounded
+                      p-3
+                      mt-3
+                    ">
+                    <p class="m-0">Add to your post</p>
+                    <div>
+                      <i class="
+                          fas
+                          fa-images
+                          fs-5
+                          text-success
+                          pointer
+                          mx-1
+                        "></i>
+                      <i class="
+                          fas
+                          fa-user-check
+                          fs-5
+                          text-primary
+                          pointer
+                          mx-1
+                        "></i>
+                      <i class="
+                          far
+                          fa-smile
+                          fs-5
+                          text-warning
+                          pointer
+                          mx-1
+                        "></i>
+                      <i class="
+                          fas
+                          fa-map-marker-alt
+                          fs-5
+                          text-info
+                          pointer
+                          mx-1
+                        "></i>
+                      <i class="
+                          fas
+                          fa-microphone
+                          fs-5
+                          text-danger
+                          pointer
+                          mx-1
+                        "></i>
+                      <i class="
+                          fas
+                          fa-ellipsis-h
+                          fs-5
+                          text-muted
+                          pointer
+                          mx-1
+                        "></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- end -->
+            </div>
+            <!-- footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary w-100">
+                Post
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection

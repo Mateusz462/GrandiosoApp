@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 // use Spatie\Permission\Models\Permission;
 use App\Models\User;
+use App\Models\Section;
 // use App\Models\PermissionModule;
 // use App\Models\OgraniczeniaPanel;
 use Gate;
 use Symfony\Component\HttpFoundation\Response;
 // use App\Http\Requests\StoreRoleRequest;
 // use App\Http\Requests\UpdateRoleRequest;
+use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Controllers\Controller;
 
@@ -40,7 +42,50 @@ class SettingsController extends Controller
     {
         //abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('panel.admin.settings.sections');
+        $sections = array(
+            [
+                'name' => 'Blacha',
+                'owner' => 'D.K',
+                'color' => 'warning',
+                'instruments' => [
+                    [
+                        'name' => 'puzon',
+                        'color' => 'success',
+                    ],
+                    [
+                        'name' => 'trąbka',
+                        'color' => 'primary',
+                    ],
+                    [
+                        'name' => 'tuba',
+                        'color' => 'danger',
+                    ],
+                ]
+            ],
+            [
+                'name' => 'Drewno',
+                'owner' => 'D.K',
+                'color' => 'danger',
+                'instruments' => [
+                    [
+                        'name' => 'flet',
+                        'color' => 'light',
+                    ],
+                    [
+                        'name' => 'klarnet',
+                        'color' => 'secondary',
+                    ],
+                    [
+                        'name' => 'sax',
+                        'color' => 'dark',
+                    ],
+                ]
+            ]
+        );
+
+        $sections = Section::with(['instruments', 'owner'])->get();
+
+        return view('panel.admin.settings.sections', compact('sections'));
     }
     public function availability()
     {
