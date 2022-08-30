@@ -30,7 +30,7 @@
     <div class="container-fluid px-4">
 
         <div class="row mt-4">
-            @foreach ($sections as $row)
+            @forelse ($sections as $row)
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="card mb-4">
                         <!-- <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" style="height: 16rem;" class="card-img-top" alt="Fissure in Sandstone"/> -->
@@ -54,7 +54,21 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-12">
+                    <div class="d-flex position-relative top-100 justify-content-center">
+                        <div class="p-3">
+                            <div class="first text-center">
+                                <i class="fas fa-info-circle fa-6x"></i>
+                                <h3 class="mt-3">Brak sekcji w bazie danych!</h3>
+                                <p class="text-muted">
+                                    Dodaj sekcje w ustawieniach
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforelse
         </div>
     </div>
 @endsection

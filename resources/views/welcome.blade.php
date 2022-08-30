@@ -228,7 +228,7 @@
                                 <strong>Podstawowy</strong>
                             </p>
                             <h3 class="mb-4">
-                                <strong>$ 129</strong>
+                                <strong>$ XXX</strong>
                                 <small class="text-muted" style="font-size: 16px">/rok</small>
                             </h3>
                             <button type="button" class="btn btn-primary w-100 mb-3">Kup</button>
@@ -258,7 +258,7 @@
                                 <strong>Podstawowy</strong>
                             </p>
                             <h3 class="mb-4">
-                                <strong>$ 129</strong>
+                                <strong>$ XXX</strong>
                                 <small class="text-muted" style="font-size: 16px">/rok</small>
                             </h3>
                             <button type="button" class="btn btn-primary w-100 mb-3">Kup</button>
