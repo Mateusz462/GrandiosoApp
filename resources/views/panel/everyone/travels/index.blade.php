@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content-header')
-    <div class="container-fluid mb-5">
+    <div class="container-fluid px-4 my-5">
         <div class="row">
             <div class="col-sm-12">
                 <h1 class="m-0">Wyjazdy</h1>
@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid px-4">
         <!-- row -->
 		<div class="row">
             @forelse($travels as $survey)
@@ -74,7 +74,19 @@
     				</div>
                 </div>
             @empty
-                <b>Brak ankiet</b>
+                <div class="col-12">
+                    <div class="d-flex position-relative top-100 justify-content-center">
+                        <div class="p-3">
+                            <div class="first text-center">
+                                <i class="fas fa-info-circle fa-6x"></i>
+                                <h3 class="mt-3">Brak wyjazdów</h3>
+                                <p class="text-muted">
+                                    Zaplanuj wyjazd zespołu w ustawieniach
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endforelse
         </div>
         <!-- /.row -->

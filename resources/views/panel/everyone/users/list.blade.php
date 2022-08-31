@@ -20,7 +20,7 @@
 @endsection
 
 @section('content-header')
-    <div class="container-fluid mb-5">
+    <div class="container-fluid px-4 my-5">
         <div class="row">
             <div class="col-sm-12">
                 <h1 class="m-0">Użytkownicy</h1>
@@ -41,7 +41,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid px-4">
         <div class="row">
             <!-- <div class="col-12">
                 <div class="alert alert-warning mt-2 mb-2" role="alert">
