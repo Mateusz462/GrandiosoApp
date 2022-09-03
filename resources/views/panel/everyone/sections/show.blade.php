@@ -17,6 +17,27 @@
             <!-- Page content-->
             <div class="container-fluid px-4">
                 <div class="row mt-4">
+                    @if(empty($chatsettings))
+                        <div class="col-12">
+                            <div class="card border mt-2 p-0 mb-4" style="background-color: rgba(177, 59, 252, 0.54)">
+                                <div class="card-body pb-2">
+                                    <div class="d-flex flex-column justify-content-center g-2">
+                                        <p class="fs-5">
+                                            <strong>UWAGA!</strong>
+                                            Twoja sekcja nie jest skonfigurowana!
+                                            Część funkcji może być niedostępna.
+                                            Dokończ konfiguracje sekcji aby móc korzystać ze wszystkich funkcji aplikacji!
+                                        
+                                        </p>
+                                        <p>
+                                            <a class="btn btn-primary" href=""><i class="fas fa-cogs me-1"></i>Zarządzaj</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="col-12">
                         <div class="card shadow mb-4">
                             <div class="card-body">

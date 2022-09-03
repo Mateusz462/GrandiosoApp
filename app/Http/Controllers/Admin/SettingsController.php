@@ -42,51 +42,33 @@ class SettingsController extends Controller
     {
         //abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $sections = array(
-            [
-                'name' => 'Blacha',
-                'owner' => 'D.K',
-                'color' => 'warning',
-                'instruments' => [
-                    [
-                        'name' => 'puzon',
-                        'color' => 'success',
-                    ],
-                    [
-                        'name' => 'trąbka',
-                        'color' => 'primary',
-                    ],
-                    [
-                        'name' => 'tuba',
-                        'color' => 'danger',
-                    ],
-                ]
-            ],
-            [
-                'name' => 'Drewno',
-                'owner' => 'D.K',
-                'color' => 'danger',
-                'instruments' => [
-                    [
-                        'name' => 'flet',
-                        'color' => 'light',
-                    ],
-                    [
-                        'name' => 'klarnet',
-                        'color' => 'secondary',
-                    ],
-                    [
-                        'name' => 'sax',
-                        'color' => 'dark',
-                    ],
-                ]
-            ]
-        );
-
         $sections = Section::with(['instruments', 'owner'])->get();
 
         return view('panel.admin.settings.sections', compact('sections'));
     }
+
+    public function storesections(Request $request)
+    {
+        $request->validate([
+            'name' => 'required'
+        ]);
+        try{
+            $data = [
+                'name' => $request->name,
+                'description' => $request->description,
+                'settings' => '',
+                'owner_id' => auth()->user()->id,
+            ];
+            $user = Section::create($data);
+
+            Toastr::success('Sekcja została utworzona pomyślnie','Sukces');
+            return redirect()->route('settings.sections')->with('success', 'Sekcja została utworzona pomyślnie');
+        } catch (\Exception $e) {
+            Toastr::error('Wystąpił błąd podczas tworzenia sekcji','Błąd!');
+            return redirect()->route('settings.sections')->with('error', $e);
+        }
+    }
+
     public function availability()
     {
         //abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');

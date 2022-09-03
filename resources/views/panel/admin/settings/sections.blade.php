@@ -77,9 +77,10 @@
                         </div>
                     @endforeach
                     <div class="col-md-6 col-lg-4">
-                        <div class="card mb-4">
+                        <form action="{{ route('settings.sections.store')}}" method="post" class="card mb-4">
+                            @csrf
                             <div class="bg-image preview d-none text-center">
-                                <img id="img-preview" src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" style="height: 16rem;" class="card-img-top d-none" alt="Fissure in Sandstone"/>
+                                <img id="img-preview" src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" style="height: 16rem;" class="card-img-top d-none"/>
                                 <div class="mask" style="background-color: rgba(0, 0, 0, 0.0)">
                                     <button id="img-btn-trash" type="button" class="btn btn-white btn-rounded shadow-3 position-absolute top-0 end-0 mt-3 me-3">
                                         <i class="fas fa-trash"></i>
@@ -92,9 +93,8 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <div  onclick="imgupload" id="img-upload" class="card-header border-0 text-center p-5 form" style="background-color: hsl(210, 26%, 84%)">
+                            <div onclick="imgupload" id="img-upload" class="card-header border-0 text-center p-5 form" style="background-color: hsl(210, 26%, 84%)">
                                 <input type="file" class="input-file" name="" value="" hidden>
                                 <i class="fas fa-image fa-5x text-white mb-4 d-block"></i>
                                 <button type="button" class="btn btn-white btn-rounded shadow-3">
@@ -103,7 +103,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-outline card-title">
-                                    <input type="text" class="form-control" id="name" name="" value="">
+                                    <input type="text" class="form-control" id="name" name="name" value="">
                                     <label class="form-label" for="name">Nazwa sekcji</label>
                                 </div>
                                 <div class="form-outline card-title">
@@ -111,13 +111,13 @@
                                     <label class="form-label" for="name">Orkiestra Grandioso Radom</label>
                                 </div>
                                 <div class="form-outline card-title">
-                                    <textarea type="text" class="form-control" rows="5"></textarea>
+                                    <textarea type="text" class="form-control" name="description" rows="5"></textarea>
                                     <label class="form-label" for="name">Opis</label>
                                 </div>
 
                                 <button class="btn btn-success btn-block"><i class="fas fa-plus me-1"></i>Utwórz</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

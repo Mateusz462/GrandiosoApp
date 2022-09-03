@@ -18,9 +18,9 @@
             <div class="container-fluid px-4">
                 <div class="row mt-4">
                     <div class="col-12">
-                        <div class="card bg-dark border shadow mb-4">
+                        <div class="card shadow mb-4">
                             <div class="card-body">
-                                <div class="row">
+                                <div class="row mb-4">
                                     <div class="col-sm-5">
                                         <h3 class="font-weight-bold mb-2">
                                             <i class="fas fa-comment-alt"></i> Czat
@@ -32,61 +32,125 @@
                                     </div>
                                 </div>
                                 <!--row-->
-                                <div class="col">
-                                    <div class="pt-3 pe-3" data-mdb-perfect-scrollbar="true" style="min-height:350px; max-height: 650px; overflow: hidden auto; overflow-y: auto;">
-                                        <div id="chat-loading">
-                                            <div class="mt-5 mb-5 d-flex justify-content-center">
-                                                <div class="p-3">
-                                                    <div class="first text-center">
-                                                        <div class="spinner-border" style="width: 5rem; height:5rem" role="status"></div>
-                                                        <h3 class="mt-3">Ładowanie wiadomości ...</h3>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card bg-dark shadow mb-4">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <strong>Lista osób</strong>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        @forelse ($section->users as $user)
+                                                            <div class="card-body ps-1 pb-0">
+                                                                <div class="d-flex justify-content-start">
+                                                                    <div class="position-relative d-flex align-items-center">
+                                                                        <img class="rounded-circle me-3" src="{{ $user->getPicture() }}" width="45">
+                                                                        <div class="d-flex flex-column justify-content-center">
+                                                                            <span class="d-flex align-items-center font-weight-bold">{{ $user->firstname }} {{ $user->lastname }}</span>
+                                                                            <span class="d-flex align-items-center">
+                                                                                <span class="badge badge-light">
+                                                                                    <i class="fas fa-shield-alt"></i>
+                                                                                    @if($user->roletype == 'SuperAdmin')
+                                                                                        Super Administrator
+                                                                                    @elseif($user->roletype == 'Admin')
+                                                                                        Administrator
+                                                                                    @elseif($user->roletype == 'Employee')
+                                                                                        Nauczyciel
+                                                                                    @elseif($user->roletype == 'Parent')
+                                                                                        Rodzic / Opiekun
+                                                                                    @elseif($user->roletype == 'User')
+                                                                                        Uczeń
+                                                                                    @endif
+                                                                                </span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @empty
+                                                            el
+                                                        @endforelse
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="chat-inner" style="height: 100%;"></div>
                                     </div>
-                                    <div id="chat-send-form">
-                                        @if($chatsettings->blocked == 0)
-                                            @if($chatpermuser->blocked == 0)
-                                                <div class="d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
-                                                    @csrf
-                                                    <img class="rounded-circle" src="{{ auth()->user()->getPicture() }}" alt="avatar 3" style="width: 40px; height: 100%;">
-                                                    <input type="text" class="form-control form-control-lg mx-2" id="chat-input-message" name="message" placeholder="Napisz wiadomość">
-                                                    <span class="d-inline-block" tabindex="0" data-mdb-toggle="tooltip" data-mdb-html="true" title='<i class="fas fa-tools"></i> W budowie'>
-                                                        <a class="btn btn-primary btn-lg ms-1 text-m uted disabled" disabled><i class="fas fa-paperclip"></i></a>
-                                                    </span>
-                                                    <span class="d-inline-block" tabindex="0" data-mdb-toggle="tooltip" data-mdb-html="true" title='<i class="fas fa-tools"></i> W budowie'>
-                                                        <a class="btn btn-secondary btn-lg ms-2 text-mu ted disabled" disabled><i class="fas fa-smile"></i></a>
-                                                    </span>
-                                                    <button class="btn btn-success btn-lg ms-2" id="chat-button-send" type="button" data-mdb-toggle="tooltip" data-mdb-html="true" title='<i class="fas fa-paper-plane"></i> Wyślij' onclick="sendmessage()"><i class="fas fa-paper-plane fa-lg"></i></button>
+                                    <div class="col-md-9">
+                                        <div class="card bg-dark border shadow mb-4">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-5">
+                                                        <h3 class="font-weight-bold mb-2">
+                                                            <i class="fas fa-comment-alt"></i> Czat
+                                                        </h3>
+                                                    </div>
+                                                    <!--col-->
+                                                    <div class="col text-end">
+                                                        <button class="btn btn-secondary btn-sm" onclick="GETMESSAGE()"><i class="fas fa-sync"></i> Załaduj</button>
+                                                    </div>
                                                 </div>
-                                            @else
-                                                <div class="d-flex justify-content-start align-items-center pe-3 pt-3 mt-2 border-top">
-                                                    <img class="rounded-circle" src="{{ auth()->user()->getPicture() }}" alt="avatar 3" style="width: 40px; height: 100%;">
-                                                    <span class="ms-auto me-auto text-danger">
-                                                        <b> Możliwość pisania na czacie w: {{ $section->name }} została odebrana.</b>
-                                                        <p class="mb-0 text-center">
-                                                            {{ $chatpermuser->blocked_reason }}
-                                                        </p>
-                                                    </span>
+                                                <!--row-->
+                                                <div class="col">
+                                                    <div class="pt-3 pe-3" data-mdb-perfect-scrollbar="true" style="min-height:350px; max-height: 650px; overflow: hidden auto; overflow-y: auto;">
+                                                        <div id="chat-loading">
+                                                            <div class="mt-5 mb-5 d-flex justify-content-center">
+                                                                <div class="p-3">
+                                                                    <div class="first text-center">
+                                                                        <div class="spinner-border" style="width: 5rem; height:5rem" role="status"></div>
+                                                                        <h3 class="mt-3">Ładowanie wiadomości ...</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="chat-inner" style="height: 100%;"></div>
+                                                    </div>
+                                                    <div id="chat-send-form">
+                                                        @if($chatsettings->blocked == 0)
+                                                            @if($chatpermuser->blocked == 0)
+                                                                <div class="d-flex justify-content-start align-items-center pe-3 pt-3 mt-2">
+                                                                    @csrf
+                                                                    <img class="rounded-circle" src="{{ auth()->user()->getPicture() }}" alt="avatar 3" style="width: 40px; height: 100%;">
+                                                                    <input type="text" class="form-control form-control-lg mx-2" id="chat-input-message" name="message" placeholder="Napisz wiadomość">
+                                                                    <span class="d-inline-block" tabindex="0" data-mdb-toggle="tooltip" data-mdb-html="true" title='<i class="fas fa-tools"></i> W budowie'>
+                                                                        <a class="btn btn-primary btn-lg ms-1 text-m uted disabled" disabled><i class="fas fa-paperclip"></i></a>
+                                                                    </span>
+                                                                    <span class="d-inline-block" tabindex="0" data-mdb-toggle="tooltip" data-mdb-html="true" title='<i class="fas fa-tools"></i> W budowie'>
+                                                                        <a class="btn btn-secondary btn-lg ms-2 text-mu ted disabled" disabled><i class="fas fa-smile"></i></a>
+                                                                    </span>
+                                                                    <button class="btn btn-success btn-lg ms-2" id="chat-button-send" type="button" data-mdb-toggle="tooltip" data-mdb-html="true" title='<i class="fas fa-paper-plane"></i> Wyślij' onclick="sendmessage()"><i class="fas fa-paper-plane fa-lg"></i></button>
+                                                                </div>
+                                                            @else
+                                                                <div class="d-flex justify-content-start align-items-center pe-3 pt-3 mt-2 border-top">
+                                                                    <img class="rounded-circle" src="{{ auth()->user()->getPicture() }}" alt="avatar 3" style="width: 40px; height: 100%;">
+                                                                    <span class="ms-auto me-auto text-danger">
+                                                                        <b> Możliwość pisania na czacie w: {{ $section->name }} została odebrana.</b>
+                                                                        <p class="mb-0 text-center">
+                                                                            {{ $chatpermuser->blocked_reason }}
+                                                                        </p>
+                                                                    </span>
+                                                                </div>
+                                                            @endif
+                                                        @else
+                                                            <div class="d-flex justify-content-start align-items-start pe-3 pt-3 mt-2">
+                                                                <img class="rounded-circle" src="{{ auth()->user()->getPicture() }}" alt="avatar 3" style="width: 40px; height: 100%;">
+                                                                <span class="ms-auto me-auto text-danger ">
+                                                                    <b> {{ $chatsettings->firstname }} {{ $chatsettings->lastname }} wyłączył/a możliwość pisania na czacie: {{ $section->name }}.</b>
+                                                                    <p class="mb-0 text-center">
+                                                                        {{ $chatsettings->blocked_reason }}
+                                                                    </p>
+                                                                </span>
+                                                            </div>
+                                                        @endif
+                                                    </div>
                                                 </div>
-                                            @endif
-                                        @else
-                                            <div class="d-flex justify-content-start align-items-start pe-3 pt-3 mt-2">
-                                                <img class="rounded-circle" src="{{ auth()->user()->getPicture() }}" alt="avatar 3" style="width: 40px; height: 100%;">
-                                                <span class="ms-auto me-auto text-danger ">
-                                                    <b> {{ $chatsettings->firstname }} {{ $chatsettings->lastname }} wyłączył/a możliwość pisania na czacie: {{ $section->name }}.</b>
-                                                    <p class="mb-0 text-center">
-                                                        {{ $chatsettings->blocked_reason }}
-                                                    </p>
-                                                </span>
                                             </div>
-                                        @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

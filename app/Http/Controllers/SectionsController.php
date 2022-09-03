@@ -30,7 +30,7 @@ class SectionsController extends Controller
         $section->load(['instruments', 'owner']);
 
         $chatpermuser = DB::table('users_sections')->where('sections_id', $section->id)->where('user_id', auth()->id())->first();
-        if(empty($chatpermuser) && $section->owner != auth()->user()){
+        if(empty($chatpermuser) && $section->owner->id != auth()->user()->id){
             Toastr::error('Brak uprawnień!','Błąd!');
             return redirect()->route('home')->with('danger', 'Brak uprawnień!');
         } else {
@@ -49,11 +49,13 @@ class SectionsController extends Controller
         ->join('users', 'user_id', '=', 'users.id')
         ->first();
         $chatpermuser = DB::table('users_sections')->where('sections_id', $section->id)->where('user_id', auth()->id())->first();
-        if(empty($chatpermuser) && $section->owner != auth()->user()){
+        if(empty($chatpermuser) && $section->owner->id != auth()->user()->id){
             Toastr::error('Brak uprawnień!','Błąd!');
             return redirect()->route('home')->with('danger', 'Brak uprawnień!');
-
         } else {
+            if(empty($chatsettings)){
+                $chatsettings->blocked = 1;
+            }
             return view('panel.everyone.sections.chat', compact('section', 'chatmassage', 'chatpermuser', 'chatsettings'));
             // return view('panel.user.test', compact('section', 'chatmassage', 'chatpermuser', 'chatsettings'));
         }

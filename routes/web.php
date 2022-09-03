@@ -94,6 +94,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('index');
             Route::get('/modules', [App\Http\Controllers\Admin\SettingsController::class, 'modules'])->name('modules');
             Route::get('/sections', [App\Http\Controllers\Admin\SettingsController::class, 'sections'])->name('sections');
+            Route::post('/sections', [App\Http\Controllers\Admin\SettingsController::class, 'storesections'])->name('sections.store');
             Route::get('/availability', [App\Http\Controllers\Admin\SettingsController::class, 'availability'])->name('availability');
         });
 
