@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class RegisterController extends Controller
 {
@@ -54,7 +55,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'code' => ['required', 'string'],
+            'code' => ['required', 'string', 'in:GRANDIOSO'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
         ]);
@@ -69,16 +70,24 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // dd( $data);
-            if($data['code'] == '$sWwyE.)gyd8oqq6eQEt{2,FR'){
-                User::create([
-                    'firstname' => $data['firstname'],
-                    'lastname' => $data['lastname'],
-                    'email' => $data['email'],
-                    'password' => Hash::make($data['password']),
-                ]);
-            } else {
-                return back()->with('error', 'Błąd!');
-            }
+        // if($data['code'] == 'GRANDIOSO')
+        try{
+            $user = User::create([
+                'firstname' => $data['firstname'],
+                'lastname' => $data['lastname'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
 
+            Toastr::success('Utworzono konto pomyślnie','Sukces');
+            return $user;
+            // return redirect()->route('roles.index')->with('success', 'Utworzono konto pomyślnie');
+        } catch (\Exception $e) {
+            Toastr::error('Wystąpił błąd podczas tworzenia konta','Błąd!');
+            return $user;
+            // return redirect()->route('roles.index')->with('error', 'Wystąpił błąd podczas tworzenia konta');
+        }
+        Toastr::error('Wystąpił błąd podczas tworzenia konta','Błąd!');
+        return response()->json(['errors'=>'Wystąpił błąd podczas tworzenia konta']);
     }
 }

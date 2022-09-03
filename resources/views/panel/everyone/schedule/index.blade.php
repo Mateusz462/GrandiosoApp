@@ -22,6 +22,16 @@
         background-color: #4f4f4f;
         color:#fff;
     }
+
+    .form-select bg-dark {
+        background-color: rgba(38,38,38,var(--mdb-bg-opacity))!important;
+        color:#fff;
+    }
+
+    .form-select:disabled {
+        background-color: #4f4f4f;
+        color:#fff;
+    }
 @endsection
 
 @section('content-header')
@@ -67,9 +77,6 @@
                                 <form class="" action="" method="get">
                                     <div class="form-check form-check-inline">
                                         <select class="form-select" name="month">
-                                            <?php
-
-                                            ?>
                                             <option value="1">Styczeń</option>
                                             <option value="2">Luty</option>
                                             <option value="3">Marzec</option>
@@ -94,6 +101,7 @@
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <button type="submit" class="btn btn-primary"><i class="fas fa-calendar-alt me-1"></i>Wybierz datę</button>
+                                        <button type="button" class="btn btn-success" onclick="Dodaj()"><i class="fas fa-calendar-plus me-1"></i>Dodaj wydarzenie</button>
                                     </div>
                                 </form>
                             </div>
@@ -214,7 +222,7 @@
                                                     <?php
                                                         $format = $startOfCalendar->format('d.m.Y');
                                                         $tyd = $dniformat[(date('w', strtotime($startOfCalendar->format('d.m.Y'))))];
-                                                        $data = $startOfCalendar->format('Y.m.d');
+                                                        $data = $startOfCalendar->format('Y-m-d');
                                                     ?>
                                                     <a class="{{ $linkclass }}" href="#!" role="button" onclick="Podglad('{{ $format }}', '{{ $tyd }}', '{{ $data }}')">
 
@@ -324,14 +332,86 @@
                                 }
                             ?>
                         </div>
-                        <div id="modal-podglad-event-row-error" class="text-center row" style="display: none">
-
-                        </div>
                         <div id="modal-podglad-event-row" class="row">
                         </div>
+                        <div id="modal-dodawanie-event" class="d-none">
+                            <form class="col-12 card shadow mb-4 bg-dark card-body" action="/abc" method="post">
+                                @csrf
+                                <h4 class="py-4 font-weight-bold text-center">Formularz dodawania</h4>
+                                <!-- title input -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="modal-dodawanie-title" class="form-control" />
+                                    <label class="form-label" for="modal-dodawanie-title">Tytuł</label>
+                                </div>
+                                <!-- time input -->
+                                <div class="row mb-4">
+                                    <!-- start time input -->
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input type="time" id="modal-dodawanie-time_from" class="form-control" />
+                                            <label class="form-label" for="modal-dodawanie-time_from">Godzina rozpoczęcia</label>
+                                        </div>
+                                    </div>
+                                    <!-- end time input -->
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input type="time" id="modal-dodawanie-time_to" class="form-control" />
+                                            <label class="form-label" for="modal-dodawanie-time_to">Godzina zakończenia</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- date input -->
+                                <div class="form-outline mb-4">
+                                    <input type="date" id="modal-dodawanie-date" class="form-control" />
+                                    <label class="form-label" for="modal-dodawanie-date">Data</label>
+                                </div>
+
+                                <!-- place input -->
+                                <div class="form-outline mb-3">
+                                    <input type="text" id="modal-dodawanie-place" class="form-control" />
+                                    <label class="form-label" for="modal-dodawanie-place">Miejsce</label>
+                                </div>
+
+                                <!-- place input -->
+                                <div class="form-input mb-4">
+                                    <label class="label-control text-start" for="modal-dodawanie-type">Rodzaj wydarzenia</label>
+                                    <select class="form-select bg-dark" name="" id="modal-dodawanie-type">
+                                        <option selected disabled>Wybierz opcje</option>
+                                        <option value="" disabled><label class="select-option-group-label" style="height: 38px;">Próby:</label></option>
+                                        <option value="Próba musztry">Próba musztry</option>
+                                        <option value="Próba koncertowa">Próba koncertowa</option>
+                                        <option value="Próba parady marszowej">Próba parady marszowej</option>
+                                        <option value="Próba przygotowawcza">Próba przygotowawcza</option>
+                                        <option value="" disabled><label class="select-option-group-label" style="height: 38px;">Koncert:</label></option>
+                                        <option value="Koncert">Koncert</option>
+                                        <option value="Koncert listopadowy">Koncert listopadowy</option>
+                                        <option value="Koncert noworoczny">Koncert noworoczny</option>
+                                        <option value="Koncert jubileuszowy">Koncert jubileuszowy</option>
+                                        <option value="" disabled><label class="select-option-group-label" style="height: 38px;">Występ:</label></option>
+                                        <option value="Występ">Występ</option>
+                                        <option value="Występ - musztra">Występ - musztra</option>
+                                        <option value="Występ - parada marszowa">Występ - parada marszowa</option>
+                                        <option value="Występ - Parada Światła">Występ - Parada Światła</option>
+                                    </select>
+                                    <!-- <input type="text" id="form1Example2" class="form-control" /> -->
+                                    <!-- <label class="form-label" for="form1Example2">Rodzaj próby</label> -->
+                                </div>
+
+                                <!-- description input -->
+                                <div class="form-outline mb-4">
+                                    <textarea id="modal-dodawanie-description" class="form-control ckeditor" name="name" rows="8" cols="80"></textarea>
+                                    <label class="form-label" for="modal-dodawanie-description">Opis</label>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer d-flex justify-content-between">
                         <button type="button" class="btn btn-danger" data-mdb-dismiss="modal"><i class="fas fa-times"></i> Zamknij</button>
+                        <button type="submit" class="btn btn-success d-none" id="btn-save" onclick="ZlozWniosek()"><i class="fas fa-save"></i> Zapisz</button>
+                        <button class="btn btn-success d-none" type="button" id="btn-save-load" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </button>
                     </div>
                 </div>
             </div>
@@ -342,86 +422,151 @@
 
 @section('javascript')
     <script type="text/javascript">
+        function ZlozWniosek() {
+            event.preventDefault();
+            const error = walidacjaDodawanie();
+            if (error === '')
+                dodaj();
+            else
+                toastr.error('BĹÄd! WypeĹnij poprawnie wszystkie wymagane pola.');
+        }
+        function dodaj() {
+            $("#btn-save").removeClass('d-none');
+            // $("#modal-dodawanie-event").addClass('d-none');
+            // $("#modal-podglad-loading").css("display", "block");
+            $("#btn-save").addClass('d-none');
+            $("#btn-save-load").removeClass('d-none');
+            function encodeQueryData(data) {
+                let ret = [];
+                for (let d in data)
+                ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+                return ret.join('&');
+            }
+            var datalogin = encodeQueryData({
+                'title': title.val(),
+                'time_from': time_from.val(),
+                'time_to': time_to.val(),
+                'date': date.val(),
+                'place': place.val(),
+                'type': type.val(),
+                'description': description.val()
+            });
+            $.ajax({
+                type: 'POST',
+                data: datalogin,
+                url: '/schedule',
+                headers:
+                {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (responseText) {
+                    if (responseText == 0) {
+                        //nie udalo sie usunac, jakis blad
+                        $("#modal-podglad").modal("hide");
+                        toastr.error('BĹÄd! Nie udaĹo siÄ zĹoĹźyÄ raportu.');
+                    } else if (responseText == 1) {
+                        $("#modal-podglad").modal("hide");
+                        toastr.success('Sukces! Poprawnie zĹoĹźono raport.');
+
+                    } else {
+                        $("#modal-podglad").modal("hide");
+                        toastr.success('Sukces! Poprawnie zĹoĹźono raport poprawkowy.');
+                    }
+                }
+            });
+        }
+
+        let title = $('#modal-dodawanie-title');
+        let time_from = $('#modal-dodawanie-time_from');
+        let time_to = $('#modal-dodawanie-time_to');
+        let date = $('#modal-dodawanie-date');
+        let place = $('#modal-dodawanie-place');
+        let type = $('#modal-dodawanie-type');
+        let description = $('#modal-dodawanie-description');
+
+        function walidacjaDodawanie() {
+            let err = '';
+            if (title.val().length === 0) {
+                err = 1;
+                title.addClass("is-invalid");
+            } else {
+                title.removeClass("is-invalid");
+                title.addClass("is-valid");
+            }
+            if (time_from.val().length === 0) {
+                err = 1;
+                time_from.addClass("is-invalid");
+            } else {
+                time_from.removeClass("is-invalid");
+                time_from.addClass("is-valid");
+            }
+            if (time_to.val().length === 0) {
+                err = 1;
+                time_to.addClass("is-invalid");
+            } else {
+                time_to.removeClass("is-invalid");
+                time_to.addClass("is-valid");
+            }
+            if (date.val().length === 0) {
+                err = 1;
+                date.addClass("is-invalid");
+            } else {
+                date.removeClass("is-invalid");
+                date.addClass("is-valid");
+            }
+            if (place.val().length === 0) {
+                err = 1;
+                place.addClass("is-invalid");
+            } else {
+                place.removeClass("is-invalid");
+                place.addClass("is-valid");
+            }
+            if (type.val().length === 0) {
+                err = 1;
+                type.addClass("is-invalid");
+            } else {
+                type.removeClass("is-invalid");
+                type.addClass("is-valid");
+            }
+
+            return err;
+        }
+
+        function Dodaj() {
+            $("#modal-podglad-loading").css("display", "none");
+            $("#modal-podglad-header").html("Dodaj wydarzenie");
+            $("#modal-podglad-event-row").css("display", "none");
+            $("#btn-save").removeClass('d-none');
+            $("#btn-save-load").addClass('d-none');
+            $("#modal-dodawanie-event").removeClass('d-none');
+
+            $("#modal-podglad").modal("show");
+        }
+
         function Podglad(format, week, date) {
             const header = week + ' ' + format;
             $("#modal-podglad-header").html(header);
             $("#modal-podglad-event-row").css("display", "none");
+            $("#modal-dodawanie-event").addClass('d-none');
+            $("#btn-save").addClass('d-none');
+            $("#btn-save-load").addClass('d-none');
 
             $("#modal-podglad-loading").css("display", "block");
             $("#modal-podglad-zawartosc").css("display", "none");
-
-            if($("#icon-class-date-", format).hasClass("text-swieto")){
-                $("#modal-podglad-holiday-header").html('ads');
-                $("#modal-podglad-holiday-row").css("display", "block");
-            }
 
             $.ajax({
                 type: 'GET', //THIS NEEDS TO BE GET
                 url: "schedule/json/" + date,
                 //dataType: 'json',
                 success: function (response) {
-                    // console.log(response);
 
-                    if(response.events.length > 0) {
-                        $("#modal-podglad-event-row-error").css("display", "none");
-                        $("#modal-podglad-event-row").empty();
-                        $.each(response.events, function(index, event) {
-                            // console.log(event);
-                            const text = '<div class="col-12" id="modal-podglad-event-col-'+ index +'">'+
-                                '<div class="card bg-dark shadow mb-4">'+
-                                    '<div class="card-body">'+
-                                        '<h4 class="font-weight-bold mb-2">'+
-                                            '<i class="fas fa-check-circle"></i> '
-                                             + event.title +
-                                        '</h4>'+
-                                        '<p class="mb-0">'+
-                                            '<b>Data:</b> '
-                                             + new Date(event.date * 1000).toUTCString().match(/(\d\d:\d\d:\d\d)/) +' - '+ event.date +
-                                        '</p>'+
-                                        '<p class="mb-0">'+
-                                            '<b>Godzina:</b> '
-                                             + event.time_from + '-'+ event.time_to +
-                                        '</p>'+
-                                        '<p class="mb-0">'+
-                                            '<b>Typ próby:</b> Próba koncertowa'+
-                                        '</p>'+
-                                        '<p class="mb-2">'+
-                                            '<b>Miejsce:</b> '
-                                            + event.place +
-                                        '</p>' +
-                                        '<p class="mb-2">'+
-                                            '<b>Opis:</b> '
-                                            + event.description +
-                                        '</p>'+
-                                        '<p class="mb-0">'+
-                                            '<b>Program:</b>'+
-                                            '<p class="mb-2">brak danych!</p>'+
-                                        '</p>'+
-                                        '<p class="mb-0">'+
-                                            '<button class="btn btn-success" name="button"><i class="fas fa-check"></i></button> '+
-                                            '<button class="btn btn-danger" name="button" disabled><i class="fas fa-times"></i></button> '+
-                                            '<span class="text-success ms-2 pb-2">Będę na próbie!</span>'+
-                                        '</p>'+
-                                    '</div>'+
-                                '</div>'+
-                            '</div>';
-                            $("#modal-podglad-event-row").append(text);
+                    $("#modal-podglad-event-row").empty();
+                    $("#modal-podglad-event-row").append(response);
 
+                    $("#modal-podglad-loading").css("display", "none");
+                    $("#modal-podglad-zawartosc").css("display", "block");
+                    $("#modal-podglad-event-row").css("display", "block");
 
-
-                            $("#modal-podglad-loading").css("display", "none");
-                            $("#modal-podglad-zawartosc").css("display", "block");
-                            $("#modal-podglad-event-row").css("display", "block");
-                            $("#modal-podglad-event-row-error").css("display", "none");
-
-                        });
-                    } else {
-                        $("#modal-podglad-loading").css("display", "none");
-                        $("#modal-podglad-zawartosc").css("display", "block");
-                        $("#modal-podglad-event-row-error").html('<br><br><div class="col-12">Brak wydarzeń!</div><br><br>');
-
-                        $("#modal-podglad-event-row-error").css("display", "block");
-                    }
 
                     if(response.holidays.length > 0) {
                         $("#modal-podglad-holiday-row").css("display", "none");
@@ -437,20 +582,18 @@
                                 $("#modal-podglad-holiday-row").append(text);
                                 $("#modal-podglad-holiday-row").css("display", "block");
                             }
-
-
-
-
-
                         });
                     }
+
                 },error:function(){
-                    console.log(data);
+                    const text = '<div class="mt-5 mb-5 d-flex justify-content-center"><div class="p-3"><div class="first text-center"><i class="fas fa-times-circle fa-6x"></i><h3 class="mt-3">Błąd ładowania danych</h3></div></div></div>';
+                    $("#modal-podglad-event-row").empty();
+                    $("#modal-podglad-event-row").append(text);
+                    $("#modal-podglad-event-row").css("display", "block");
+                    $("#modal-podglad-loading").css("display", "none");
+                    $("#modal-podglad-zawartosc").css("display", "block");
                 }
             });
-
-
-
             console.log();
             $("#modal-podglad").modal("show");
 

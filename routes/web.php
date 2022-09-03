@@ -21,7 +21,7 @@ Route::get('/test1', function () {
     return view('panel.user.test');
 });
 
-Auth::routes(['verify' => false]);
+Auth::routes(['verify' => true]);
 // Auth::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register.post');
 
 // Socialite Routes
@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/avatars/user/{avatar}', [App\Http\Controllers\AvatarController::class, 'images'])->name('avatars.user');
     Route::get('/schedule', [App\Http\Controllers\Admin\ScheduleController::class, 'index'])->name('calendar');
     Route::get('/schedule/json/{date}', [App\Http\Controllers\Admin\ScheduleController::class, 'getallevents'])->name('schedule.getallevents');
+    Route::post('/schedule', [App\Http\Controllers\Admin\ScheduleController::class, 'store'])->name('schedule.store');
 
 
     Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'list'])->name('everyone.users');

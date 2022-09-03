@@ -18,6 +18,7 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class ScheduleController extends Controller
 {
+
     public function index(Request $request)
     {
         // dd($request->month);
@@ -133,99 +134,159 @@ class ScheduleController extends Controller
 
     public function getallevents($date)
     {
-        //dd($date);
-        $events['events'] = Schedule::where('date', $date)->get();
-        $events['holidays'] = array(
+        $date1 = Carbon::createFromDate($date);
+        $date1->format('Y-m-d H:i:s');
+        $events = Schedule::where('date', $date1)->get();
+
+        $icon = '';
+
+        $output = '';
+        if(count($events) > 0){
+            foreach($events as $event){
+                $output .= '<div class="col-12" id="modal-podglad-event-'.$event->id.'">
+                    <div class="card bg-dark shadow mb-4">
+                        <div class="card-body">
+                            <h4 class="font-weight-bold mb-2">
+                                <i class="fas fa-check-circle"></i>
+                                '.$event->title.'
+                            </h4>
+                            <p class="mb-0">
+                                <b>Data:</b>
+                                '.$event->date->format('d.m.Y').'
+                            </p>
+                            <p class="mb-0">
+                                <b>Godzina:</b>
+                                '.$event->time_from->format('H:i').' - '.$event->time_to->format('H:i').'
+                            </p>
+                            <p class="mb-0">
+                                <b>Miejsce:</b>
+                                '.$event->place.'
+                            </p>
+                            <p class="mb-2">
+                                <b>Typ próby:</b>
+                                '.$event->rehearsaltype.'
+                            </p>
+                            <p class="mb-2">
+                                <b>Opis:</b>
+                                '.$event->description.'
+                            </p>
+                            <p class="mb-0">
+                                <b>Program:</b>
+                                <p class="mb-2"></p>
+                            </p>
+                            <p class="mb-0">
+                                <button class="btn btn-success" name="button"><i class="fas fa-check"></i></button>
+                                <button class="btn btn-danger" name="button" disabled><i class="fas fa-times"></i></button>
+                                <span class="text-success ms-2 pb-2">Będę na próbie!</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>';
+            }
+        } else {
+            $output .= '
+            <div class="mt-5 mb-5 d-flex justify-content-center">
+                <div class="p-3">
+                    <div class="first text-center">
+                        <i class="fas fa-times-circle fa-6x"></i>
+                        <h3 class="mt-3">Brak wydarzeń w tym dniu</h3>
+                        <p class="text-muted">
+
+                        </p>
+                        <button class="btn btn-success" onclick="Dodaj()"><i class="fas fa-calendar-plus"></i> Dodaj wydarzenie</button>
+                    </div>
+                </div>
+            </div>';
+        }
+
+        return ($output);
+    }
+
+    public function getallholidays($date)
+    {
+        $holidays = array(
            //maj
-           [
-               'id' => '1',
-               'data' => '01.05.2022',
-               'tytul' => 'Święto Pracy',
-               'swieto' => '1',
-           ],
-           [
-               'id' => '2',
-               'data' => '02.05.2022',
-               'tytul' => 'Dzień Flagi Rzeczpospolitej Polskiej',
-               'swieto' => '0',
-           ],
-           [
-               'id' => '3',
-               'data' => '03.05.2022',
-               'tytul' => 'Święto Konstytucji Trzeciego Maja',
-               'swieto' => '1',
-           ],
-           [
-               'id' => '4',
-               'data' => '26.05.2022',
-               'tytul' => 'Dzień Matki',
-               'swieto' => '0',
-           ],
-           [
-               'id' => '5',
-               'data' => '01.06.2022',
-               'tytul' => 'Dzień Dziecka',
-               'swieto' => '0',
-           ],
-           [
-               'id' => '6',
-               'data' => '02.06.2022',
-               'tytul' => 'Zielone Świątki',
-               'swieto' => '0',
-           ],
-           [
-               'id' => '7',
-               'data' => '28.06.2022',
-               'tytul' => 'Boże Ciało',
-               'swieto' => '1',
-           ],
-           [
-               'id' => '8',
-               'data' => '01.07.2022',
-               'tytul' => 'Dzień Ojca',
-               'swieto' => '1',
+            [
+                'id' => '1',
+                'data' => '01.05.2022',
+                'tytul' => 'Święto Pracy',
+                'swieto' => '1',
+            ],
+            [
+                'id' => '2',
+                'data' => '02.05.2022',
+                'tytul' => 'Dzień Flagi Rzeczpospolitej Polskiej',
+                'swieto' => '0',
+            ],
+                [
+                'id' => '3',
+                'data' => '03.05.2022',
+                'tytul' => 'Święto Konstytucji Trzeciego Maja',
+                'swieto' => '1',
+            ],
+            [
+                'id' => '4',
+                'data' => '26.05.2022',
+                'tytul' => 'Dzień Matki',
+                'swieto' => '0',
+            ],
+            [
+                'id' => '5',
+                'data' => '01.06.2022',
+                'tytul' => 'Dzień Dziecka',
+                'swieto' => '0',
+            ],
+            [
+                'id' => '6',
+                'data' => '02.06.2022',
+                'tytul' => 'Zielone Świątki',
+                'swieto' => '0',
+            ],
+            [
+                'id' => '7',
+                'data' => '28.06.2022',
+                'tytul' => 'Boże Ciało',
+                'swieto' => '1',
+            ],
+            [
+                'id' => '8',
+                'data' => '01.07.2022',
+                'tytul' => 'Dzień Ojca',
+                'swieto' => '1',
 
-           ],
-           [
-               'id' => '9',
-               'data' => '01.08.2022',
-               'tytul' => 'Narodowy Dzień Pamięci Powstania Warszawskiego',
-               'swieto' => '0',
-
-           ],
-           [
-               'id' => '10',
-               'data' => '15.08.2022',
-               'tytul' => 'Święto Wojska Polskiego',
-               'swieto' => '1',
-
-           ],
-           [
-               'id' => '11',
-               'data' => '04.05.2022',
-               'tytul' => 'Wybuch II Wojny Światowej',
-               'swieto' => '1',
-
-           ],
-           [
-               'id' => '12',
-               'data' => '18.07.2022',
-               'tytul' => 'Wybuch II Wojny Światowej',
-               'swieto' => '1',
-
-           ],
-           [
-               'id' => '13',
-               'data' => '18.07.2022',
-               'tytul' => 'Wybuch III Wojny Światowej',
-               'swieto' => '1',
-
-           ]
-
-       );
-
-
-        return response()->json($events);
+            ],
+            [
+                'id' => '9',
+                'data' => '01.08.2022',
+                'tytul' => 'Narodowy Dzień Pamięci Powstania Warszawskiego',
+                'swieto' => '0',
+            ],
+            [
+                'id' => '10',
+                'data' => '15.08.2022',
+                'tytul' => 'Święto Wojska Polskiego',
+                'swieto' => '1',
+            ],
+            [
+                'id' => '11',
+                'data' => '04.05.2022',
+                'tytul' => 'Wybuch II Wojny Światowej',
+                'swieto' => '1',
+            ],
+            [
+                'id' => '12',
+                'data' => '18.07.2022',
+                'tytul' => 'Wybuch II Wojny Światowej',
+                'swieto' => '1',
+            ],
+            [
+                'id' => '13',
+                'data' => '18.07.2022',
+                'tytul' => 'Wybuch III Wojny Światowej',
+                'swieto' => '1',
+            ]
+        );
+       return response()->json($holidays);
     }
 
     public function calendar($date = null)
@@ -270,38 +331,31 @@ class ScheduleController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'imie' => 'required',
-            'nazwisko' => 'required',
-            'email' => 'required|email',
-            'login' => 'required',
-            'roles' => 'required',
-        ]);
-        try{
-            $roles = $request->roles;
-
+        try {
             $data = [
-                'imie' => $request->imie,
-                'nazwisko' => $request->nazwisko,
-                'email' => $request->email,
-                'login' => $request->login,
-                'code' => rand(0, 100),
-                'avatar' => '',
-                'status' => '1',
-                'deleted' => '0',
-                'password' => Hash::make('123456789'),
+                'title' => $request->title,
+                'date' => $request->date,
+                'time_from' => $request->time_from,
+                'time_to' => $request->time_to,
+                'rehearsaltype' => $request->type,
+                'shifttype' => '',
+                'description' => $request->description,
+                'place' => $request->place,
+                'program' => '',
+                'status' => 1,
+                'user_id' => auth()->user()->id,
+                'reason' => '',
             ];
-            $user = User::create($data);
-            $user->roles()->sync($request->input('roles', []));
+            $user = Schedule::create($data);
 
-            Toastr::success('Użytkownik został utworzony pomyślnie','Sukces');
-            return redirect()->route('users.list')->with('success', 'Użytkownik został utworzony pomyślnie');
+            Toastr::success('został utworzony pomyślnie','Sukces');
+            return redirect()->route('home')->with('success', 'został utworzony pomyślnie');
         } catch (\Exception $e) {
-            Toastr::error('Wystąpił błąd podczas tworzenia użytkownika','Błąd!');
-            return redirect()->route('users.list')->with('error', 'Wystąpił błąd podczas tworzenia użytkownika');
+            Toastr::error('Wystąpił błąd podczas tworzenia','Błąd!');
+            return redirect()->route('home')->with('error', 'Wystąpił błąd podczas tworzenia');
         }
     }
-
+    
     public function edit(User $user)
     {
         //abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');

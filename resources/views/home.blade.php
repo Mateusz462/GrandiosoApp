@@ -63,8 +63,8 @@
                         </div>
                         <!--row-->
 
-                        <div class="row mt-2">
-                            @if(count($annouments) > 0)
+                        <div class="row mt-2"  style="max-height: 1000px; scrollbar-gutter: stable; overflow: auto;">
+
                                 <!-- <div class="col-md-12">
                                     <div class="alert alert-info mt-3 mb-1" role="alert">
                                         <b><i class="fas fa-info-circle fa-lg"></i></b> Obowiązkowo na <b>każdą próbę musztry</b> przynosimy okrycie głowy i wodę!
@@ -76,98 +76,98 @@
                                         <b><i class="fas fa-times-circle fa-lg"></i></b> Anulowano 1 próbę!
                                     </div>
                                 </div> -->
-                                @foreach ($annouments as $row)
+
+                            @forelse ($annouments as $row)
+                                <div class="col-md-6">
                                     <a href="{{ route('annouments.show', $row->id ) }}" class="text-decoration-none text-white mt-2">
-                                        <div class="col-md-12">
-                                            <div class="card bg-dark border mt-2 p-0">
-                                                <div class="position-relative p-3">
-                                                    <div class="d-flex justify-content-start">
-                                                        <div class="position-relative d-flex align-items-center">
-                                                            <img class="rounded-circle me-3" src="{{ $row->user->getPicture() }}" width="45">
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <span class="d-flex align-items-center font-weight-bold">{{ $row->user->firstname }} {{ $row->user->lastname }}</span>
-                                                                <span class="d-flex align-items-center">
-                                                                    <span class="badge badge-light">
-                                                                        <i class="fas fa-shield-alt"></i>
-                                                                        @if($row->user->roletype == 'SuperAdmin')
-                                                                            Super Administrator
-                                                                        @elseif($row->user->roletype == 'Admin')
-                                                                            Administrator
-                                                                        @elseif($row->user->roletype == 'Employee')
-                                                                            Nauczyciel
-                                                                        @elseif($row->user->roletype == 'Parent')
-                                                                            Rodzic / Opiekun
-                                                                        @elseif($row->user->roletype == 'User')
-                                                                            Uczeń
-                                                                        @endif
-                                                                    </span>
+                                        <div class="card bg-dark border mt-2 p-0">
+                                            <div class="position-relative p-3">
+                                                <div class="d-flex justify-content-start">
+                                                    <div class="position-relative d-flex align-items-center">
+                                                        <img class="rounded-circle me-3" src="{{ $row->user->getPicture() }}" width="45">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <span class="d-flex align-items-center font-weight-bold">{{ $row->user->firstname }} {{ $row->user->lastname }}</span>
+                                                            <span class="d-flex align-items-center">
+                                                                <span class="badge badge-light">
+                                                                    <i class="fas fa-shield-alt"></i>
+                                                                    @if($row->user->roletype == 'SuperAdmin')
+                                                                        Super Administrator
+                                                                    @elseif($row->user->roletype == 'Admin')
+                                                                        Administrator
+                                                                    @elseif($row->user->roletype == 'Employee')
+                                                                        Nauczyciel
+                                                                    @elseif($row->user->roletype == 'Parent')
+                                                                        Rodzic / Opiekun
+                                                                    @elseif($row->user->roletype == 'User')
+                                                                        Uczeń
+                                                                    @endif
                                                                 </span>
-                                                            </div>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="position-relative px-3">
-                                                    <div class="row">
-                                                        <div class="col-sm-5">
-                                                            <h3 class="font-weight-bold">{{ $row->title }}</h3>
+                                            </div>
+                                            <div class="position-relative px-3">
+                                                <div class="row">
+                                                    <div class="col-sm-5">
+                                                        <h3 class="font-weight-bold">{{ $row->title }}</h3>
+                                                    </div>
+                                                    <!--col-->
+                                                    @if($row->is_pinned)
+                                                        <div class="col text-end">
+                                                            <h5><span class="badge badge-danger">Ważne!</span></h5>
                                                         </div>
-                                                        <!--col-->
-                                                        @if($row->is_pinned)
-                                                            <div class="col text-end">
-                                                                <h5><span class="badge badge-danger">Ważne!</span></h5>
-                                                            </div>
-                                                        @endif
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div  class="position-relative px-3 mt-2" style="max-height: 400px; scrollbar-gutter: stable; overflow: auto;">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    {!! $row->text !!}
+                                                </div>
+                                                <!-- <span>Zaginiony telefon wraz ładowarką jest do odebrania u mnie - po uiszczeniu opłaty za "dzikie ładowanie" 🤑</span> -->
+                                            </div>
+                                            <div class="position-relative px-3 mt-3">
+                                                <div class="d-flex align-items-center pb-2 border-bottom mb-2">
+                                                    <a href="#" class="text-decoration-none text-white text-muted">
+                                                        {{ $row->created_at->diffForHumans() }}
+                                                        <!-- 1 godzinę temu -->
+                                                    </a>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between pb-2 border-bottom mb-2 mt-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="far fa-comment-alt"></i>
+                                                        <span class="ms-2">0 komentarzy</span>
+                                                    </div>
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <i class="fas fa-share"></i>
+                                                        <span class="ms-2">Udostępnij</span>
                                                     </div>
                                                 </div>
-                                                <div  class="position-relative px-3 mt-2" style="max-height: 550px; scrollbar-gutter: stable; overflow: auto;">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        {!! $row->text !!}
-                                                    </div>
-                                                    <!-- <span>Zaginiony telefon wraz ładowarką jest do odebrania u mnie - po uiszczeniu opłaty za "dzikie ładowanie" 🤑</span> -->
-                                                </div>
-                                                <div class="position-relative px-3 mt-3">
-                                                    <div class="d-flex align-items-center pb-2 border-bottom mb-2">
-                                                        <a href="#" class="text-decoration-none text-white text-muted">
-                                                            {{ $row->created_at->diffForHumans() }}
-                                                            <!-- 1 godzinę temu -->
-                                                        </a>
-                                                    </div>
-                                                    <div class="d-flex align-items-center justify-content-between pb-2 border-bottom mb-2 mt-3">
+                                            </div>
+                                            <div class="position-relative px-3 my-2">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <div class="d-flex">
                                                         <div class="d-flex align-items-center">
-                                                            <i class="far fa-comment-alt"></i>
-                                                            <span class="ms-2">0 komentarzy</span>
+                                                            <i class="far fa-thumbs-up"></i>
+                                                            <span class="ms-1">0</span>
                                                         </div>
-                                                        <div class="d-flex flex-row align-items-center">
-                                                            <i class="fas fa-share"></i>
-                                                            <span class="ms-2">Udostępnij</span>
+                                                        <div class="d-flex align-items-center ms-3">
+                                                            <i class="far fa-heart"></i>
+                                                            <span class="ms-1">0</span>
+                                                        </div>
+                                                        <div class="d-flex align-items-center ms-3">
+                                                            <i class="far fa-thumbs-down"></i>
+                                                            <span class="ms-1">0</span>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="position-relative px-3 my-2">
-                                                    <div class="d-flex align-items-center mb-2">
-                                                        <div class="d-flex">
-                                                            <div class="d-flex align-items-center">
-                                                                <i class="far fa-thumbs-up"></i>
-                                                                <span class="ms-1">0</span>
-                                                            </div>
-                                                            <div class="d-flex align-items-center ms-3">
-                                                                <i class="far fa-heart"></i>
-                                                                <span class="ms-1">0</span>
-                                                            </div>
-                                                            <div class="d-flex align-items-center ms-3">
-                                                                <i class="far fa-thumbs-down"></i>
-                                                                <span class="ms-1">0</span>
-                                                            </div>
-                                                        </div>
-                                                        <!-- <i class="fas fa-tools"></i>
-                                                        <span class="ms-2">W budowie</span> -->
-                                                    </div>
+                                                    <!-- <i class="fas fa-tools"></i>
+                                                    <span class="ms-2">W budowie</span> -->
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
-                                @endforeach
-                            @else
+                                </div>
+                            @empty
                                 <div class="col-md-12">
                                     <div class="card bg-dark border mt-2 p-0">
                                         <div class="position-relative p-5 text-center">
@@ -178,7 +178,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endif
+                            @endforelse
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -208,7 +208,7 @@
                                 }
 
                             ?>
-                            @for($date = today()->copy(); $date->lte(today()->add(2, 'day')); $date->addDay())
+                            @for($date = today()->copy(); $date->lte(today()->add(1, 'day')); $date->addDay())
                                 <div class="col-lg-6 col-xl-6">
                                     <div class="card bg-dark shadow mb-4">
                                         <div class="card-body">
@@ -247,14 +247,6 @@
                                                                             </p>
                                                                             <p class="mb-2">
                                                                                 <b>Miejsce:</b> {{ $row->place }}
-                                                                            </p>
-                                                                            <p class="mb-0">
-                                                                                <b>Opis:</b>
-                                                                                {!! $row->description !!}
-                                                                            </p>
-                                                                            <p class="@if($row->status == 1 || $row->status == 2) mb-3 @else mb-0 @endif">
-                                                                                <b>Program nagrań:</b>
-                                                                                <p class="mb-0"><b>brak danych!</b></p>
                                                                             </p>
                                                                         @if($row->status == 2)</s>@endif
                                                                         @if($row->status == 1)
@@ -300,21 +292,13 @@
                                                                                 <b>Data:</b> {{ $row->date->format('d.m.Y') }}
                                                                             </p>
                                                                             <p class="mb-0">
-                                                                                <b>Godzina:</b> {{ $row->time_from }}-{{ $row->time_to }}
+                                                                                <b>Godzina:</b> {{ $row->time_from->format('H:i') }} - {{ $row->time_to->format('H:i') }}
                                                                             </p>
                                                                             <p class="mb-0">
                                                                                 <b>Typ próby:</b> {{ $row->rehearsaltype }}
                                                                             </p>
                                                                             <p class="mb-2">
                                                                                 <b>Miejsce:</b> {{ $row->place }}
-                                                                            </p>
-                                                                            <p class="mb-0">
-                                                                                <b>Opis:</b>
-                                                                                {!! $row->description !!}
-                                                                            </p>
-                                                                            <p class="@if($row->status == 1 || $row->status == 2) mb-3 @else mb-0 @endif">
-                                                                                <b>Program nagrań:</b>
-                                                                                <p class="mb-0"><b>brak danych!</b></p>
                                                                             </p>
                                                                         @if($row->status == 2)</s>@endif
                                                                         @if($row->status == 1)
@@ -360,21 +344,13 @@
                                                                                 <b>Data:</b> {{ $row->date->format('d.m.Y') }}
                                                                             </p>
                                                                             <p class="mb-0">
-                                                                                <b>Godzina:</b> {{ $row->time_from }}-{{ $row->time_to }}
+                                                                                <b>Godzina:</b> {{ $row->time_from->format('H:i') }} - {{ $row->time_to->format('H:i') }}
                                                                             </p>
                                                                             <p class="mb-0">
                                                                                 <b>Typ próby:</b> {{ $row->rehearsaltype }}
                                                                             </p>
                                                                             <p class="mb-2">
                                                                                 <b>Miejsce:</b> {{ $row->place }}
-                                                                            </p>
-                                                                            <p class="mb-0">
-                                                                                <b>Opis:</b>
-                                                                                {!! $row->description !!}
-                                                                            </p>
-                                                                            <p class="@if($row->status == 1 || $row->status == 2) mb-3 @else mb-0 @endif">
-                                                                                <b>Program nagrań:</b>
-                                                                                <p class="mb-0"><b>brak danych!</b></p>
                                                                             </p>
                                                                         @if($row->status == 2)</s>@endif
                                                                         @if($row->status == 1)
